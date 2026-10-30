@@ -63,6 +63,7 @@ const I = {
   auto: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/></svg>`,
   cup: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg>`,
   play: `<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg>`,
+  close: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>`,
   check: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`,
   linkedin: `<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4z"/></svg>`,
   upload: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>`
@@ -147,8 +148,23 @@ let run = null, tick = null;
 function startRun(setId, order, label) {
   const set = getSet(setId);
   if (!set) return;
-  run = { set, order, label, secIdx: 0, results: {}, startedAt: Date.now() };
+  const from = run ? run.from : curPath();
+  run = { set, order, label, from, secIdx: 0, results: {}, startedAt: Date.now() };
+  // an extra history entry so the browser's Back button exits the test instead of the site
+  if (history.state && history.state.test) history.replaceState({ test: 1 }, "", location.href);
+  else history.pushState({ test: 1 }, "", location.href);
   showIntro();
+}
+// Leave the current test (asks first if answers would be lost) and go to a page
+function exitTest(to) {
+  if (run && (run.cur || (run.secIdx > 0 && !run.finished)) && !confirm("Leave the test? This attempt will be lost.")) return false;
+  const target = to ?? (run ? run.from : "");
+  clearInterval(tick); window.onkeydown = null; run = null;
+  if (history.state && history.state.test) history.replaceState(null, "", href(target));
+  else if (PATH_MODE) history.pushState(null, "", href(target));
+  else if (location.hash !== href(target)) { location.hash = href(target); return true; }
+  render();
+  return true;
 }
 function curKey() { return run.order[run.secIdx]; }
 function curSec() { return run.set.sections[curKey()]; }
@@ -168,24 +184,62 @@ function isDone(s, hist) {
   return (core.length ? core : keys).every(k => d.has(k));
 }
 
+/* ---------- routing ---------- */
+// "path" on the real site (one HTML file per page), "hash" in the single-file preview
+const PATH_MODE = typeof ROUTER !== "undefined" && ROUTER === "path" && location.protocol !== "file:";
+const href = p => (PATH_MODE ? "/" : "#/") + p;
+const curPath = () => (PATH_MODE ? location.pathname : location.hash.replace(/^#/, "")).replace(/^\/+|\/+$/g, "").replace(/(^|\/)index$|\.html$/, "");
+const TOPICS = { "numerical-reasoning-test": "NR", "critical-thinking-test": "CT", "data-interpretation-test": "WwD", "verbal-reasoning-test": "VR" };
+const topicPath = k => Object.keys(TOPICS).find(p => TOPICS[p] === k);
+const setNum = s => BUILTIN_SETS.findIndex(x => x.id === s.id) + 1; // 0 = one of your own tests
+const setPath = s => setNum(s) ? `mock-tests/${setNum(s)}` : "my-tests";
+function go(p) {
+  if (PATH_MODE) { history.pushState(null, "", href(p)); render(); }
+  else if (location.hash === href(p)) render();
+  else location.hash = href(p);
+}
+document.addEventListener("click", e => {
+  const a = e.target.closest("a[href]");
+  if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target) return;
+  const h = a.getAttribute("href");
+  if (!(PATH_MODE ? /^\/(?!\/)/ : /^#\//).test(h)) return;
+  e.preventDefault();
+  const p = h.replace(/^#?\//, "");
+  if (run) exitTest(p); else go(p);
+});
+addEventListener("popstate", () => {
+  if (!run) { if (PATH_MODE) render(true); return; }
+  if (run.cur && !confirm("Leave the test? This attempt will be lost.")) { history.pushState({ test: 1 }, "", location.href); return; }
+  clearInterval(tick); window.onkeydown = null; run = null; render();
+});
+addEventListener("hashchange", () => {
+  if (PATH_MODE) return;
+  if (run) { clearInterval(tick); window.onkeydown = null; run = null; }
+  render();
+});
+addEventListener("beforeunload", e => { if (run && run.cur) { e.preventDefault(); e.returnValue = ""; } });
+
 /* ---------- shell ---------- */
-const ROUTES = { "": "Mock tests", "my-tests": "Your tests", "history": "History", "about": "About" };
-const route = () => (location.hash.replace(/^#\/?/, "").split("/")[0] || "");
+const NAV = { "": "Mock tests", "numerical-reasoning-test": "Numerical", "critical-thinking-test": "Logic", "data-interpretation-test": "Data", "history": "History", "about": "About" };
 function shell(inner, active) {
   const t = store.get(KEY_THEME, "auto");
+  const link = (p, l) => `<a href="${href(p)}">${l}</a>`;
   return `<header class="topbar"><div class="wrap" style="position:relative">
       <nav class="nav glass" aria-label="Main">
-        <a class="brand" href="#/">${LOGO}<span>${esc(SITE.name)}</span></a>
-        <div class="navlinks" id="navlinks">${Object.entries(ROUTES).map(([r, l]) => `<a href="#/${r}"${r === active ? ` aria-current="page"` : ""}>${l}</a>`).join("")}</div>
-        ${SITE.kofi ? `<a class="btn btn-sm" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}<span class="kofi-label">Buy me a coffee</span></a>` : ""}
+        <a class="brand" href="${href("")}">${LOGO}<span>${esc(SITE.name)}</span></a>
+        <div class="navlinks" id="navlinks">${Object.entries(NAV).map(([r, l]) => `<a href="${href(r)}"${r === active ? ` aria-current="page"` : ""}>${l}</a>`).join("")}</div>
+        ${SITE.kofi ? `<a class="btn btn-sm kofi" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}<span class="kofi-label">Buy me a coffee</span></a>` : ""}
         <button class="btn iconbtn" id="theme" title="Theme: ${t === "auto" ? "automatic" : t === "light" ? "light" : "dark"}" aria-label="Change theme">${t === "auto" ? I.auto : t === "light" ? I.sun : I.moon}</button>
         <button class="btn iconbtn menu-toggle" id="menu" aria-label="Menu" aria-expanded="false">${I.menu}</button>
       </nav></div></header>
     <main class="wrap fade-in">${inner}</main>
-    <footer class="wrap site-foot"><div class="glass">
-      <nav><a href="#/about">About</a><a href="#/privacy">Privacy</a>${SITE.contact ? `<a href="mailto:${esc(SITE.contact)}">Contact</a>` : ""}${SITE.repo ? `<a href="${esc(SITE.repo)}" target="_blank" rel="noopener">Source code</a>` : ""}${SITE.kofi ? `<a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">Ko-fi</a>` : ""}</nav>
-      <p>${esc(SITE.name)} is a free, independent practice site. It is not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original. Section names describe common test formats.</p>
-      <p>Made by ${authorLink()}, free for everyone. <a href="#/about">Why?</a></p>
+    <footer class="wrap site-foot"><div class="glass foot-grid">
+      <div class="foot-brand"><a class="brand" href="${href("")}">${LOGO}<span>${esc(SITE.name)}</span></a>
+        <p>Free, independent practice for online aptitude tests. Not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original.</p>
+        <p>Made by ${authorLink()}, free for everyone. ${link("about", "Why?")}</p></div>
+      <nav aria-label="Practice"><h4>Practice</h4>${link("", "Mock tests")}${link("numerical-reasoning-test", "Numerical reasoning")}${link("critical-thinking-test", "Critical thinking")}${link("data-interpretation-test", "Data interpretation")}${link("verbal-reasoning-test", "Verbal reasoning")}</nav>
+      <nav aria-label="Your practice"><h4>Yours</h4>${link("my-tests", "Your tests")}${link("history", "History")}</nav>
+      <nav aria-label="Site"><h4>${esc(SITE.name)}</h4>${link("about", "About")}${link("privacy", "Privacy")}${SITE.contact ? `<a href="mailto:${esc(SITE.contact)}">Contact</a>` : ""}${SITE.repo ? `<a href="${esc(SITE.repo)}" target="_blank" rel="noopener">Source code</a>` : ""}${SITE.kofi ? `<a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">Ko-fi</a>` : ""}</nav>
     </div></footer>`;
 }
 function wireShell() {
@@ -196,21 +250,30 @@ function wireShell() {
 function render(keepScroll) {
   if (run) return;
   clearInterval(tick); window.onkeydown = null;
-  const r = route();
-  if (r === "my-tests") showMyTests();
-  else if (r === "history") showHistory();
-  else if (r === "about") showAbout();
-  else if (r === "privacy") showPrivacy();
-  else showHome();
-  if (!keepScroll) window.scrollTo(0, 0);
+  const p = curPath(), m = p.match(/^mock-tests\/(\d+)$/), set = m && BUILTIN_SETS[+m[1] - 1];
+  let key = p;
+  if (TOPICS[p]) showTopic(TOPICS[p]);
+  else if (set) showSetPage(set);
+  else if (p === "my-tests") showMyTests();
+  else if (p === "history") showHistory();
+  else if (p === "about") showAbout();
+  else if (p === "privacy") showPrivacy();
+  else if (p === "" || p === "mock-tests") { key = ""; showHome(); }
+  else { key = "404"; showNotFound(); }
+  if (typeof PAGES !== "undefined" && PAGES[key]) document.title = PAGES[key].title;
+  if (p === "mock-tests") document.getElementById("sims")?.scrollIntoView();
+  else if (!keepScroll) window.scrollTo(0, 0);
   reveal();
+}
+function crumbs(list) {
+  return `<nav class="crumbs" aria-label="Breadcrumb">${list.map(([p, l], i) => i < list.length - 1 ? `<a href="${href(p)}">${esc(l)}</a><span aria-hidden="true">/</span>` : `<span aria-current="page">${esc(l)}</span>`).join("")}</nav>`;
 }
 
 /* ---------- motion: scroll reveal + ambient parallax ---------- */
 const calm = matchMedia("(prefers-reduced-motion: reduce)");
 let revealObs;
 function reveal() {
-  const els = app.querySelectorAll(".hero > div, .hero-card, .toolbar, .set, .how, .mission, .page > header, .page > .glass, .page > .sets");
+  const els = app.querySelectorAll(".hero > div, .hero-card, .toolbar, .set, .how, .mission, .page > header, .page > .glass, .page > .sets, .topic-grid > .glass, .pager");
   if (calm.matches || !("IntersectionObserver" in window)) return;
   revealObs?.disconnect();
   revealObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); revealObs.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: .08 });
@@ -229,15 +292,7 @@ addEventListener("scroll", () => {
   if (calm.matches || sy) return;
   sy = requestAnimationFrame(() => { document.documentElement.style.setProperty("--sy", scrollY); sy = 0; });
 }, { passive: true });
-window.addEventListener("hashchange", () => {
-  if (run) {
-    if (confirm("Leave the test? This attempt will be lost.")) { clearInterval(tick); run = null; render(); }
-    else history.replaceState(null, "", "#/");
-    return;
-  }
-  render();
-});
-function goHome() { clearInterval(tick); run = null; window.onkeydown = null; if (route() !== "") location.hash = "#/"; else render(); }
+function goHome() { exitTest(""); }
 
 /* ---------- home ---------- */
 function setCard(s, hist) {
@@ -247,7 +302,7 @@ function setCard(s, hist) {
   const fullMin = o => o.reduce((a, k) => a + secMinutes(s, k), 0);
   const nQ = (full ? ["NR", "CT", "WwD"] : keys).reduce((a, k) => a + s.sections[k].questions.length, 0);
   return `<article class="set glass${done ? " set-done" : ""}">
-    <div class="set-head"><div><h3>${esc(s.title)}${done ? ` <span class="pill ok">Done</span>` : ""}</h3><p class="meta">${nQ} questions · ${full ? fullMin(["NR", "CT", "WwD"]) : fullMin(keys)} min</p>${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}</div>
+    <div class="set-head"><div><h3>${setNum(s) ? `<a href="${href(setPath(s))}">${esc(s.title)}</a>` : esc(s.title)}${done ? ` <span class="pill ok">Done</span>` : ""}</h3><p class="meta">${nQ} questions · ${full ? fullMin(["NR", "CT", "WwD"]) : fullMin(keys)} min</p>${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}</div>
       ${s.level ? `<span class="lvl lvl-${esc(s.level)}">${esc(LEVELS[s.level] || s.level)}</span>` : ""}</div>
     ${full || verbal ? `<div class="actions">
       ${full ? `<button class="btn btn-primary" data-run="${esc(s.id)}" data-order="NR,CT,WwD" data-label="Full mock">${I.play}<span>Start full mock</span><span>${fullMin(["NR", "CT", "WwD"])} min</span></button>` : ""}
@@ -288,13 +343,13 @@ function showHome() {
       <div>
         <h1>Beat the clock. <span class="serif grad-text">Ace the aptitude test.</span></h1>
         <p class="lead">Full, timed mock tests for the online assessments that screen applicants, with a worked solution for every question.</p>
-        <div class="row cta"><button class="btn btn-primary btn-lg" data-run="${esc(next.id)}" data-order="NR,CT,WwD" data-label="Full mock">${I.play}Start ${esc(next.title)}</button><a class="btn btn-lg" href="#/my-tests">${I.upload}Load your own test</a></div>
+        <div class="row cta"><button class="btn btn-primary btn-lg" data-run="${esc(next.id)}" data-order="NR,CT,WwD" data-label="Full mock">${I.play}Start ${esc(next.title)}</button><a class="btn btn-lg" href="${href("my-tests")}">${I.upload}Load your own test</a></div>
         <p class="fineprint"><span>${I.check}Free</span><span>${I.check}No account</span><span>${I.check}Runs in your browser</span></p>
       </div>
       <div class="hero-card glass">
         <div class="hero-stats"><div class="stat"><b>${nSets}</b><span>full mock tests</span></div><div class="stat"><b>${totalQuestions()}</b><span>original questions</span></div><div class="stat"><b>32</b><span>minutes per mock</span></div></div>
         <div class="sections-list">
-          ${["NR", "CT", "WwD"].map(k => `<div class="secrow"><span class="k">${k}</span><span><strong>${SECTIONS[k].name}</strong><br><small>${({ NR: "Percentages, tables, series, estimation", CT: "Syllogisms, sequencing, assumptions", WwD: "Charts, statistics, data quality" })[k]}</small></span><span class="muted small num">${({ NR: 12, CT: 16, WwD: 12 })[k]} · ${SECTIONS[k].min}′</span></div>`).join("")}
+          ${["NR", "CT", "WwD"].map(k => `<a class="secrow" href="${href(topicPath(k))}"><span class="k">${k}</span><span><strong>${SECTIONS[k].name}</strong><br><small>${({ NR: "Percentages, tables, series, estimation", CT: "Syllogisms, sequencing, assumptions", WwD: "Charts, statistics, data quality" })[k]}</small></span><span class="muted small num">${({ NR: 12, CT: 16, WwD: 12 })[k]} · ${SECTIONS[k].min}′</span></a>`).join("")}
         </div>
       </div>
     </section>
@@ -309,7 +364,7 @@ function showHome() {
       <div><h2>Good preparation shouldn't depend on your budget.</h2>
       <p class="muted">Too many prep sites lock the basics behind subscriptions. ${esc(SITE.name)} is free, with no sign-up and no tracking, because knowing how these tests work should be the same for everyone. More sites for other kinds of jobs are on the way.</p>
       <p class="byline"><span class="avatar">JP</span><span>Made by ${authorLink()}</span></p></div>
-      <div class="row"><a class="btn" href="#/about">Read the story</a>${SITE.kofi ? `<a class="btn btn-primary" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}Support it</a>` : ""}</div>
+      <div class="row"><a class="btn" href="${href("about")}">Read the story</a>${SITE.kofi ? `<a class="btn btn-primary" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}Support it</a>` : ""}</div>
     </section>`, "");
   wireShell(); wireCards();
   app.querySelectorAll("[data-filter]").forEach(b => b.onclick = () => { store.set(KEY_FILTER, b.dataset.filter); render(true); });
@@ -322,7 +377,7 @@ function showHistory() {
     <header><span class="eyebrow">Stored in this browser only</span><h1>History</h1></header>
     ${hist.length ? `<div class="glass panel"><div class="scroll-x"><table class="hist"><thead><tr><th>Date</th><th>Mock test</th><th>Mode</th><th>Score</th></tr></thead><tbody>${hist.slice().reverse().map(h => `<tr><td class="num">${esc(h.date)}</td><td>${esc(h.set)}</td><td>${esc(h.mode)}</td><td class="num">${esc(h.summary)}</td></tr>`).join("")}</tbody></table></div>
       <div class="row"><button class="btn btn-ghost btn-sm" id="clear">Clear history</button></div></div>`
-      : `<div class="glass empty"><p>You haven't finished a mock test yet.</p><a class="btn btn-primary" href="#/">See mock tests</a></div>`}
+      : `<div class="glass empty"><p>You haven't finished a mock test yet.</p><a class="btn btn-primary" href="${href("")}">See mock tests</a></div>`}
   </section>`, "history");
   wireShell();
   const c = document.getElementById("clear");
@@ -372,14 +427,125 @@ function showPrivacy() {
   wireShell();
 }
 
+/* ---------- topic pages ---------- */
+const TOPIC_COPY = {
+  NR: {
+    h1: "Numerical reasoning test",
+    sub: "Twelve questions, ten minutes and a calculator. Practise on tables, charts and percentages until the clock stops being the problem.",
+    what: "Numerical reasoning tests check how quickly and accurately you can pull numbers out of tables and charts and work with them: percentages, ratios, growth rates, averages and unit conversions. The maths rarely goes beyond secondary school. What makes these tests hard is the time limit, under a minute per question, and the wrong options, which are built from the most common slips.",
+    tips: ["Read the question before the table. It tells you which two or three numbers matter.", "Check the base of every percentage. “Up 20% on last year” and “20% of the total” need different denominators.", "Percentage points are not percent. A share that goes from 10% to 12% rose 2 points, which is 20%.", "Estimate first. When the options are far apart, a rough calculation is enough and saves a minute.", "Don't get stuck. A blank answer scores the same as a wrong one, so guess and move on."],
+    faq: [["Can I use a calculator?", "Yes. Most online numerical tests allow one, and so does this practice. Keep pen and paper handy too."], ["How long is each question?", "Fifty seconds on average. Some table questions take two minutes and some series take twenty seconds, so pace yourself across the section, not per question."]]
+  },
+  CT: {
+    h1: "Critical thinking test",
+    sub: "Sixteen questions, twelve minutes. Syllogisms, ordering puzzles, assumptions and arguments: the logic section that filters many graduate applicants.",
+    what: "Critical thinking tests measure whether you can reason from what you're given and nothing more. You'll decide whether a conclusion follows from its premises, put people or tasks in order from a set of rules, find the assumption an argument depends on, and judge which fact would strengthen or weaken it.",
+    tips: ["Use only the information given. Real-world knowledge is the most common trap.", "“Some” means at least one, not “not all”. “Only A are B” means every B is an A.", "For ordering puzzles, sketch the slots and place the most constrained item first.", "An assumption is something the argument needs. Negate it: if the argument falls apart, you've found it.", "When two things rise together, look for a third factor that causes both."],
+    faq: [["Do I need to know formal logic?", "No. A few rules about “all”, “some” and “only” cover most questions, and every solution here walks through the reasoning."], ["Why do the ordering puzzles take so long?", "Because people test options one by one. Start from the rule that fixes a position, and the rest usually falls into place in two or three steps."]]
+  },
+  WwD: {
+    h1: "Data interpretation test",
+    sub: "Twelve questions, ten minutes. Read charts and tables, decide which statements the data supports, and spot the problems in it.",
+    what: "Data interpretation tests, sometimes called working with data, check whether you can read charts and tables correctly and draw only the conclusions they support. Expect select-all-that-apply questions about what the data shows, quick statistics such as averages and medians, data-quality problems such as duplicates or impossible values, and questions on which chart suits a message.",
+    tips: ["In select-all-that-apply questions, judge each statement on its own. One wrong pick costs the whole question.", "A share can fall while the absolute number rises, if the total grows.", "Check the axes before the trend. A truncated or uneven axis exaggerates change.", "Statements about causes or about the future rarely follow from a table.", "Outliers move the mean, not the median."],
+    faq: [["What's the difference from numerical reasoning?", "Less arithmetic and more judgement. You'll calculate less and spend more time deciding what a chart does and doesn't show."], ["Are partial answers marked?", "Not here, and often not in real tests either: a multi-select question only scores if you pick exactly the right set."]]
+  },
+  VR: {
+    h1: "Verbal reasoning test",
+    sub: "Short passages with True, False or Cannot Say statements, plus analogies and word logic.",
+    what: "Verbal reasoning tests check how precisely you read. You get a short passage and decide whether each statement is true, false or can't be determined from the text alone. Some versions add analogies, synonyms and short word puzzles.",
+    tips: ["“Cannot Say” is right whenever the passage doesn't settle the statement, even if it sounds likely.", "Watch the qualifiers. “Most”, “all”, “only” and “usually” change the meaning.", "Leave outside knowledge at the door, even when you know the topic well."],
+    faq: [["How much verbal practice is there?", "One section for now, in Mock test 7. More is on the way."]]
+  }
+};
+function questionTypes(k) {
+  const n = {};
+  BUILTIN_SETS.forEach(s => hasSec(s, k) && s.sections[k].questions.forEach(q => { if (q.type) n[q.type] = (n[q.type] || 0) + 1; }));
+  return Object.entries(n).sort((a, b) => b[1] - a[1]).map(([t]) => t);
+}
+function sampleQuestion(k) {
+  const s = BUILTIN_SETS.findLast(x => hasSec(x, k)); if (!s) return "";
+  const sec = s.sections[k], q = sec.questions.find(x => !x.multi) || sec.questions[0];
+  const ctx = q.ctx && sec.contexts ? sec.contexts[q.ctx] : null;
+  const ans = norm(q.answer);
+  return `<div class="glass panel sample"><h2>Try a sample question</h2>
+    ${ctx ? `<div class="md">${md(ctx.md.replace(/^\*\*Use the [^*]*\*\*\s*/, ""))}${chartHTML(ctx.chart)}</div>` : ""}${q.chart ? chartHTML(q.chart) : ""}
+    <div class="md stem">${md(q.stem)}</div>
+    <ol class="sample-opts">${q.options.map((o, i) => `<li><span class="mark">${LETTERS[i]}</span><span>${inline(o)}</span></li>`).join("")}</ol>
+    <details class="reveal-ans"><summary>Show the answer</summary><p><strong>${ans.split("").join(", ")}.</strong></p>${q.explain ? `<div class="md">${md(q.explain)}</div>` : ""}</details>
+  </div>`;
+}
+function showTopic(k) {
+  const c = TOPIC_COPY[k], hist = store.get(KEY_HIST, []);
+  const sets = allSets().filter(s => hasSec(s, k));
+  const next = sets.find(s => !sectionsDone(s, hist).has(k)) || sets[0];
+  const types = questionTypes(k);
+  app.innerHTML = shell(`<section class="page topic">
+    ${crumbs([["", "Home"], [topicPath(k), SECTIONS[k].name]])}
+    <header><h1>${c.h1}</h1><p class="sub">${c.sub}</p>
+      <div class="row cta">${next ? `<button class="btn btn-primary btn-lg" data-run="${esc(next.id)}" data-order="${k}" data-label="${SECTIONS[k].name}">${I.play}Start a ${SECTIONS[k].short.toLowerCase()} test</button>` : ""}<a class="btn btn-lg" href="${href("")}">Full mock tests</a></div></header>
+    <div class="topic-grid">
+      <div class="glass panel prose"><h2>What it tests</h2><p>${c.what}</p>
+        ${types.length ? `<h2>Question types here</h2><div class="chips">${types.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>` : ""}</div>
+      <div class="glass panel"><h2>Practice sets</h2>
+        <div class="setlist">${sets.map(s => { const d = sectionsDone(s, hist).has(k); return `<div class="setrow">
+          <div><a href="${href(setPath(s))}"><strong>${esc(s.title)}</strong></a><span class="muted small num">${s.sections[k].questions.length} questions · ${secMinutes(s, k)} min${s.level ? ` · ${esc(LEVELS[s.level] || s.level)}` : ""}</span></div>
+          ${d ? `<span class="pill ok">${I.check}Done</span>` : ""}
+          <button class="btn btn-sm" data-run="${esc(s.id)}" data-order="${k}" data-label="${SECTIONS[k].name}">${d ? "Retake" : "Start"}</button></div>`; }).join("")}</div></div>
+    </div>
+    ${sampleQuestion(k)}
+    <div class="glass panel prose"><h2>How to prepare</h2><ol class="tips">${c.tips.map(t => `<li>${esc(t)}</li>`).join("")}</ol></div>
+    <div class="glass panel prose faq"><h2>Questions</h2>
+      ${[...c.faq, ["What score should I aim for?", "Employers don't publish pass marks. As a training benchmark, aim for 80% within the time limit."], ["Are these the real test questions?", "No. Every question is original. The format, timing and question types mirror common online tests, but nothing is copied from a real one."]].map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div>
+  </section>`, topicPath(k));
+  wireShell(); wireCards();
+}
+
+/* ---------- one page per mock test ---------- */
+function showSetPage(s) {
+  const hist = store.get(KEY_HIST, []), n = setNum(s), done = sectionsDone(s, hist);
+  const keys = ORDER.filter(k => hasSec(s, k)), core = keys.filter(k => k !== "VR");
+  const min = core.reduce((a, k) => a + secMinutes(s, k), 0), nq = core.reduce((a, k) => a + s.sections[k].questions.length, 0);
+  const prev = BUILTIN_SETS[n - 2], next = BUILTIN_SETS[n];
+  app.innerHTML = shell(`<section class="page setpage">
+    ${crumbs([["", "Mock tests"], [setPath(s), s.title]])}
+    <header><div class="row" style="gap:12px"><h1>${esc(s.title)}</h1>${s.level ? `<span class="lvl lvl-${esc(s.level)}">${esc(LEVELS[s.level] || s.level)}</span>` : ""}</div>
+      <p class="sub">${nq} questions in ${min} minutes: ${core.map(k => SECTIONS[k].name.toLowerCase()).join(", ").replace(/, ([^,]*)$/, " and $1")}.${s.note ? ` ${esc(s.note)}` : ""}</p>
+      <div class="row cta"><button class="btn btn-primary btn-lg" data-run="${esc(s.id)}" data-order="${core.join(",")}" data-label="Full mock">${I.play}Start full mock</button>
+      ${hasSec(s, "VR") ? `<button class="btn btn-lg" data-run="${esc(s.id)}" data-order="NR,CT,VR" data-label="Full mock (verbal)">Verbal version</button>` : ""}</div></header>
+    <div class="glass panel"><h2>Sections</h2><p class="muted small">Sit them in one go, as in the real thing, or one at a time.</p>
+      <div class="setlist">${keys.map(k => `<div class="setrow">
+        <div><a href="${href(topicPath(k))}"><strong>${SECTIONS[k].name}</strong></a><span class="muted small num">${s.sections[k].questions.length} questions · ${secMinutes(s, k)} min</span></div>
+        ${done.has(k) ? `<span class="pill ok">${I.check}Done</span>` : ""}
+        <button class="btn btn-sm" data-run="${esc(s.id)}" data-order="${k}" data-label="${SECTIONS[k].name}">${done.has(k) ? "Retake" : "Start"}</button></div>`).join("")}</div></div>
+    <div class="glass panel prose"><h2>Before you start</h2><ul><li>Have a calculator, pen and paper ready.</li><li>One question per screen and no going back. A blank answer counts as wrong, and wrong answers cost nothing extra.</li><li>Each section has its own clock and closes at 0:00. You'll see every solution at the end.</li></ul></div>
+    <nav class="pager" aria-label="Other mock tests">${prev ? `<a class="btn" href="${href(setPath(prev))}">← ${esc(prev.title)}</a>` : "<span></span>"}${next ? `<a class="btn" href="${href(setPath(next))}">${esc(next.title)} →</a>` : ""}</nav>
+  </section>`, "");
+  wireShell(); wireCards();
+}
+
+function showNotFound() {
+  app.innerHTML = shell(`<section class="page"><header><h1>Page not found</h1><p class="sub">This page doesn't exist, or it moved.</p>
+    <div class="row cta"><a class="btn btn-primary" href="${href("")}">Go to the mock tests</a></div></header></section>`, "");
+  wireShell();
+}
+
 /* ---------- test screens ---------- */
+// Where you are in a multi-section run: done ✓, current, still to come
+function steps() {
+  if (run.order.length < 2) return "";
+  return `<ol class="steps-ind">${run.order.map((k, i) => `<li class="${i < run.secIdx ? "done" : i === run.secIdx ? "now" : ""}"${i === run.secIdx ? ` aria-current="step"` : ""}><span>${i < run.secIdx ? I.check : i + 1}</span>${SECTIONS[k].short}</li>`).join("")}</ol>`;
+}
+function testCrumbs() {
+  const k = curKey();
+  return crumbs(setNum(run.set) ? [["", "Mock tests"], [setPath(run.set), run.set.title], [setPath(run.set), run.order.length > 1 ? run.label : SECTIONS[k].name]] : [["my-tests", "Your tests"], ["my-tests", run.set.title]]);
+}
 function showIntro() {
   clearInterval(tick); window.onkeydown = null;
   const k = curKey(), sec = curSec(), n = sec.questions.length, min = secMinutes(run.set, k);
   const multi = sec.questions.some(q => q.multi);
-  const step = run.order.length > 1 ? `Test ${run.secIdx + 1} of ${run.order.length}` : "Test";
-  app.innerHTML = `<main class="wrap center fade-in"><div class="glass">
-    <span class="eyebrow">${esc(run.set.title)} · ${step}</span>
+  app.innerHTML = `<main class="wrap center fade-in">${testCrumbs()}<div class="glass">
+    ${steps()}
     <h1>${SECTIONS[k].name}</h1>
     <div class="facts"><div class="fact"><b class="num">${n}</b><span class="muted small">questions</span></div><div class="fact"><b class="num">${min}:00</b><span class="muted small">minutes</span></div><div class="fact"><b class="num">${fmt(min * 60000 / n)}</b><span class="muted small">per question</span></div></div>
     <ul class="rules">
@@ -389,10 +555,10 @@ function showIntro() {
       <li>The section closes automatically at 0:00.</li>
       <li>Shortcuts: <strong>A–E</strong> or <strong>1–5</strong> to select, <strong>Enter</strong> to move on.</li>
     </ul>
-    <div class="row"><button class="btn btn-primary btn-lg" id="go">${I.play}Start</button><button class="btn btn-ghost" id="quit">Back to home</button></div>
+    <div class="row"><button class="btn btn-primary btn-lg" id="go">${I.play}Start the clock</button><button class="btn btn-ghost" id="quit">${run.secIdx ? "Exit test" : "Back"}</button></div>
   </div></main>`;
   document.getElementById("go").onclick = startSection;
-  document.getElementById("quit").onclick = goHome;
+  document.getElementById("quit").onclick = () => exitTest();
   document.getElementById("go").focus();
   window.scrollTo(0, 0);
 }
@@ -421,7 +587,8 @@ function showQuestion() {
   const last = c.qIdx === n - 1;
   app.innerHTML = `
   <div class="bar"><div class="wrap"><div class="bar-in glass">
-    <div style="min-width:0"><div class="bar-title">${SECTIONS[c.key].name}</div><div class="bar-sub num">Question ${c.qIdx + 1} of ${n}</div></div>
+    <button class="btn iconbtn exit" id="exit" title="Exit test" aria-label="Exit test">${I.close}</button>
+    <div style="min-width:0"><div class="bar-title">${SECTIONS[c.key].name}</div><div class="bar-sub num">Question ${c.qIdx + 1} of ${n}${run.order.length > 1 ? ` · Section ${run.secIdx + 1} of ${run.order.length}` : ""}</div></div>
     <div class="timer num" id="timer" aria-live="off">${fmt(c.deadline - Date.now())}</div>
     <div class="progress"><div style="width:${(c.qIdx / n) * 100}%"></div></div>
   </div></div></div>
@@ -455,6 +622,7 @@ function showQuestion() {
   };
   opts.forEach(b => b.onclick = () => pick(b.dataset.l));
   document.getElementById("next").onclick = nextQuestion;
+  document.getElementById("exit").onclick = () => exitTest();
   window.onkeydown = e => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key.toUpperCase();
@@ -487,17 +655,30 @@ function finishSection(timeout) {
   if (run.secIdx < run.order.length - 1) {
     run.secIdx++;
     const nk = curKey();
-    app.innerHTML = `<main class="wrap center fade-in"><div class="glass">
-      <span class="eyebrow">${esc(run.set.title)}</span>
+    app.innerHTML = `<main class="wrap center fade-in">${testCrumbs()}<div class="glass">
+      ${steps()}
       <h1>${timeout ? "Time's up." : "Section complete."}</h1>
-      <p class="muted">Results are shown at the end of the mock test. Next: <strong>${SECTIONS[nk].name}</strong> (${curSec().questions.length} questions, ${secMinutes(run.set, nk)} min). The clock starts when you press the button.</p>
-      <button class="btn btn-primary btn-lg" id="go">Continue</button>
+      <p class="muted">Results are shown at the end of the mock test. Next: <strong>${SECTIONS[nk].name}</strong> (${curSec().questions.length} questions, ${secMinutes(run.set, nk)} min). The clock starts when you press Start on the next screen, so take a breath first.</p>
+      <div class="row"><button class="btn btn-primary btn-lg" id="go">Continue</button><button class="btn btn-ghost" id="quit">Exit test</button></div>
     </div></main>`;
     document.getElementById("go").onclick = showIntro;
+    document.getElementById("quit").onclick = () => exitTest();
     window.scrollTo(0, 0);
   } else showResults(true);
 }
 
+// After a single section: the next section of the same mock. After a full mock: the next mock test.
+function suggestNext() {
+  const s = run.set, hist = store.get(KEY_HIST, []), n = setNum(s);
+  if (run.order.length === 1) {
+    const done = sectionsDone(s, hist); done.add(run.order[0]);
+    const k = ["NR", "CT", "WwD"].find(x => hasSec(s, x) && !done.has(x));
+    if (k) return { set: s, order: [k], runLabel: SECTIONS[k].name, label: `Next: ${SECTIONS[k].name}` };
+  }
+  const nx = n && BUILTIN_SETS.slice(n).find(x => !isDone(x, hist)) || (n && BUILTIN_SETS[n]);
+  if (nx && ["NR", "CT", "WwD"].every(k => hasSec(nx, k))) return { set: nx, order: ["NR", "CT", "WwD"], runLabel: "Full mock", label: `Next: ${nx.title}` };
+  return null;
+}
 function summaryLine() {
   const r = run.results;
   const parts = run.order.map(k => `${k} ${r[k].items.filter(x => x.ok).length}/${r[k].items.length} (${fmt(r[k].used)}/${fmt(r[k].limit)})`).join(" · ");
@@ -506,10 +687,12 @@ function summaryLine() {
 
 function showResults(save) {
   clearInterval(tick); window.onkeydown = null;
+  run.finished = true;
   const r = run.results;
   const tot = run.order.reduce((a, k) => a + r[k].items.filter(x => x.ok).length, 0);
   const max = run.order.reduce((a, k) => a + r[k].items.length, 0);
   const line = summaryLine();
+  const nextStep = suggestNext();
   if (save) {
     const h = store.get(KEY_HIST, []);
     h.push({ date: today(), setId: run.set.id, sections: run.order, set: run.set.title, mode: run.label, summary: run.order.map(k => `${k} ${r[k].items.filter(x => x.ok).length}/${r[k].items.length}`).join(" · "), line });
@@ -517,14 +700,14 @@ function showResults(save) {
   }
   const scoreCard = k => {
     const s = r[k], ok = s.items.filter(x => x.ok).length, pct = Math.round(ok / s.items.length * 100);
-    return `<div class="score glass"><span class="eyebrow">${SECTIONS[k].name}</span><span class="big num">${ok}/${s.items.length}</span>
+    return `<a class="score glass" href="#rev-${k}" data-jump="rev-${k}"><span class="eyebrow">${SECTIONS[k].name}</span><span class="big num">${ok}/${s.items.length}</span>
       <div class="meter${pct >= 80 ? "" : " ko"}" title="Target 80%"><div style="width:${pct}%"></div></div>
       <div class="row" style="gap:6px"><span class="pill ${pct >= 80 ? "ok" : "ko"}">${pct}% · target 80%</span>${s.timeout ? `<span class="pill warn">time ran out</span>` : ""}</div>
-      <span class="muted small num">Time ${fmt(s.used)} of ${fmt(s.limit)}${s.unreached ? ` · ${s.unreached} not reached` : ""}</span></div>`;
+      <span class="muted small num">Time ${fmt(s.used)} of ${fmt(s.limit)}${s.unreached ? ` · ${s.unreached} not reached` : ""}</span><span class="small jump">Review answers ↓</span></a>`;
   };
   const review = k => {
     const sec = run.set.sections[k];
-    return `<section style="display:grid;gap:8px"><h2 style="font-size:20px">${SECTIONS[k].name}</h2>${r[k].items.map((x, i) => {
+    return `<section class="review" id="rev-${k}"><h2 style="font-size:20px">${SECTIONS[k].name}</h2>${r[k].items.map((x, i) => {
       const ctx = x.q.ctx && sec.contexts ? sec.contexts[x.q.ctx] : null;
       const ans = norm(x.q.answer);
       return `<details class="revq glass"${x.ok ? "" : " open"}>
@@ -543,13 +726,16 @@ function showResults(save) {
     <header class="res-hero glass"><span class="eyebrow">${esc(run.set.title)} · ${esc(run.label)}</span>
       <h1 class="num"><span class="grad-text">${tot}/${max}</span> <span class="muted" style="font-size:.5em;font-weight:600">${Math.round(tot / max * 100)}%</span></h1>
       <p class="muted">Wrong answers are expanded below with the solution. The time you spent on each question is on the right.</p>
-      <div class="row"><button class="btn btn-primary" id="home">Back to home</button><button class="btn" id="copy">Copy result</button><span class="msg-ok" id="copied" hidden>Copied</span></div>
+      <div class="row">${nextStep ? `<button class="btn btn-primary" id="next">${I.play}${esc(nextStep.label)}</button>` : ""}<button class="btn${nextStep ? "" : " btn-primary"}" id="retake">Retake</button><a class="btn" href="${href(setNum(run.set) ? setPath(run.set) : "my-tests")}">${setNum(run.set) ? esc(run.set.title) : "Your tests"}</a><a class="btn btn-ghost" href="${href("")}">All mock tests</a><button class="btn btn-ghost" id="copy">Copy result</button><span class="msg-ok" id="copied" hidden>Copied</span></div>
       <div class="reg" id="reg">${esc(line)}</div></header>
     <div class="scores">${run.order.map(scoreCard).join("")}</div>
     ${run.order.map(review).join("")}
   </main>`;
   document.getElementById("copy").onclick = () => copyText(line, document.getElementById("reg"), document.getElementById("copied"));
-  document.getElementById("home").onclick = goHome;
+  const { set, order, label } = run;
+  document.getElementById("retake").onclick = () => startRun(set.id, order, label);
+  if (nextStep) document.getElementById("next").onclick = () => startRun(nextStep.set.id, nextStep.order, nextStep.runLabel);
+  app.querySelectorAll("[data-jump]").forEach(a => a.onclick = e => { e.preventDefault(); document.getElementById(a.dataset.jump).scrollIntoView({ behavior: calm.matches ? "auto" : "smooth" }); });
   window.scrollTo(0, 0);
 }
 

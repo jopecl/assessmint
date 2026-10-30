@@ -1,0 +1,38 @@
+{
+  "": {
+    "title": "Assessmint · Free timed aptitude test practice",
+    "description": "Free, timed mock tests in numerical reasoning, critical thinking and data interpretation, with a worked solution for every question. No sign-up."
+  },
+  "numerical-reasoning-test": {
+    "title": "Free numerical reasoning test practice · Assessmint",
+    "description": "Practise numerical reasoning online: 12 timed questions in 10 minutes on percentages, tables, charts and series, with worked solutions. Free, no sign-up."
+  },
+  "critical-thinking-test": {
+    "title": "Free critical thinking test practice · Assessmint",
+    "description": "Practise critical thinking and logical reasoning: syllogisms, sequencing, assumptions and arguments. 16 timed questions in 12 minutes, with worked solutions."
+  },
+  "data-interpretation-test": {
+    "title": "Free data interpretation test practice · Assessmint",
+    "description": "Practise working with data: read charts and tables, spot data-quality issues and choose the right chart. 12 timed questions in 10 minutes, with solutions."
+  },
+  "verbal-reasoning-test": {
+    "title": "Free verbal reasoning test practice · Assessmint",
+    "description": "Practise verbal reasoning: True, False or Cannot Say passages, analogies and word logic, timed and with worked solutions. Free, no sign-up."
+  },
+  "my-tests": {
+    "title": "Your tests · Assessmint",
+    "description": "Load your own aptitude test questions as JSON and sit them with the same timer and marking as the built-in mock tests."
+  },
+  "history": {
+    "title": "Your history · Assessmint",
+    "description": "Your past mock test results, stored only in this browser."
+  },
+  "about": {
+    "title": "About · Assessmint",
+    "description": "Why Assessmint exists: free aptitude test practice for everyone, because preparation shouldn't depend on what you can pay."
+  },
+  "privacy": {
+    "title": "Privacy · Assessmint",
+    "description": "Assessmint runs entirely in your browser. No accounts, no tracking, and your answers never leave your device."
+  }
+}
