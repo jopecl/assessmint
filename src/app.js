@@ -4,7 +4,7 @@ const SITE = {
   tagline: "Free timed practice for online aptitude tests",
   kofi: "https://ko-fi.com/assessmint",
   contact: "fixmi.app@gmail.com",
-  repo: "https://github.com/jopecl/assessmint",
+  repo: "",     // public source link in the footer (empty = hidden)
   author: "José Pérez",
   linkedin: "https://www.linkedin.com/in/joseperezclar/"
 };
@@ -332,7 +332,7 @@ function showHistory() {
 function authorLink() { return SITE.linkedin ? `<a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">${esc(SITE.author)}</a>` : esc(SITE.author); }
 
 function showAbout() {
-  app.innerHTML = shell(`<section class="page"><header><h1>About ${esc(SITE.name)}</h1><p class="sub">A free place to practise for the tests that decide who gets an interview.</p></header>
+  app.innerHTML = shell(`<section class="page about"><header><h1>About ${esc(SITE.name)}</h1><p class="sub">A free place to practise for the tests that decide who gets an interview.</p></header>
     <div class="glass panel prose story">
       <h2>What is this?</h2>
       <p>${esc(SITE.name)} is a practice site for online aptitude tests: numerical reasoning, critical thinking, working with data and verbal reasoning. They're often the first filter in a selection process, at consulting firms, banks, audit firms and graduate programmes, and in any hiring process that screens applicants online.</p>
