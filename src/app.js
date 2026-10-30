@@ -2,7 +2,7 @@
 const SITE = {
   name: "Assessmint",
   tagline: "Free timed practice for online aptitude tests",
-  kofi: "",      // e.g. "https://ko-fi.com/yourname" (empty = hidden)
+  kofi: "https://ko-fi.com/assessmint",
   contact: "fixmi.app@gmail.com",
   repo: "https://github.com/jopecl/assessmint",
   author: "José Pérez",
@@ -307,7 +307,7 @@ function showHome() {
     </div></section>
     <section class="mission glass">
       <div><h2>Good preparation shouldn't depend on your budget.</h2>
-      <p class="muted">Too many prep sites lock the basics behind subscriptions. ${esc(SITE.name)} is free, with no sign-up and no tracking, because knowing how these tests work should be the same for everyone.</p>
+      <p class="muted">Too many prep sites lock the basics behind subscriptions. ${esc(SITE.name)} is free, with no sign-up and no tracking, because knowing how these tests work should be the same for everyone. More sites for other kinds of jobs are on the way.</p>
       <p class="byline"><span class="avatar">JP</span><span>Made by ${authorLink()}</span></p></div>
       <div class="row"><a class="btn" href="#/about">Read the story</a>${SITE.kofi ? `<a class="btn btn-primary" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}Support it</a>` : ""}</div>
     </section>`, "");
