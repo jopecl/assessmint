@@ -4,7 +4,7 @@
 
 Free, timed mock tests for online aptitude assessments, the kind used in consulting, finance, graduate programmes and any hiring process with an online test: Numerical Reasoning, Critical Thinking, Working With Data and Verbal Reasoning. One question per screen, forward-only navigation, a timer per section and a worked solution for every question at the end.
 
-It is a single-file static site. No server, no accounts, no cookies: history and your own tests are kept in the browser's `localStorage`.
+It is a static site with no server code, no accounts and no cookies: history and your own tests are kept in the browser's `localStorage`. Each page (home, one per test type, one per mock test, About…) is its own HTML file with its own title and description, so search engines can index them.
 
 > Independent project. Not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original.
 
@@ -17,11 +17,13 @@ It is a single-file static site. No server, no accounts, no cookies: history and
 ## Structure
 
 ```
+src/app.js          the app (router, pages, test engine); site settings at the top (SITE)
 src/styles.css      styles (colour tokens, light and dark themes)
-src/app.js          the app; site settings live at the top (SITE)
+src/pages.json      title and meta description for each page
+src/fonts/          self-hosted fonts
 sets/*.json         one file per mock test, same format as user-loaded tests
-public/             static files (favicon, robots.txt, _headers); the build writes index.html here
-build.mjs           bundles everything into public/index.html
+static/             copied as-is into public/ (favicon, robots.txt, _headers)
+build.mjs           writes public/ (one HTML per page, hashed CSS/JS, sitemap.xml) and dist/artifact.html
 ```
 
 ## Development
@@ -29,8 +31,8 @@ build.mjs           bundles everything into public/index.html
 Requires Node 18+. No dependencies.
 
 ```
-node build.mjs        # writes public/index.html
-open public/index.html
+node build.mjs                 # writes public/
+npx wrangler dev               # serves public/ like production, with clean URLs
 ```
 
 To add a mock test, create `sets/simulacro-11.json` in the same format and run the build again. Sets are ordered by file name.
