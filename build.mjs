@@ -6,7 +6,7 @@ const app = readFileSync("src/app.js", "utf8");
 const sets = readdirSync("sets").filter(f => f.endsWith(".json")).sort()
   .map(f => JSON.parse(readFileSync(`sets/${f}`, "utf8")));
 const name = (app.match(/name:\s*"([^"]+)"/) || [])[1] || "Site";
-const desc = "Free, timed mock tests in numerical reasoning, critical thinking and working with data to prepare for consulting aptitude tests.";
+const desc = "Free, timed mock tests in numerical reasoning, critical thinking and working with data to prepare for online aptitude tests in consulting, finance, graduate programmes and any hiring process.";
 const fonts = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">`;
 const body = `<div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
