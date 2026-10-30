@@ -2,11 +2,11 @@
 
 **Beat the clock. Ace the aptitude test.**
 
-Free, timed mock tests for the online aptitude assessments used in consulting recruitment: Numerical Reasoning, Critical Thinking, Working With Data and Verbal Reasoning. One question per screen, forward-only navigation, a timer per section and a worked solution for every question at the end.
+Free, timed mock tests for online aptitude assessments, the kind used in consulting, finance, graduate programmes and any hiring process with an online test: Numerical Reasoning, Critical Thinking, Working With Data and Verbal Reasoning. One question per screen, forward-only navigation, a timer per section and a worked solution for every question at the end.
 
 It is a single-file static site. No server, no accounts, no cookies: history and your own tests are kept in the browser's `localStorage`.
 
-> Independent project. Not affiliated with, sponsored by or endorsed by any consulting firm or assessment provider. All questions are original.
+> Independent project. Not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original.
 
 ## What's inside
 

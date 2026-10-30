@@ -1,9 +1,9 @@
 /* ---------- site config: edit here ---------- */
 const SITE = {
   name: "Assessmint",
-  tagline: "Free timed aptitude-test practice for consulting applicants",
+  tagline: "Free timed practice for online aptitude tests",
   kofi: "",      // e.g. "https://ko-fi.com/yourname" (empty = hidden)
-  contact: "",   // e.g. "hello@yourdomain.com" (empty = hidden)
+  contact: "fixmi.app@gmail.com",
   repo: "https://github.com/jopecl/assessmint"
 };
 
@@ -180,7 +180,7 @@ function shell(inner, active) {
     <main class="wrap fade-in">${inner}</main>
     <footer class="wrap site-foot"><div class="glass">
       <nav><a href="#/about">About</a><a href="#/privacy">Privacy</a>${SITE.contact ? `<a href="mailto:${esc(SITE.contact)}">Contact</a>` : ""}${SITE.repo ? `<a href="${esc(SITE.repo)}" target="_blank" rel="noopener">Source code</a>` : ""}${SITE.kofi ? `<a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">Ko-fi</a>` : ""}</nav>
-      <p>${esc(SITE.name)} is a free, independent practice site. It is not affiliated with, sponsored by or endorsed by any consulting firm or assessment provider. All questions are original. Section names describe common test formats.</p>
+      <p>${esc(SITE.name)} is a free, independent practice site. It is not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original. Section names describe common test formats.</p>
     </div></footer>`;
 }
 function wireShell() {
@@ -258,7 +258,7 @@ function showHome() {
       <div>
         <span class="badge"><span class="dot"></span>Free · No sign-up · ${totalQuestions()} original questions</span>
         <h1>Beat the clock. <span class="grad-text">Ace the aptitude test.</span></h1>
-        <p class="lead">Timed mock tests in numerical reasoning, critical thinking and working with data, the online assessments consulting firms use to screen applicants. One question per screen, no going back, and a worked solution for every question when you finish.</p>
+        <p class="lead">Timed mock tests in numerical reasoning, critical thinking and working with data, the online aptitude tests used to screen applicants in consulting, finance, graduate programmes and any hiring process with an online test. One question per screen, no going back, and a worked solution for every question when you finish.</p>
         <div class="row cta"><button class="btn btn-primary btn-lg" data-run="${esc(next.id)}" data-order="NR,CT,WwD" data-label="Full mock">${I.play}Start ${esc(next.title)}</button><a class="btn btn-lg" href="#/my-tests">${I.upload}Load your own test</a></div>
       </div>
       <div class="hero-card glass">
@@ -296,13 +296,13 @@ function showHistory() {
 function showAbout() {
   app.innerHTML = shell(`<section class="page"><header><span class="eyebrow">About</span><h1>${esc(SITE.name)}</h1></header>
     <div class="glass panel prose">
-      <p>${esc(SITE.name)} is a free practice site for the online aptitude tests many consulting firms use in the first round of recruitment: numerical reasoning, critical thinking, working with data and, as an alternative, verbal reasoning.</p>
+      <p>${esc(SITE.name)} is a free practice site for online aptitude tests: numerical reasoning, critical thinking, working with data and verbal reasoning. They are the first screening step at consulting firms, banks, audit firms and graduate programmes, and in any selection process that uses online tests.</p>
       <h2>Format</h2>
       <ul><li>Numerical Reasoning: 12 questions in 10 minutes.</li><li>Critical Thinking: 16 questions in 12 minutes.</li><li>Working With Data: 12 questions in 10 minutes.</li><li>Forward-only navigation: an unanswered question counts as wrong, and wrong answers cost nothing extra.</li><li>A calculator, pen and paper are allowed, as in most real tests.</li></ul>
       <h2>Levels</h2>
       <p><strong>Realistic</strong> aims for the difficulty candidates report. <strong>Challenging</strong> has longer calculations and subtler traps. The practice goal is 80% in every section within the time limit. Employers don't publish their pass marks, so treat that figure as a training benchmark only.</p>
       <h2>Disclaimer</h2>
-      <p>This is an independent project. It is not affiliated with, sponsored by or endorsed by any consulting firm or assessment provider. All questions are original and are not taken from any real test.</p>
+      <p>This is an independent project. It is not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original and are not taken from any real test.</p>
       ${SITE.contact || SITE.kofi ? `<h2>Contact</h2><p>${SITE.contact ? `Spotted a mistake or have a suggestion? Write to <a href="mailto:${esc(SITE.contact)}">${esc(SITE.contact)}</a>.` : ""} ${SITE.kofi ? `If the site helped you, you can <a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">buy me a coffee</a>.` : ""}</p>` : ""}
     </div></section>`, "about");
   wireShell();
