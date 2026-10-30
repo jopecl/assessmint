@@ -162,6 +162,10 @@ p { margin: 0; }
 .how .glass { padding: 18px; display: grid; gap: 6px; }
 .how .n { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; font-weight: 750; color: var(--accent-fg); background: var(--grad); box-shadow: var(--sh-btn); margin-bottom: 6px; }
 .how h3 { font-size: 17px; }
+.mission { margin-block: 28px 8px; padding: 24px; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.mission > div:first-child { flex: 1 1 380px; display: grid; gap: 8px; }
+.mission h2 { font-size: clamp(20px, 2.6vw, 26px); }
+.mission .row { flex: 0 0 auto; }
 .panel { padding: 22px; display: grid; gap: 14px; }
 .panel h2 { font-size: 20px; }
 .page { padding-block: 28px 64px; display: grid; gap: 18px; }

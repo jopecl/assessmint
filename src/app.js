@@ -4,7 +4,9 @@ const SITE = {
   tagline: "Free timed practice for online aptitude tests",
   kofi: "",      // e.g. "https://ko-fi.com/yourname" (empty = hidden)
   contact: "fixmi.app@gmail.com",
-  repo: "https://github.com/jopecl/assessmint"
+  repo: "https://github.com/jopecl/assessmint",
+  author: "José Pérez",
+  linkedin: ""   // e.g. "https://www.linkedin.com/in/yourname" (empty = hidden)
 };
 
 const SECTIONS = {
@@ -181,6 +183,7 @@ function shell(inner, active) {
     <footer class="wrap site-foot"><div class="glass">
       <nav><a href="#/about">About</a><a href="#/privacy">Privacy</a>${SITE.contact ? `<a href="mailto:${esc(SITE.contact)}">Contact</a>` : ""}${SITE.repo ? `<a href="${esc(SITE.repo)}" target="_blank" rel="noopener">Source code</a>` : ""}${SITE.kofi ? `<a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">Ko-fi</a>` : ""}</nav>
       <p>${esc(SITE.name)} is a free, independent practice site. It is not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original. Section names describe common test formats.</p>
+      <p>Made by ${SITE.linkedin ? `<a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">${esc(SITE.author)}</a>` : esc(SITE.author)}, free for everyone. <a href="#/about">Why?</a></p>
     </div></footer>`;
 }
 function wireShell() {
@@ -274,6 +277,11 @@ function showHome() {
       <div class="glass"><span class="n">1</span><h3>Pick a level</h3><p class="muted small"><strong>Realistic</strong> mirrors the difficulty candidates report for the real thing. <strong>Challenging</strong> has longer calculations and subtler traps, so test day feels easy.</p></div>
       <div class="glass"><span class="n">2</span><h3>Sit it in one go</h3><p class="muted small">Three timed sections back to back. Keep a calculator, pen and paper handy. A blank answer counts as wrong, and wrong answers cost nothing extra.</p></div>
       <div class="glass"><span class="n">3</span><h3>Learn from your mistakes</h3><p class="muted small">See your score per section against an 80% target, the time you spent on each question and the fastest route to every answer.</p></div>
+    </section>
+    <section class="mission glass">
+      <div><span class="eyebrow">Free for everyone, on purpose</span><h2>Good preparation shouldn't depend on your budget.</h2>
+      <p class="muted">Too many prep sites lock the basics behind subscriptions. ${esc(SITE.name)} is free, with no sign-up and no tracking, because knowing how these tests work should be the same for everyone. More sites for other kinds of jobs are on the way.</p></div>
+      <div class="row"><a class="btn" href="#/about">Why I built this</a>${SITE.kofi ? `<a class="btn btn-primary" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}Support the project</a>` : ""}</div>
     </section>`, "");
   wireShell(); wireCards();
   app.querySelectorAll("[data-filter]").forEach(b => b.onclick = () => { store.set(KEY_FILTER, b.dataset.filter); render(); });
@@ -294,16 +302,26 @@ function showHistory() {
 }
 
 function showAbout() {
+  const me = SITE.linkedin ? `<a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">${esc(SITE.author)}</a>` : esc(SITE.author);
   app.innerHTML = shell(`<section class="page"><header><span class="eyebrow">About</span><h1>${esc(SITE.name)}</h1></header>
     <div class="glass panel prose">
-      <p>${esc(SITE.name)} is a free practice site for online aptitude tests: numerical reasoning, critical thinking, working with data and verbal reasoning. They are the first screening step at consulting firms, banks, audit firms and graduate programmes, and in any selection process that uses online tests.</p>
+      <h2>What is this?</h2>
+      <p>${esc(SITE.name)} is a free practice site for online aptitude tests: numerical reasoning, critical thinking, working with data and verbal reasoning. These tests are often the first filter in a selection process, at consulting firms, banks, audit firms and graduate programmes, and in any hiring process that screens applicants online. Here you can sit full timed mock tests, see a worked solution for every question and load your own tests. There is no sign-up and no paywall, and your answers never leave your browser.</p>
+      <h2>Who makes it?</h2>
+      <p>I'm ${me}. I built the first version of ${esc(SITE.name)} while preparing for one of these tests myself, and turned it into a public site so anyone can use it.${SITE.linkedin ? ` You can find out more about me on <a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>.` : ""}</p>
+      <h2>Why?</h2>
+      <p>Because preparation shouldn't depend on what you can pay. An online test can decide whether you get a first interview, yet a lot of apps and sites try to profit from that pressure, with subscriptions, "premium" question banks and paywalls in front of the basics. That gives a head start to those who can afford it. How these tests work, and how to practise for them, is information that should be the same for everyone. So ${esc(SITE.name)} is free, and it will stay free.</p>
+      <h2>What's next</h2>
+      <p>This is the first of several. I'll publish more free practice sites like this one for other kinds of jobs and selection tests, also under the ${esc(SITE.name)} name, and I'll list them here as they go live.</p>
+      <h2>How you can help</h2>
+      <p>${SITE.kofi ? `If ${esc(SITE.name)} helped you, you can <a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">support it on Ko-fi</a>.` : "Donations are optional."} They cover hosting and give me time to keep building projects like this one, free for everyone. Sharing the site with someone who's preparing helps too.</p>
       <h2>Format</h2>
       <ul><li>Numerical Reasoning: 12 questions in 10 minutes.</li><li>Critical Thinking: 16 questions in 12 minutes.</li><li>Working With Data: 12 questions in 10 minutes.</li><li>Forward-only navigation: an unanswered question counts as wrong, and wrong answers cost nothing extra.</li><li>A calculator, pen and paper are allowed, as in most real tests.</li></ul>
       <h2>Levels</h2>
       <p><strong>Realistic</strong> aims for the difficulty candidates report. <strong>Challenging</strong> has longer calculations and subtler traps. The practice goal is 80% in every section within the time limit. Employers don't publish their pass marks, so treat that figure as a training benchmark only.</p>
       <h2>Disclaimer</h2>
       <p>This is an independent project. It is not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original and are not taken from any real test.</p>
-      ${SITE.contact || SITE.kofi ? `<h2>Contact</h2><p>${SITE.contact ? `Spotted a mistake or have a suggestion? Write to <a href="mailto:${esc(SITE.contact)}">${esc(SITE.contact)}</a>.` : ""} ${SITE.kofi ? `If the site helped you, you can <a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">buy me a coffee</a>.` : ""}</p>` : ""}
+      ${SITE.contact ? `<h2>Contact</h2><p>Spotted a mistake or have a suggestion? Write to <a href="mailto:${esc(SITE.contact)}">${esc(SITE.contact)}</a>.</p>` : ""}
     </div></section>`, "about");
   wireShell();
 }
