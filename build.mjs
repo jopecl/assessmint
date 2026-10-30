@@ -7,8 +7,10 @@ const sets = readdirSync("sets").filter(f => f.endsWith(".json")).sort()
   .map(f => JSON.parse(readFileSync(`sets/${f}`, "utf8")));
 const name = (app.match(/name:\s*"([^"]+)"/) || [])[1] || "Site";
 const desc = "Free, timed mock tests in numerical reasoning, critical thinking and working with data to prepare for online aptitude tests in consulting, finance, graduate programmes and any hiring process.";
-const fonts = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">`;
+// Fonts are self-hosted (inlined), so the page makes no third-party requests
+const face = (family, file, style = "normal", weight = "100 900") =>
+  `@font-face{font-family:"${family}";src:url(data:font/woff2;base64,${readFileSync(`src/fonts/${file}`).toString("base64")}) format("woff2");font-style:${style};font-weight:${weight};font-display:swap}`;
+const fonts = `<style>${[face("Geist", "geist.woff2"), face("Newsreader", "newsreader.woff2", "normal", "200 800"), face("Newsreader", "newsreader-italic.woff2", "italic", "200 800"), face("JetBrains Mono", "jetbrains-mono.woff2", "normal", "100 800")].join("\n")}</style>`;
 const body = `<div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="app"></div>
 <script>

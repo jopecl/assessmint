@@ -6,7 +6,7 @@ const SITE = {
   contact: "fixmi.app@gmail.com",
   repo: "https://github.com/jopecl/assessmint",
   author: "José Pérez",
-  linkedin: ""   // e.g. "https://www.linkedin.com/in/yourname" (empty = hidden)
+  linkedin: "https://www.linkedin.com/in/joseperezclar/"
 };
 
 const SECTIONS = {
@@ -63,6 +63,8 @@ const I = {
   auto: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/></svg>`,
   cup: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg>`,
   play: `<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg>`,
+  check: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`,
+  linkedin: `<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4z"/></svg>`,
   upload: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>`
 };
 
@@ -183,7 +185,7 @@ function shell(inner, active) {
     <footer class="wrap site-foot"><div class="glass">
       <nav><a href="#/about">About</a><a href="#/privacy">Privacy</a>${SITE.contact ? `<a href="mailto:${esc(SITE.contact)}">Contact</a>` : ""}${SITE.repo ? `<a href="${esc(SITE.repo)}" target="_blank" rel="noopener">Source code</a>` : ""}${SITE.kofi ? `<a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">Ko-fi</a>` : ""}</nav>
       <p>${esc(SITE.name)} is a free, independent practice site. It is not affiliated with, sponsored by or endorsed by any employer or assessment provider. All questions are original. Section names describe common test formats.</p>
-      <p>Made by ${SITE.linkedin ? `<a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">${esc(SITE.author)}</a>` : esc(SITE.author)}, free for everyone. <a href="#/about">Why?</a></p>
+      <p>Made by ${authorLink()}, free for everyone. <a href="#/about">Why?</a></p>
     </div></footer>`;
 }
 function wireShell() {
@@ -191,7 +193,7 @@ function wireShell() {
   const m = document.getElementById("menu"), nl = document.getElementById("navlinks");
   if (m) m.onclick = () => { const o = nl.classList.toggle("open"); m.setAttribute("aria-expanded", o); };
 }
-function render() {
+function render(keepScroll) {
   if (run) return;
   clearInterval(tick); window.onkeydown = null;
   const r = route();
@@ -200,8 +202,33 @@ function render() {
   else if (r === "about") showAbout();
   else if (r === "privacy") showPrivacy();
   else showHome();
-  window.scrollTo(0, 0);
+  if (!keepScroll) window.scrollTo(0, 0);
+  reveal();
 }
+
+/* ---------- motion: scroll reveal + ambient parallax ---------- */
+const calm = matchMedia("(prefers-reduced-motion: reduce)");
+let revealObs;
+function reveal() {
+  const els = app.querySelectorAll(".hero > div, .hero-card, .toolbar, .set, .how, .mission, .page > header, .page > .glass, .page > .sets");
+  if (calm.matches || !("IntersectionObserver" in window)) return;
+  revealObs?.disconnect();
+  revealObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); revealObs.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: .08 });
+  let row = -1, top = null;
+  els.forEach(el => {
+    // stagger cards that sit on the same row
+    const t = Math.round(el.getBoundingClientRect().top);
+    row = t === top ? row + 1 : 0; top = t;
+    el.style.setProperty("--d", `${Math.min(row, 4) * 0.07}s`);
+    el.classList.add("reveal");
+    revealObs.observe(el);
+  });
+}
+let sy = 0;
+addEventListener("scroll", () => {
+  if (calm.matches || sy) return;
+  sy = requestAnimationFrame(() => { document.documentElement.style.setProperty("--sy", scrollY); sy = 0; });
+}, { passive: true });
 window.addEventListener("hashchange", () => {
   if (run) {
     if (confirm("Leave the test? This attempt will be lost.")) { clearInterval(tick); run = null; render(); }
@@ -218,15 +245,15 @@ function setCard(s, hist) {
   const full = hasSec(s, "NR") && hasSec(s, "CT") && hasSec(s, "WwD"), verbal = hasSec(s, "NR") && hasSec(s, "CT") && hasSec(s, "VR");
   const keys = ORDER.filter(k => hasSec(s, k));
   const fullMin = o => o.reduce((a, k) => a + secMinutes(s, k), 0);
+  const nQ = (full ? ["NR", "CT", "WwD"] : keys).reduce((a, k) => a + s.sections[k].questions.length, 0);
   return `<article class="set glass${done ? " set-done" : ""}">
-    <div class="set-head"><div><h3>${esc(s.title)}${done ? ` <span class="pill ok">Done</span>` : ""}</h3>${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}</div>
+    <div class="set-head"><div><h3>${esc(s.title)}${done ? ` <span class="pill ok">Done</span>` : ""}</h3><p class="meta">${nQ} questions · ${full ? fullMin(["NR", "CT", "WwD"]) : fullMin(keys)} min</p>${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}</div>
       ${s.level ? `<span class="lvl lvl-${esc(s.level)}">${esc(LEVELS[s.level] || s.level)}</span>` : ""}</div>
-    <div class="chips">${keys.map(k => `<span class="chip${partial.has(k) ? " chip-done" : ""}">${partial.has(k) ? "✓ " : ""}${k} · ${s.sections[k].questions.length}</span>`).join("")}</div>
-    <div class="actions">
-      ${full ? `<button class="btn btn-primary" data-run="${esc(s.id)}" data-order="NR,CT,WwD" data-label="Full mock"><span>Full mock test</span><span>NR → CT → WwD · ${fullMin(["NR", "CT", "WwD"])} min</span></button>` : ""}
-      ${verbal ? `<button class="btn" data-run="${esc(s.id)}" data-order="NR,CT,VR" data-label="Full mock (verbal)"><span>Verbal variant</span><span>NR → CT → VR · ${fullMin(["NR", "CT", "VR"])} min</span></button>` : ""}
-    </div>
-    <div class="split">${keys.map(k => `<button class="btn btn-sm" data-run="${esc(s.id)}" data-order="${k}" data-label="${SECTIONS[k].name}">${k} · ${secMinutes(s, k)} min</button>`).join("")}</div>
+    ${full || verbal ? `<div class="actions">
+      ${full ? `<button class="btn btn-primary" data-run="${esc(s.id)}" data-order="NR,CT,WwD" data-label="Full mock">${I.play}<span>Start full mock</span><span>${fullMin(["NR", "CT", "WwD"])} min</span></button>` : ""}
+      ${verbal ? `<button class="btn" data-run="${esc(s.id)}" data-order="NR,CT,VR" data-label="Full mock (verbal)"><span>Verbal version</span><span>${fullMin(["NR", "CT", "VR"])} min</span></button>` : ""}
+    </div>` : ""}
+    <div><p class="split-lbl">${full || verbal ? "Or one section" : "Sections"}</p><div class="split">${keys.map(k => `<button class="btn btn-sm${partial.has(k) ? " is-done" : ""}" data-run="${esc(s.id)}" data-order="${k}" data-label="${SECTIONS[k].name}" title="${SECTIONS[k].name} · ${s.sections[k].questions.length} questions · ${secMinutes(s, k)} min">${partial.has(k) ? I.check : ""}${SECTIONS[k].short}</button>`).join("")}</div></div>
     <div class="set-foot"><button class="btn btn-ghost btn-sm" data-mark="${esc(s.id)}" data-val="${done ? "0" : "1"}">${done ? "Move back to to-do" : "Mark as done"}</button>
       ${s.custom ? `<span class="row" style="gap:4px"><button class="btn btn-ghost btn-sm" data-export="${esc(s.id)}">Download</button><button class="btn btn-ghost btn-sm" data-del="${esc(s.id)}">Delete</button></span>` : ""}</div>
   </article>`;
@@ -245,7 +272,7 @@ function wireCards() {
     a.download = (s.title || "test").toLowerCase().replace(/[^a-z0-9]+/g, "-") + ".json"; a.click();
   });
   app.querySelectorAll("[data-mark]").forEach(b => b.onclick = () => {
-    const m = store.get(KEY_DONE, {}); m[b.dataset.mark] = b.dataset.val === "1"; store.set(KEY_DONE, m); render();
+    const m = store.get(KEY_DONE, {}); m[b.dataset.mark] = b.dataset.val === "1"; store.set(KEY_DONE, m); render(true);
   });
 }
 
@@ -259,10 +286,10 @@ function showHome() {
   app.innerHTML = shell(`
     <section class="hero">
       <div>
-        <span class="badge"><span class="dot"></span>Free · No sign-up · ${totalQuestions()} original questions</span>
-        <h1>Beat the clock. <span class="grad-text">Ace the aptitude test.</span></h1>
-        <p class="lead">Timed mock tests in numerical reasoning, critical thinking and working with data, the online aptitude tests used to screen applicants in consulting, finance, graduate programmes and any hiring process with an online test. One question per screen, no going back, and a worked solution for every question when you finish.</p>
+        <h1>Beat the clock. <span class="serif grad-text">Ace the aptitude test.</span></h1>
+        <p class="lead">Full, timed mock tests for the online assessments that screen applicants, with a worked solution for every question.</p>
         <div class="row cta"><button class="btn btn-primary btn-lg" data-run="${esc(next.id)}" data-order="NR,CT,WwD" data-label="Full mock">${I.play}Start ${esc(next.title)}</button><a class="btn btn-lg" href="#/my-tests">${I.upload}Load your own test</a></div>
+        <p class="fineprint"><span>${I.check}Free</span><span>${I.check}No account</span><span>${I.check}Runs in your browser</span></p>
       </div>
       <div class="hero-card glass">
         <div class="hero-stats"><div class="stat"><b>${nSets}</b><span>full mock tests</span></div><div class="stat"><b>${totalQuestions()}</b><span>original questions</span></div><div class="stat"><b>32</b><span>minutes per mock</span></div></div>
@@ -273,18 +300,19 @@ function showHome() {
     </section>
     <div class="toolbar" id="sims"><h2>Mock tests</h2><div class="seg" role="group" aria-label="Filter">${filters.map(([v, l]) => `<button data-filter="${v}" aria-pressed="${v === filter}">${l}</button>`).join("")}</div></div>
     ${sets.length ? `<section class="sets">${sets.map(s => setCard(s, hist)).join("")}</section>` : `<div class="glass empty"><p>No mock tests match this filter.</p></div>`}
-    <section class="how">
-      <div class="glass"><span class="n">1</span><h3>Pick a level</h3><p class="muted small"><strong>Realistic</strong> mirrors the difficulty candidates report for the real thing. <strong>Challenging</strong> has longer calculations and subtler traps, so test day feels easy.</p></div>
-      <div class="glass"><span class="n">2</span><h3>Sit it in one go</h3><p class="muted small">Three timed sections back to back. Keep a calculator, pen and paper handy. A blank answer counts as wrong, and wrong answers cost nothing extra.</p></div>
-      <div class="glass"><span class="n">3</span><h3>Learn from your mistakes</h3><p class="muted small">See your score per section against an 80% target, the time you spent on each question and the fastest route to every answer.</p></div>
-    </section>
+    <section class="how"><h2>How it works</h2><div class="glass steps">
+      <div class="step"><span class="n">01</span><h3>Pick a level</h3><p class="muted small"><strong>Realistic</strong> mirrors the difficulty candidates report for the real thing. <strong>Challenging</strong> has longer calculations and subtler traps, so test day feels easy.</p></div>
+      <div class="step"><span class="n">02</span><h3>Sit it in one go</h3><p class="muted small">Three timed sections back to back. Keep a calculator, pen and paper handy. A blank answer counts as wrong, and wrong answers cost nothing extra.</p></div>
+      <div class="step"><span class="n">03</span><h3>Learn from your mistakes</h3><p class="muted small">See your score per section against an 80% target, the time you spent on each question and the fastest route to every answer.</p></div>
+    </div></section>
     <section class="mission glass">
-      <div><span class="eyebrow">Free for everyone, on purpose</span><h2>Good preparation shouldn't depend on your budget.</h2>
-      <p class="muted">Too many prep sites lock the basics behind subscriptions. ${esc(SITE.name)} is free, with no sign-up and no tracking, because knowing how these tests work should be the same for everyone. More sites for other kinds of jobs are on the way.</p></div>
-      <div class="row"><a class="btn" href="#/about">Why I built this</a>${SITE.kofi ? `<a class="btn btn-primary" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}Support the project</a>` : ""}</div>
+      <div><h2>Good preparation shouldn't depend on your budget.</h2>
+      <p class="muted">Too many prep sites lock the basics behind subscriptions. ${esc(SITE.name)} is free, with no sign-up and no tracking, because knowing how these tests work should be the same for everyone.</p>
+      <p class="byline"><span class="avatar">JP</span><span>Made by ${authorLink()}</span></p></div>
+      <div class="row"><a class="btn" href="#/about">Read the story</a>${SITE.kofi ? `<a class="btn btn-primary" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}Support it</a>` : ""}</div>
     </section>`, "");
   wireShell(); wireCards();
-  app.querySelectorAll("[data-filter]").forEach(b => b.onclick = () => { store.set(KEY_FILTER, b.dataset.filter); render(); });
+  app.querySelectorAll("[data-filter]").forEach(b => b.onclick = () => { store.set(KEY_FILTER, b.dataset.filter); render(true); });
 }
 
 /* ---------- other pages ---------- */
@@ -301,20 +329,25 @@ function showHistory() {
   if (c) c.onclick = () => { if (c.dataset.armed) { store.set(KEY_HIST, []); store.set(KEY_DONE, {}); render(); } else { c.dataset.armed = "1"; c.textContent = "Sure? Clear everything"; } };
 }
 
+function authorLink() { return SITE.linkedin ? `<a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">${esc(SITE.author)}</a>` : esc(SITE.author); }
+
 function showAbout() {
-  const me = SITE.linkedin ? `<a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">${esc(SITE.author)}</a>` : esc(SITE.author);
-  app.innerHTML = shell(`<section class="page"><header><span class="eyebrow">About</span><h1>${esc(SITE.name)}</h1></header>
-    <div class="glass panel prose">
+  app.innerHTML = shell(`<section class="page"><header><h1>About ${esc(SITE.name)}</h1><p class="sub">A free place to practise for the tests that decide who gets an interview.</p></header>
+    <div class="glass panel prose story">
       <h2>What is this?</h2>
-      <p>${esc(SITE.name)} is a free practice site for online aptitude tests: numerical reasoning, critical thinking, working with data and verbal reasoning. These tests are often the first filter in a selection process, at consulting firms, banks, audit firms and graduate programmes, and in any hiring process that screens applicants online. Here you can sit full timed mock tests, see a worked solution for every question and load your own tests. There is no sign-up and no paywall, and your answers never leave your browser.</p>
+      <p>${esc(SITE.name)} is a practice site for online aptitude tests: numerical reasoning, critical thinking, working with data and verbal reasoning. They're often the first filter in a selection process, at consulting firms, banks, audit firms and graduate programmes, and in any hiring process that screens applicants online.</p>
+      <p>You can sit full timed mock tests, read a worked solution for every question and load your own tests. There's no sign-up and no paywall, and your answers never leave your browser.</p>
       <h2>Who makes it?</h2>
-      <p>I'm ${me}. I built the first version of ${esc(SITE.name)} while preparing for one of these tests myself, and turned it into a public site so anyone can use it.${SITE.linkedin ? ` You can find out more about me on <a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>.` : ""}</p>
+      <div class="author"><span class="avatar avatar-lg">JP</span><div><b>${esc(SITE.author)}</b><span>Built ${esc(SITE.name)} while preparing for one of these tests, then opened it up for everyone.</span></div>${SITE.linkedin ? `<a class="btn btn-sm" href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">${I.linkedin}LinkedIn</a>` : ""}</div>
       <h2>Why?</h2>
-      <p>Because preparation shouldn't depend on what you can pay. An online test can decide whether you get a first interview, yet a lot of apps and sites try to profit from that pressure, with subscriptions, "premium" question banks and paywalls in front of the basics. That gives a head start to those who can afford it. How these tests work, and how to practise for them, is information that should be the same for everyone. So ${esc(SITE.name)} is free, and it will stay free.</p>
+      <blockquote>Preparation shouldn't depend on what you can pay.</blockquote>
+      <p>An online test can decide whether you get a first interview, and a lot of apps and sites try to profit from that pressure, with subscriptions, "premium" question banks and paywalls in front of the basics. That hands a head start to whoever can afford it. How these tests work, and how to practise for them, is information that should be the same for everyone. So ${esc(SITE.name)} is free, and it will stay free.</p>
       <h2>What's next</h2>
       <p>This is the first of several. I'll publish more free practice sites like this one for other kinds of jobs and selection tests, also under the ${esc(SITE.name)} name, and I'll list them here as they go live.</p>
       <h2>How you can help</h2>
-      <p>${SITE.kofi ? `If ${esc(SITE.name)} helped you, you can <a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">support it on Ko-fi</a>.` : "Donations are optional."} They cover hosting and give me time to keep building projects like this one, free for everyone. Sharing the site with someone who's preparing helps too.</p>
+      <p>${SITE.kofi ? `If ${esc(SITE.name)} helped you, you can <a href="${esc(SITE.kofi)}" target="_blank" rel="noopener">support it on Ko-fi</a>. ` : ""}Donations cover hosting and give me time to keep building projects like this one, free for everyone. Sharing the site with someone who's preparing helps too.</p>
+    </div>
+    <div class="glass panel prose">
       <h2>Format</h2>
       <ul><li>Numerical Reasoning: 12 questions in 10 minutes.</li><li>Critical Thinking: 16 questions in 12 minutes.</li><li>Working With Data: 12 questions in 10 minutes.</li><li>Forward-only navigation: an unanswered question counts as wrong, and wrong answers cost nothing extra.</li><li>A calculator, pen and paper are allowed, as in most real tests.</li></ul>
       <h2>Levels</h2>

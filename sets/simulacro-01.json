@@ -2,7 +2,7 @@
  "id": "s01",
  "title": "Mock test 1",
  "level": "realistic",
- "note": "Close to the difficulty of the real test. A good place to start.",
+ "note": "Start here.",
  "sections": {
   "NR": {
    "contexts": {
