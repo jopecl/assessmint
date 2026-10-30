@@ -1,0 +1,831 @@
+{
+ "id": "s07",
+ "title": "Mock test 7",
+ "level": "challenging",
+ "note": "Longer calculations and subtler traps. Includes a verbal variant.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** Grocery chain, 2025. *Sales per m² = annual sales ÷ total sales area.*\n\n| Format | Stores | Avg sales area per store (m²) | Sales per m² (€) |\n|---|---|---|---|\n| Hypermarket | 24 | 8,500 | 4,200 |\n| Supermarket | 180 | 1,600 | 6,100 |\n| Convenience | 410 | 250 | 9,800 |\n| Online dark store | 12 | 3,000 | 7,500 |"
+    },
+    "g2": {
+     "md": "**Use the table for questions 5–7.** Online retailer, marketing by channel. *Cost per new customer = spend ÷ new customers.*\n\n| Channel | Spend 2024 (€k) | New customers 2024 | Spend 2025 (€k) | New customers 2025 |\n|---|---|---|---|---|\n| Search | 400 | 8,000 | 480 | 8,800 |\n| Social | 250 | 6,250 | 350 | 7,000 |\n| TV | 600 | 7,500 | 500 | 6,500 |\n| Affiliates | 150 | 5,000 | 180 | 6,300 |"
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "What percentage of the chain's total 2025 sales came from Convenience stores?",
+     "options": [
+      "16.3%",
+      "25.8%",
+      "65.5%",
+      "29.4%",
+      "22.1%"
+     ],
+     "answer": "B",
+     "explain": "Sales = stores × m² × sales per m². Convenience 410 × 250 × 9,800 = €1,004.5m; total 856.8 + 1,756.8 + 1,004.5 + 270 = €3,888.1m → 25.8%. 16.3% is the share of floor space and 65.5% the share of stores."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "The chain converts 6 hypermarkets into online dark stores. Each converted site keeps its 8,500 m² and achieves the dark-store sales per m². All else unchanged, by approximately what percentage would the chain's total sales increase?",
+     "options": [
+      "19.6%",
+      "4.1%",
+      "78.6%",
+      "4.3%",
+      "25.0%"
+     ],
+     "answer": "D",
+     "explain": "6 × 8,500 × (7,500 − 4,200) = +€168.3m; 168.3/3,888.1 = 4.3%. 4.1% divides by the new total (wrong base); 19.6% divides by hypermarket sales."
+    },
+    {
+     "type": "Rule",
+     "stem": "A car park charges €2.80 for the first hour and €2.20 for each additional hour or part of an hour, up to a maximum of €20 per day. A weekly pass costs €75. A driver parks from 09:15 to 17:40, Monday to Friday. How much does the driver save in a week by buying the pass instead of paying daily?",
+     "options": [
+      "€15",
+      "€16",
+      "€25",
+      "€27",
+      "€31"
+     ],
+     "answer": "C",
+     "explain": "8 h 25 min = first hour + 8 extra periods: 2.80 + 8 × 2.20 = 20.40 → capped at €20/day. 5 days = €100; saving €25. €27 forgets the cap; €16 counts 7 periods."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 7, 10, 16, 25, 37, 52, ?",
+     "options": [
+      "67",
+      "68",
+      "72",
+      "70",
+      "73"
+     ],
+     "answer": "D",
+     "explain": "Differences +3, +6, +9, +12, +15 → +18: 52 + 18 = 70."
+    },
+    {
+     "type": "Table",
+     "ctx": "g2",
+     "stem": "What was the overall cost per new customer across all channels in 2025?",
+     "options": [
+      "€52.34",
+      "€52.51",
+      "€55.20",
+      "€50.00",
+      "€52.80"
+     ],
+     "answer": "E",
+     "explain": "Total 2025 spend / total customers = 1,510,000/28,600 = €52.80. €52.51 is the simple average of the four costs (weighting error); €52.34 is 2024."
+    },
+    {
+     "type": "Table",
+     "ctx": "g2",
+     "stem": "Which channel's cost per new customer rose by the largest percentage from 2024 to 2025?",
+     "options": [
+      "Search",
+      "Social",
+      "TV",
+      "Affiliates",
+      "Search and Social equally"
+     ],
+     "answer": "B",
+     "explain": "Social 40 → €50 (+25%); Search 50 → €54.5 (+9.1%); TV and Affiliates fall."
+    },
+    {
+     "type": "Table",
+     "ctx": "g2",
+     "stem": "In 2026 the company moves the whole 2025 TV budget to Affiliates. Assume Affiliates keeps its 2025 cost per new customer and the other channels repeat 2025. By what percentage would total new customers increase compared with 2025?",
+     "options": [
+      "61.2%",
+      "11.0%",
+      "38.5%",
+      "27.8%",
+      "22.7%"
+     ],
+     "answer": "C",
+     "explain": "Affiliates cost 2025 = 180,000/6,300 = €28.57. 500,000/28.57 = 17,500 new customers, losing 6,500 from TV → +11,000. 11,000/28,600 = 38.5%. 27.8% divides by the new total."
+    },
+    {
+     "type": "Rule",
+     "stem": "A business borrows €12,000 for 3 years at 6% a year, repaid in one payment at the end. How much more does it pay if interest is compounded annually rather than charged as simple interest?",
+     "options": [
+      "€72.00",
+      "€144.00",
+      "€118.40",
+      "€2,292.19",
+      "€132.19"
+     ],
+     "answer": "E",
+     "explain": "Compound: 12,000 × 1.06³ = 14,292.19. Simple: 12,000 × (1 + 0.18) = 14,160. Difference €132.19. 2,292.19 is the total compound interest."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 2, 7, 16. Row 2: 3, 5, 18. Row 3: 4, 6, ?",
+     "options": [
+      "24",
+      "26",
+      "28",
+      "30",
+      "34"
+     ],
+     "answer": "C",
+     "explain": "Rule a × (b + 1): 2 × 8 = 16; 3 × 6 = 18; 4 × 7 = 28. Check the rule on both rows before applying it."
+    },
+    {
+     "type": "Estimation",
+     "stem": "A factory produces 61,800 units a week for 48 weeks a year. Each unit uses 0.38 kWh of electricity, which costs €0.21 per kWh. Which is the best estimate of the annual electricity cost?",
+     "options": [
+      "€24,000",
+      "€120,000",
+      "€240,000",
+      "€480,000",
+      "€2.4 million"
+     ],
+     "answer": "C",
+     "explain": "≈ 60,000 × 0.4 × 50 × 0.2 = €240,000 (exactly €236,719)."
+    },
+    {
+     "type": "Calculation",
+     "stem": "Five consultants complete 40 customer interviews in 4 days. Working at the same rate, how many consultants are needed to complete 90 interviews in 3 days?",
+     "options": [
+      "12",
+      "15",
+      "10",
+      "18",
+      "11.25"
+     ],
+     "answer": "B",
+     "explain": "Rate = 40/(5 × 4) = 2 interviews per consultant per day. 90/(2 × 3) = 15."
+    },
+    {
+     "type": "Rule",
+     "stem": "A company had revenue of €2.5m and a gross margin of 40%. The following year revenue rose 12% and cost of goods sold rose 18%. What was the new gross margin?",
+     "options": [
+      "34.0%",
+      "36.8%",
+      "38.2%",
+      "40.0%",
+      "35.5%"
+     ],
+     "answer": "B",
+     "explain": "COGS 1.5 → €1.77m; revenue 2.5 → €2.8m; margin (2.8 − 1.77)/2.8 = 36.8%. 34% subtracts 6 points without recalculating (% vs points error)."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "No consultants on the project are contractors. All data engineers on the project are contractors.\n\n**Conclusion:** No data engineers on the project are consultants.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "All data engineers are contractors and no contractor is a consultant → no data engineer is a consultant. It follows."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "All engineers passed the safety course. Some managers passed the safety course.\n\n**Conclusion:** Some managers are engineers.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "Undistributed middle term: the managers who passed may not be engineers. It doesn't follow."
+    },
+    {
+     "type": "Deduction",
+     "stem": "All vendors on the approved list have signed the code of conduct. Some vendors who signed the code of conduct were audited last year. No audited vendor was found in breach.\n\nWhich statement must be true?",
+     "options": [
+      "Some vendors on the approved list were audited last year.",
+      "No vendor on the approved list was found in breach.",
+      "Some vendors who signed the code of conduct were not found in breach.",
+      "All audited vendors are on the approved list.",
+      "None of the above."
+     ],
+     "answer": "C",
+     "explain": "Some signatories were audited, and no audited firm was in breach → those signatories were not in breach. A and D reverse or mix the sets; B is unknown for the firms not audited."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Every analyst who joined in 2025 works in either the Madrid or the Lisbon office. No one in the Lisbon office works on retail clients. Inés joined as an analyst in 2025 and works on retail clients.\n\nWhich statement must be true?",
+     "options": [
+      "Inés works in the Lisbon office.",
+      "Inés works in the Madrid office.",
+      "All analysts in Madrid work on retail clients.",
+      "Nobody who joined in 2025 works in Lisbon.",
+      "Inés is the only 2025 analyst working on retail clients."
+     ],
+     "answer": "B",
+     "explain": "Inés is in Madrid or Lisbon; nobody in Lisbon works with retail; she does → Madrid."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Six projects (J, K, L, M, N, O) are reviewed one per week, in weeks 1 to 6.\n- K is reviewed in an even-numbered week.\n- L is reviewed in the week immediately after K.\n- M is reviewed before J, and J before O.\n- N is not reviewed in week 1 or 2.\n- O is not reviewed in week 6.\n\nWhich statement must be true?",
+     "options": [
+      "K is reviewed in week 4.",
+      "O is reviewed in week 5.",
+      "N is reviewed in week 6.",
+      "J is reviewed in week 2.",
+      "L is reviewed in week 5."
+     ],
+     "answer": "C",
+     "explain": "K–L in 2–3 or 4–5 (K = 6 is impossible). With K2: M1 J4 O5 N6. With K4: N can't be 3 (it would leave O in 6) → N6, M1 J2 O3. Either way N is in week 6."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five colleagues (Ana, Ben, Carla, Dev, Eva) have offices on floors 1 to 5, one per floor.\n- Carla is on a higher floor than Dev.\n- Ben is on floor 2 or 4.\n- Eva is on the floor directly above Ana.\n- Dev is not on floor 1.\n\nWho is on floor 3?",
+     "options": [
+      "Ana",
+      "Ben",
+      "Carla",
+      "Dev",
+      "Eva"
+     ],
+     "answer": "D",
+     "explain": "Test the Ana–Eva pair: (2,3), (3,4) and (4,5) leave Dev on a higher floor than Carla or on floor 1. Only (1,2) works: Ana 1, Eva 2, Dev 3, Ben 4, Carla 5."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five products (P, Q, R, S, T) are ranked 1st to 5th by sales, with no ties.\n- Q sold more than R but less than P.\n- S is ranked immediately below R.\n- T is ranked neither 1st nor 5th.\n\nWhich statement must be true?",
+     "options": [
+      "Q is ranked 2nd.",
+      "T is ranked 3rd.",
+      "R is ranked 4th.",
+      "P is ranked 2nd.",
+      "S is ranked 4th."
+     ],
+     "answer": "C",
+     "explain": "Chain P > Q > R, with S just below R. T can't be 1st or 5th or sit between R and S → P T Q R S or P Q T R S. R is 4th in both."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"Our four-day-week pilot in the Valencia office saw no drop in output over six months. Therefore, we can introduce the four-day week in all our offices without reducing output.\"\n\nWhich assumption does the argument rely on?",
+     "options": [
+      "Employees prefer a four-day week.",
+      "Output in Valencia was measured more accurately than in other offices.",
+      "The conditions that kept output stable in Valencia also apply in the other offices.",
+      "Six months is longer than most pilots.",
+      "Other companies have adopted a four-day week."
+     ],
+     "answer": "C",
+     "explain": "It generalises from one office to all of them: it needs Valencia to be representative."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"Since the bank launched its chatbot, calls to its call centre have fallen by 30%. Clearly, the chatbot is resolving customers' queries.\"\n\nWhich statement, if true, most weakens the argument?",
+     "options": [
+      "The chatbot cost €1 million to build.",
+      "Over the same period the bank halved the call centre's opening hours, and many customers say they gave up trying to call.",
+      "Customers under 30 use the chatbot more than older customers.",
+      "Several competing banks have also launched chatbots.",
+      "The chatbot answers in four languages."
+     ],
+     "answer": "B",
+     "explain": "It gives an alternative cause for the fall in calls that doesn't mean the chatbot solved anything."
+    },
+    {
+     "type": "Strengthen",
+     "stem": "A city claims that its new bike lanes caused last year's 12% fall in cycling accidents.\n\nWhich statement, if true, most strengthens the claim?",
+     "options": [
+      "The number of people cycling in the city fell by 15% last year.",
+      "Residents say they like the new bike lanes.",
+      "Cycling accidents fell by 12% nationwide last year.",
+      "The bike lanes were finished ahead of schedule.",
+      "Accidents fell only on streets that received new lanes; on comparable streets without them, accidents were unchanged."
+     ],
+     "answer": "E",
+     "explain": "A control group: it compares similar streets with and without a lane. A and C weaken (alternative causes)."
+    },
+    {
+     "type": "Inference",
+     "stem": "In 2025 the company sold its products through exactly three channels: stores, its website and wholesale. Wholesale accounted for less than a quarter of units sold. The website sold more units than the stores did.\n\nWhich statement must be true?",
+     "options": [
+      "The website sold more than 37.5% of all units.",
+      "Stores sold less than 25% of all units.",
+      "Website revenue was higher than store revenue.",
+      "Wholesale sold the fewest units of the three channels.",
+      "The website sold more than half of all units."
+     ],
+     "answer": "A",
+     "explain": "Store + web > 75% and web > store → web > 37.5%. C talks about revenue (not units); D and E can be false (e.g. web 40, stores 36, wholesale 24)."
+    },
+    {
+     "type": "Inference",
+     "stem": "Every product in the Premium range is made in the Porto factory. The Porto factory makes only products that use recycled packaging. Product Z does not use recycled packaging.\n\nWhich statement must be true?",
+     "options": [
+      "Product Z is made in the Porto factory.",
+      "Product Z is not in the Premium range.",
+      "All products with recycled packaging are in the Premium range.",
+      "The Porto factory makes only Premium products.",
+      "Product Z is in the Premium range but made elsewhere."
+     ],
+     "answer": "B",
+     "explain": "Premium → Porto → recycled. Z is not recycled → not from Porto → not Premium. C and D reverse the premise."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Several large employers in the region announced hiring freezes.\n(2) The region's main export market entered a recession.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "B",
+     "explain": "The recession in the export market (2) causes the hiring freeze (1)."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Ice-cream sales at the beach kiosks hit a record this week.\n(2) Lifeguards at the same beach carried out a record number of rescues this week.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "D",
+     "explain": "Neither causes the other; both are effects of a common cause (hot weather, a crowded beach)."
+    },
+    {
+     "type": "Rules",
+     "stem": "Expense policy: employees may claim a hotel night if the meeting is **more than** 150 km from their home office, **or** if the meeting ends after 20:00. The nightly rate may not exceed €140 in standard cities or €190 in capital cities, unless the hotel is booked through the company travel portal, in which case no rate cap applies.\n\nWhich claim complies with the policy?",
+     "options": [
+      "Meeting 120 km away, ending at 19:30; €110 hotel in a standard city.",
+      "Meeting 300 km away; €175 hotel in a standard city, booked directly with the hotel.",
+      "Meeting 90 km away, ending at 21:00; €210 hotel in a capital city, booked through the travel portal.",
+      "Meeting exactly 150 km away, ending at 18:00; €130 hotel in a standard city.",
+      "Meeting 400 km away; €195 hotel in a capital city, booked directly with the hotel."
+     ],
+     "answer": "C",
+     "explain": "C qualifies on time (after 20:00) and the portal removes the cap. A meets no condition; B and E exceed the cap without the portal; D: 150 km is not \"more than 150\"."
+    },
+    {
+     "type": "Rules",
+     "stem": "A supplier qualifies for fast-track payment if **either** (a) it has supplied the company for at least 2 full years **and** its invoices in the past 12 months were error-free, **or** (b) it has fewer than 50 employees **and** annual revenue under €10m. Suppliers under a quality investigation are never eligible.\n\nAs of October 2026, Supplier Y has supplied the company since January 2025, had one invoice error this year, has 42 employees, annual revenue of €12m, and is not under investigation. Does Y qualify?",
+     "options": [
+      "Yes, because it has fewer than 50 employees.",
+      "No: it fails route (a) on tenure and errors, and route (b) on revenue.",
+      "Yes, because it is not under a quality investigation.",
+      "Cannot be determined.",
+      "No, but only because of the invoice error."
+     ],
+     "answer": "B",
+     "explain": "(a) fails: under 2 years and one error. (b) fails: revenue ≥ €10m. E is incomplete: it also fails on tenure."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "line",
+      "title": "Website visits by device (thousands)",
+      "categories": [
+       "Jan",
+       "Feb",
+       "Mar",
+       "Apr",
+       "May",
+       "Jun"
+      ],
+      "series": [
+       {
+        "name": "Desktop",
+        "values": [
+         120,
+         118,
+         115,
+         117,
+         110,
+         104
+        ]
+       },
+       {
+        "name": "Mobile",
+        "values": [
+         80,
+         90,
+         98,
+         105,
+         118,
+         126
+        ]
+       },
+       {
+        "name": "Tablet",
+        "values": [
+         20,
+         19,
+         21,
+         18,
+         17,
+         16
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the chart? **Select all that apply.**",
+     "options": [
+      "Mobile visits exceeded desktop visits for the first time in May.",
+      "Desktop visits fell every month.",
+      "Total visits were higher in June than in January.",
+      "Mobile's share of total visits more than doubled between January and June.",
+      "Tablet visits will fall below 15,000 in July."
+     ],
+     "answer": "AC",
+     "explain": "A: April 105 < 117, May 118 > 110 ✔. B: rises in April ✗. C: 220 → 246 ✔. D: 36.4% → 51.2%, not double ✗. E: a forecast, not data ✗."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Employees by department.\n\n| Department | Headcount | Women |\n|---|---|---|\n| Sales | 120 | 45% |\n| Engineering | 200 | 25% |\n| Marketing | 60 | 70% |\n| Finance | 40 | 55% |\n| Operations | 80 | 35% |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "Engineering employs more women than any other department.",
+      "Fewer than 40% of all employees are women.",
+      "Marketing has the highest proportion of women.",
+      "The company-wide share of women equals the average of the five department percentages.",
+      "Sales and Engineering together employ more than 60% of all staff."
+     ],
+     "answer": "BCE",
+     "explain": "Women: 54, 50, 42, 22, 28 = 196 of 500 = 39.2% → B ✔; A ✗ (Sales 54 > 50). C ✔. D ✗: the simple average is 46%. E: 320/500 = 64% ✔."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "stacked",
+      "title": "Home insurance market share",
+      "categories": [
+       "2024",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "Company",
+        "values": [
+         30,
+         27
+        ]
+       },
+       {
+        "name": "Other insurers",
+        "values": [
+         70,
+         73
+        ]
+       }
+      ],
+      "note": "Total market size: €200m in 2024, €240m in 2025."
+     },
+     "stem": "Which statement about the company's sales is correct?",
+     "options": [
+      "Sales fell by 3%.",
+      "Sales rose by 8%.",
+      "Sales fell by 10%.",
+      "Sales were unchanged.",
+      "It cannot be determined from the data."
+     ],
+     "answer": "B",
+     "explain": "0.30 × 200 = €60m → 0.27 × 240 = €64.8m: +8%. A lower share doesn't mean fewer euros. A confuses 3 points with %; C is the relative fall in share."
+    },
+    {
+     "type": "Table",
+     "stem": "The company had 140 stores on 1 January 2022.\n\n| Year | Stores opened | Stores closed |\n|---|---|---|\n| 2022 | 18 | 6 |\n| 2023 | 22 | 9 |\n| 2024 | 15 | 21 |\n| 2025 | 12 | 8 |\n\nHow many stores did the company have at the end of 2025?",
+     "options": [
+      "159",
+      "167",
+      "207",
+      "163",
+      "155"
+     ],
+     "answer": "D",
+     "explain": "140 + (18 + 22 + 15 + 12) − (6 + 9 + 21 + 8) = 140 + 67 − 44 = 163. 159 is the end of 2024; 207 ignores closures."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A set of exam scores has a mean of 68 and a median of 74. Which is the most likely explanation?",
+     "options": [
+      "A few very high scores pull the distribution to the right.",
+      "The distribution is symmetric.",
+      "A few very low scores pull the mean below the median.",
+      "The most common score is 68.",
+      "No student scored below 50."
+     ],
+     "answer": "C",
+     "explain": "Mean < median → skewed to the left: a few very low values drag the mean down."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A class of 20 students has a mean score of 72. Five new students, whose mean score is 62, join the class. What is the new class mean?",
+     "options": [
+      "67",
+      "70",
+      "69",
+      "71",
+      "68"
+     ],
+     "answer": "B",
+     "explain": "(20 × 72 + 5 × 62)/25 = 1,750/25 = 70. 67 is the simple average of the two averages."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Two sales teams both have mean daily sales of €5,000. Team X's standard deviation is €400; Team Y's is €1,500. Which statement is correct?",
+     "options": [
+      "Team Y sells more on average.",
+      "Team Y's range of daily sales is smaller.",
+      "Team X's median is higher.",
+      "Team Y must have outliers.",
+      "Team X's daily sales are more consistent."
+     ],
+     "answer": "E",
+     "explain": "Lower standard deviation = less spread around the mean. The others can't be deduced."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A revenue column combines entries from two systems: some values look like \"1.200,50\" (European format) and others like \"1,200.50\" (US format). What should you do before summing the column?",
+     "options": [
+      "Remove all rows that contain a comma.",
+      "Treat every value as US format.",
+      "Round all values to the nearest thousand.",
+      "Convert each value according to its source system's format into one numeric format, then check totals against each source.",
+      "Sum the column as it is; the formats cancel out."
+     ],
+     "answer": "D",
+     "explain": "Parse by source, unify the format and reconcile with the source, just as with DD/MM vs MM/DD dates."
+    },
+    {
+     "type": "Data quality",
+     "stem": "An HR form records employee age. Some entries are blank, some are 0 and one is 230. What is the best way to prevent such errors in future entries?",
+     "options": [
+      "Replace invalid ages with the average age.",
+      "Ask HR to review the data manually once a month.",
+      "Make the field mandatory and accept only whole numbers within a plausible range (e.g. 16–80).",
+      "Remove the age field from the form.",
+      "Change the field to free text so any answer is accepted."
+     ],
+     "answer": "C",
+     "explain": "The question is about preventing errors at entry: validation (required field + range). A fixes after the fact and also adds bias."
+    },
+    {
+     "type": "Data quality",
+     "stem": "You join an Orders table (one row per order, with a Customer ID) to a Customers table using Customer ID. After the join, total order value is higher than in the Orders table alone. What is the most likely cause?",
+     "options": [
+      "Some orders have missing values.",
+      "Rounding differences between the tables.",
+      "The join removed customers with no orders.",
+      "The Orders table was sorted differently.",
+      "Some Customer IDs appear more than once in the Customers table, so their orders were duplicated."
+     ],
+     "answer": "E",
+     "explain": "Duplicate keys in the dimension table multiply rows in the join. Missing values or dropped customers would lower the total, not raise it."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You want to show whether stores with higher advertising spend also have higher sales, using data for 50 stores. Which chart is most appropriate?",
+     "options": [
+      "Pie chart",
+      "Line chart over time",
+      "100% stacked bar chart",
+      "Scatter plot",
+      "Histogram of sales"
+     ],
+     "answer": "D",
+     "explain": "Relationship between two numerical variables → scatter plot."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "A line chart of annual revenue shows the years 2019, 2020, 2022, 2024 and 2025 at equal spacing on the x-axis. What is the main problem?",
+     "options": [
+      "Revenue should be shown in a pie chart.",
+      "The y-axis should start at the lowest value.",
+      "Years with no data point are skipped while the spacing stays equal, which distorts the pace of change.",
+      "There are too few data points to draw a line.",
+      "The years should be sorted in descending order."
+     ],
+     "answer": "C",
+     "explain": "An irregular time axis with equal spacing: a 2-year jump looks like 1 year, and the slope misleads."
+    }
+   ]
+  },
+  "VR": {
+   "contexts": {
+    "p1": {
+     "md": "**Passage for questions 6–8.** Decide whether each statement is True, False or Cannot Say, using only the passage.\n\nNorthwind Logistics reported revenue of €420 million in 2025, up 9% on the previous year. Growth came mainly from its cold-chain division, which now accounts for a third of group revenue. The road-freight division, still the largest by revenue, saw sales fall slightly as fuel surcharges were reduced. Northwind plans to open two new cold-storage hubs in 2026, both in Poland, and has said it will not pay a dividend for 2025."
+    },
+    "p2": {
+     "md": "**Passage for questions 9–11.** Decide whether each statement is True, False or Cannot Say, using only the passage.\n\nThe firm requires every graduate hire to complete a two-week induction before starting client work. Experienced hires complete a shorter, three-day induction. In 2025 the firm hired 85 graduates and 30 experienced hires. All graduates hired in 2025 joined in September."
+    }
+   },
+   "questions": [
+    {
+     "type": "Analogy",
+     "stem": "Thermometer : Temperature :: Odometer : ?",
+     "options": [
+      "Speed",
+      "Distance",
+      "Fuel",
+      "Time",
+      "Car"
+     ],
+     "answer": "B",
+     "explain": "Instrument : what it measures. An odometer measures distance."
+    },
+    {
+     "type": "Synonym",
+     "stem": "Which word is closest in meaning to **mitigate**?",
+     "options": [
+      "Aggravate",
+      "Alleviate",
+      "Postpone",
+      "Measure",
+      "Negotiate"
+     ],
+     "answer": "B",
+     "explain": "Mitigate = alleviate. Aggravate is the opposite."
+    },
+    {
+     "type": "Antonym",
+     "stem": "Which word is most nearly opposite in meaning to **scarce**?",
+     "options": [
+      "Rare",
+      "Costly",
+      "Abundant",
+      "Limited",
+      "Hidden"
+     ],
+     "answer": "C",
+     "explain": "Scarce ↔ abundant."
+    },
+    {
+     "type": "Analogy",
+     "stem": "Prologue : Novel :: Overture : ?",
+     "options": [
+      "Opera",
+      "Orchestra",
+      "Composer",
+      "Finale",
+      "Theatre"
+     ],
+     "answer": "A",
+     "explain": "Introductory piece : complete work."
+    },
+    {
+     "type": "Synonym",
+     "stem": "Which word is closest in meaning to **candid**?",
+     "options": [
+      "Careful",
+      "Secret",
+      "Brief",
+      "Frank",
+      "Cheerful"
+     ],
+     "answer": "D",
+     "explain": "Candid = frank."
+    },
+    {
+     "type": "True/False/Cannot Say",
+     "ctx": "p1",
+     "stem": "Statement: Northwind's revenue in 2024 was above €400 million.",
+     "options": [
+      "True",
+      "False",
+      "Cannot Say"
+     ],
+     "answer": "B",
+     "explain": "420/1.09 = €385m < 400 → False."
+    },
+    {
+     "type": "True/False/Cannot Say",
+     "ctx": "p1",
+     "stem": "Statement: In 2025 the road-freight division generated more revenue than the cold-chain division.",
+     "options": [
+      "True",
+      "False",
+      "Cannot Say"
+     ],
+     "answer": "A",
+     "explain": "Road freight is \"still the largest by revenue\" → True."
+    },
+    {
+     "type": "True/False/Cannot Say",
+     "ctx": "p1",
+     "stem": "Statement: Northwind's profit increased in 2025.",
+     "options": [
+      "True",
+      "False",
+      "Cannot Say"
+     ],
+     "answer": "C",
+     "explain": "The text covers revenue and the dividend, not profit → Cannot Say."
+    },
+    {
+     "type": "True/False/Cannot Say",
+     "ctx": "p2",
+     "stem": "Statement: Some graduates hired in 2025 started client work in the first week of September.",
+     "options": [
+      "True",
+      "False",
+      "Cannot Say"
+     ],
+     "answer": "B",
+     "explain": "They joined in September and need 2 weeks of induction before working with clients: impossible in the first week → False."
+    },
+    {
+     "type": "True/False/Cannot Say",
+     "ctx": "p2",
+     "stem": "Statement: The firm hired more people in 2025 than in 2024.",
+     "options": [
+      "True",
+      "False",
+      "Cannot Say"
+     ],
+     "answer": "C",
+     "explain": "There is no 2024 data → Cannot Say."
+    },
+    {
+     "type": "True/False/Cannot Say",
+     "ctx": "p2",
+     "stem": "Statement: Experienced hires spend less time in induction than graduate hires.",
+     "options": [
+      "True",
+      "False",
+      "Cannot Say"
+     ],
+     "answer": "A",
+     "explain": "3 days < 2 weeks → True."
+    },
+    {
+     "type": "Inference",
+     "stem": "Every supplier that passed the audit received a contract. Supplier Kappa did not receive a contract.\n\nWhich statement must be true?",
+     "options": [
+      "Kappa failed the audit.",
+      "Every supplier with a contract passed the audit.",
+      "Kappa did not pass the audit.",
+      "Kappa will not be audited again.",
+      "No supplier failed the audit."
+     ],
+     "answer": "C",
+     "explain": "Contrapositive: no contract → didn't pass. \"Failed\" requires that they sat the exam, which we don't know. B reverses the premise."
+    },
+    {
+     "type": "Inference",
+     "stem": "Sales of the firm's electric bikes doubled in 2025, while sales of its conventional bikes were unchanged. Electric bikes accounted for 20% of units sold in 2024.\n\nWhich statement must be true?",
+     "options": [
+      "Electric bikes were 40% of units sold in 2025.",
+      "Total units sold rose by 40%.",
+      "Revenue from electric bikes doubled.",
+      "Electric bikes were one third of units sold in 2025.",
+      "The share of conventional bikes was unchanged."
+     ],
+     "answer": "D",
+     "explain": "2024: 20 electric + 80 conventional. 2025: 40 + 80 → 40/120 = 1/3. A doubles the share instead of the units; C talks about revenue."
+    },
+    {
+     "type": "Code",
+     "stem": "If PLAN is coded as QMBO, how is DATA coded?",
+     "options": [
+      "CZSZ",
+      "EBUB",
+      "EBTB",
+      "FCVC",
+      "EBVB"
+     ],
+     "answer": "B",
+     "explain": "Each letter +1: D→E, A→B, T→U, A→B."
+    },
+    {
+     "type": "Code",
+     "stem": "In a code, \"7 4 9\" means \"sales rose sharply\", \"4 2 8\" means \"prices rose again\" and \"9 5 2\" means \"again fell sharply\". Which number means \"prices\"?",
+     "options": [
+      "2",
+      "4",
+      "5",
+      "8",
+      "9"
+     ],
+     "answer": "D",
+     "explain": "rose = 4 (sentences 1 and 2), sharply = 9 (1 and 3), again = 2 (2 and 3) → prices = 8."
+    }
+   ]
+  }
+ }
+}

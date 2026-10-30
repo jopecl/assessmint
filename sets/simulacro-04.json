@@ -1,0 +1,644 @@
+{
+ "id": "s04",
+ "title": "Mock test 4",
+ "level": "realistic",
+ "note": "Close to the difficulty of the real test.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** Language school, spring term.\n\n| Course | Students | Fee per student (€) | Teacher cost (€) |\n|---|---|---|---|\n| English | 140 | 450 | 28,000 |\n| German | 60 | 520 | 14,400 |\n| French | 80 | 400 | 12,800 |\n| Chinese | 30 | 600 | 9,000 |"
+    },
+    "g2": {
+     "md": "**Use the chart for questions 5–7.**",
+     "chart": {
+      "type": "bar",
+      "title": "Units sold in 2025 (thousands)",
+      "categories": [
+       "Q1",
+       "Q2",
+       "Q3",
+       "Q4"
+      ],
+      "series": [
+       {
+        "name": "Product P",
+        "values": [
+         24,
+         30,
+         27,
+         39
+        ]
+       },
+       {
+        "name": "Product Q",
+        "values": [
+         18,
+         21,
+         33,
+         36
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "Which course has the highest margin, measured as (fees − teacher cost) as a percentage of fees?",
+     "options": [
+      "English",
+      "German",
+      "French",
+      "Chinese",
+      "English and French equally"
+     ],
+     "answer": "C",
+     "explain": "English 55.6%, German 53.8%, French 60.0%, Chinese 50.0%. English has the largest profit in euros, not the highest margin."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "If the school raised the Chinese fee by 20% and, as a result, 5 fewer students enrolled, what would happen to Chinese fee revenue?",
+     "options": [
+      "It would rise by 20%.",
+      "It would rise by 3.3%.",
+      "It would fall by 16.7%.",
+      "It would not change.",
+      "It would rise by 4%."
+     ],
+     "answer": "D",
+     "explain": "25 × 720 = €18,000 = 30 × 600. No change (1.20 × 25/30 = 1)."
+    },
+    {
+     "type": "Rule",
+     "stem": "A translator charges €0.09 per word for the first 5,000 words of a job and €0.07 per word after that. Urgent jobs cost 25% more on the total. What is the price of an urgent 8,400-word job?",
+     "options": [
+      "€735.00",
+      "€945.00",
+      "€860.00",
+      "€800.50",
+      "€688.00"
+     ],
+     "answer": "C",
+     "explain": "450 + 3,400 × 0.07 (238) = 688 → × 1.25 = €860. €945 charges everything at 0.09; €800.50 applies the surcharge to the first band only."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 100, 95, 85, 70, 50, ?",
+     "options": [
+      "30",
+      "25",
+      "20",
+      "35",
+      "15"
+     ],
+     "answer": "B",
+     "explain": "Subtract 5, 10, 15, 20 → 25: 50 − 25 = 25."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "By what percentage did Product P's sales increase from Q3 to Q4?",
+     "options": [
+      "50.0%",
+      "30.8%",
+      "33.3%",
+      "44.4%",
+      "12.0%"
+     ],
+     "answer": "D",
+     "explain": "(39 − 27)/27 = 44.4%. 30.8% divides by Q4 (wrong base)."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "In which quarter was Product Q's share of the two products' combined sales highest?",
+     "options": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4"
+     ],
+     "answer": "C",
+     "explain": "Q1 42.9%, Q2 41.2%, Q3 55.0%, Q4 48.0%. Q4 has more units of Q, but not the highest share."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "Product P sells for €45 and Product Q for €60. What was the combined revenue from both products in 2025?",
+     "options": [
+      "€6.48m",
+      "€10.50m",
+      "€11.88m",
+      "€11.34m",
+      "€12.06m"
+     ],
+     "answer": "C",
+     "explain": "P 120k × 45 = €5.40m; Q 108k × 60 = €6.48m; total €11.88m. 12.06 swaps the prices."
+    },
+    {
+     "type": "Rule",
+     "stem": "A restaurant bill is €184 before a 10% service charge. Four friends split the total so that three pay the same amount and the fourth pays that amount plus €20 for wine. How much does each of the three pay?",
+     "options": [
+      "€50.60",
+      "€41.00",
+      "€55.60",
+      "€46.00",
+      "€45.60"
+     ],
+     "answer": "E",
+     "explain": "Total €202.40. 4x + 20 = 202.40 → x = €45.60. €41 forgets the service charge."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 6, 3, 2. Row 2: 20, 4, 5. Row 3: 36, 9, ?",
+     "options": [
+      "4",
+      "6",
+      "3",
+      "45",
+      "27"
+     ],
+     "answer": "A",
+     "explain": "a ÷ b: 2; 5; 4."
+    },
+    {
+     "type": "Estimation",
+     "stem": "Which is the best estimate of 0.48 × 61,900 ÷ 2.95?",
+     "options": [
+      "1,000",
+      "5,000",
+      "10,000",
+      "20,000",
+      "100,000"
+     ],
+     "answer": "C",
+     "explain": "≈ 0.5 × 60,000/3 = 10,000 (exactly 10,072)."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A train covers 210 km in 1 hour 45 minutes. What is its average speed?",
+     "options": [
+      "120 km/h",
+      "144.8 km/h",
+      "140 km/h",
+      "105 km/h",
+      "116.7 km/h"
+     ],
+     "answer": "A",
+     "explain": "210/1.75 = 120 km/h. 144.8 reads 1 h 45 min as 1.45 h."
+    },
+    {
+     "type": "Calculation",
+     "stem": "40% of a company's staff work in Operations. 35% of all staff are women, and 30% of Operations staff are women. What percentage of the staff outside Operations are women?",
+     "options": [
+      "40.0%",
+      "23.0%",
+      "5.0%",
+      "38.3%",
+      "35.0%"
+     ],
+     "answer": "D",
+     "explain": "Women in Operations = 0.4 × 0.3 = 12% of all staff. Outside: 35 − 12 = 23% of all staff, out of 60% → 38.3%. 23% forgets to change the denominator."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "No product in the clearance range can be returned. Some products bought online are in the clearance range.\n\n**Conclusion:** Some products bought online cannot be returned.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "The online products that are in the clearance range cannot be returned. It follows."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "All managers attended the leadership course. Some people who attended the leadership course were promoted.\n\n**Conclusion:** Some managers were promoted.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "Those promoted may be attendees who are not managers."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Every analyst in the data team knows SQL. No one who knows SQL works in the reception team. Some members of the reception team work part-time.\n\nWhich statement must be true?",
+     "options": [
+      "Some part-time staff know SQL.",
+      "No part-time staff know SQL.",
+      "No analyst in the data team works in the reception team.",
+      "Everyone who knows SQL is an analyst in the data team.",
+      "Some analysts in the data team work part-time."
+     ],
+     "answer": "C",
+     "explain": "Analyst → SQL → not reception. B over-generalises: part-time staff outside reception may know SQL."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Only invoices approved by a manager are paid within 30 days. Invoice 513 was not approved by a manager.\n\nWhich statement must be true?",
+     "options": [
+      "Invoice 513 was not paid within 30 days.",
+      "Invoice 513 was rejected.",
+      "Every approved invoice is paid within 30 days.",
+      "Invoice 513 was paid within 30 days.",
+      "Invoice 513 will be approved next week."
+     ],
+     "answer": "A",
+     "explain": "\"Only\": being paid within 30 days requires approval. C reverses the rule."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Six cars belonging to Gil, Hana, Iker, Jade, Kai and Luz are parked in spaces 1 to 6 in a row.\n- Hana is in space 6.\n- Jade is in the space immediately after Iker's.\n- Iker is not in space 1.\n- Gil is not next to Hana.\n- Luz is in an even-numbered space.\n- Kai is in a lower-numbered space than Gil.\n\nWho is in space 3?",
+     "options": [
+      "Gil",
+      "Iker",
+      "Jade",
+      "Kai",
+      "Luz"
+     ],
+     "answer": "A",
+     "explain": "Gil can't be at 5 and needs Kai before him. Iker–Jade: 2–3, 3–4 or 4–5. Testing them, the only option is Kai 1, Luz 2, Gil 3, Iker 4, Jade 5, Hana 6."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five colleagues arrive at the office one after another.\n- Nora arrives after Pia but before Omar.\n- Quinn arrives last.\n- Raul arrives immediately before Pia.\n\nWho arrives second?",
+     "options": [
+      "Nora",
+      "Omar",
+      "Pia",
+      "Quinn",
+      "Raul"
+     ],
+     "answer": "C",
+     "explain": "Raul, Pia, Nora, Omar, Quinn."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Four teams (Alpha, Beta, Gamma, Delta) finish a league in positions 1 to 4.\n- Alpha finishes above Beta.\n- Gamma finishes immediately below Delta.\n- Beta does not finish last.\n- Delta does not finish first.\n\nWhich team finishes third?",
+     "options": [
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Delta"
+     ],
+     "answer": "D",
+     "explain": "Delta–Gamma in 2–3 would leave Beta last. So Alpha 1, Beta 2, Delta 3, Gamma 4."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"Our email campaign was opened by 40% of recipients, twice the industry average. The campaign was therefore a success.\"\n\nWhich assumption does the argument rely on?",
+     "options": [
+      "The industry average is calculated correctly every year.",
+      "The next campaign will perform as well.",
+      "Recipients liked the design of the email.",
+      "The open rate is a good measure of a campaign's success.",
+      "The campaign was cheap to run."
+     ],
+     "answer": "D",
+     "explain": "The argument jumps from \"many opened it\" to \"it was a success\"; that only works if the open rate measures success."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"Since the city lowered the speed limit to 30 km/h, road accidents have fallen by 25%. Lower speed limits reduce accidents.\"\n\nWhich statement, if true, most weakens the argument?",
+     "options": [
+      "Other cities have similar limits.",
+      "Accidents are more common in winter.",
+      "Most drivers support the new limit.",
+      "Speed cameras were installed on two roads.",
+      "In the same period a new metro line opened and car traffic in the city fell by 30%."
+     ],
+     "answer": "E",
+     "explain": "Fewer cars alone could explain a 25% fall in accidents."
+    },
+    {
+     "type": "Strengthen",
+     "stem": "A retailer claims that playing slower music in its stores increases sales.\n\nWhich statement, if true, most strengthens the claim?",
+     "options": [
+      "Customers say they prefer slow music.",
+      "Sales rose after the change, during the Christmas season.",
+      "In a trial across 20 stores where the music tempo was switched at random from day to day, sales were 6% higher on slow-music days.",
+      "Staff find slow music relaxing.",
+      "Competitors play fast music."
+     ],
+     "answer": "C",
+     "explain": "Random assignment by day isolates the effect of the music. B mixes the effect with Christmas."
+    },
+    {
+     "type": "Inference",
+     "stem": "A box contains only red and blue pens. If you take out any 5 pens, you are certain to get at least 2 blue pens.\n\nWhich statement must be true?",
+     "options": [
+      "There are at most 3 red pens.",
+      "There are more blue pens than red pens.",
+      "There are exactly 3 red pens.",
+      "There are at least 5 blue pens.",
+      "There are at least 3 red pens."
+     ],
+     "answer": "A",
+     "explain": "With 4 red pens you could draw 4 red and 1 blue. B and D aren't certain (e.g. 3 red and 2 blue)."
+    },
+    {
+     "type": "Inference",
+     "stem": "At the conference, every speaker from Spain also chaired a panel. Nobody who chaired a panel attended the dinner. Elena attended the dinner.\n\nWhich statement must be true?",
+     "options": [
+      "Elena was not a speaker.",
+      "Elena is not from Spain.",
+      "Elena was not a speaker from Spain.",
+      "Every panel chair was a speaker from Spain.",
+      "Elena chaired a panel."
+     ],
+     "answer": "C",
+     "explain": "Dinner → didn't chair a panel → not a speaker from Spain. A and B claim more than can be deduced."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) The company's website was down for eight hours.\n(2) Online sales that day were the lowest of the year.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "A",
+     "explain": "The website outage (1) causes the low sales (2)."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Applications to nursing degrees rose by 30%.\n(2) The previous year, the government announced higher salaries for nurses.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "B",
+     "explain": "The announced pay rise (2) increases applications (1)."
+    },
+    {
+     "type": "Rules",
+     "stem": "Home-working allowance: employees receive €40 a month if they work from home on at least 8 days that month, or €60 instead if they work from home on more than 15 days. Part-time employees receive half of these amounts.\n\nA part-time employee worked from home on 16 days in March. How much does she receive?",
+     "options": [
+      "€60",
+      "€20",
+      "€30",
+      "€40",
+      "Nothing"
+     ],
+     "answer": "C",
+     "explain": "16 > 15 → €60, half for part-time = €30."
+    },
+    {
+     "type": "Rules",
+     "stem": "Event tickets: €200 if booked before 1 March, €260 otherwise. Members get 15% off. Groups of 5 or more get 20% off each ticket. The member and group discounts cannot be combined.\n\nA member books on 10 March for herself and 4 colleagues. What is the lowest price she can pay for her own ticket?",
+     "options": [
+      "€260.00",
+      "€208.00",
+      "€160.00",
+      "€221.00",
+      "€176.80"
+     ],
+     "answer": "B",
+     "explain": "Standard price (after 1 March). Best non-combinable discount: 20% group → €208. €176.80 combines both; €160 uses the early-bird price."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "line",
+      "title": "Orders delivered on time (%)",
+      "yMin": 80,
+      "unit": "%",
+      "categories": [
+       "Jan",
+       "Feb",
+       "Mar",
+       "Apr",
+       "May",
+       "Jun"
+      ],
+      "series": [
+       {
+        "name": "North warehouse",
+        "values": [
+         92,
+         94,
+         91,
+         95,
+         96,
+         97
+        ]
+       },
+       {
+        "name": "South warehouse",
+        "values": [
+         87,
+         90,
+         93,
+         93,
+         95,
+         94
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the chart? **Select all that apply.**",
+     "options": [
+      "North was above 90% in every month.",
+      "South improved every month.",
+      "In March, South outperformed North.",
+      "The gap between the two warehouses was largest in January.",
+      "North delivered more orders on time than South."
+     ],
+     "answer": "ACD",
+     "explain": "A ✔. B ✗ flat in April and down in June. C ✔ 93 > 91. D ✔ 5 points (Feb 4, Jun 3). E ✗ no volumes given."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Employee engagement survey:\n\n| Department | Respondents | Engaged |\n|---|---|---|\n| Sales | 80 | 60% |\n| Tech | 120 | 75% |\n| Admin | 50 | 40% |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "Tech has the largest number of engaged respondents.",
+      "Overall engagement across all respondents is 58.3%.",
+      "Admin has the fewest respondents.",
+      "Engagement in Sales is rising.",
+      "Overall engagement across all respondents is 63.2%."
+     ],
+     "answer": "ACE",
+     "explain": "Engaged: 48, 90, 20 → 158/250 = 63.2%. A ✔. B ✗ that is the simple average. C ✔. D ✗ no time series. E ✔."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "bar",
+      "title": "Sales by region, 2025 (€m)",
+      "categories": [
+       "North",
+       "South",
+       "East",
+       "West"
+      ],
+      "series": [
+       {
+        "name": "Sales",
+        "values": [
+         12,
+         8,
+         15,
+         5
+        ]
+       }
+      ]
+     },
+     "stem": "What percentage of total sales came from the East region?",
+     "options": [
+      "60.0%",
+      "15.0%",
+      "37.5%",
+      "25.0%",
+      "40.0%"
+     ],
+     "answer": "C",
+     "explain": "15/40 = 37.5%."
+    },
+    {
+     "type": "Table",
+     "stem": "Website conversion funnel, one month:\n\n| Step | Users |\n|---|---|\n| Visited the site | 20,000 |\n| Viewed a product | 8,000 |\n| Added to cart | 2,000 |\n| Purchased | 600 |\n\nWhat percentage of users who added something to their cart went on to purchase?",
+     "options": [
+      "3.0%",
+      "30.0%",
+      "7.5%",
+      "25.0%",
+      "40.0%"
+     ],
+     "answer": "B",
+     "explain": "600/2,000 = 30%. 3% divides by all visits; 7.5% by those who viewed a product."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Every employee in a team of 10 receives a €2,000 pay rise. What happens to the mean and the standard deviation of the team's salaries?",
+     "options": [
+      "Both are unchanged.",
+      "The mean increases by €200.",
+      "The mean increases by €2,000 and the standard deviation is unchanged.",
+      "The mean is unchanged and the standard deviation increases.",
+      "Both increase by €2,000."
+     ],
+     "answer": "C",
+     "explain": "Adding a constant shifts the mean and leaves the spread unchanged."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "In a town, mean household income is €52k and median household income is €38k. What does this suggest about the distribution of income?",
+     "options": [
+      "It is skewed to the right, with a small number of very high incomes.",
+      "Most households earn €52k.",
+      "Half of households earn more than €52k.",
+      "It is symmetric.",
+      "It is skewed to the left, with many very low incomes."
+     ],
+     "answer": "A",
+     "explain": "Mean well above the median → a long tail to the right."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "The unemployment rate rose from 8% to 10%. Which statement is correct?",
+     "options": [
+      "It rose by 25 percentage points.",
+      "It rose by 10%.",
+      "It rose by 20 percentage points.",
+      "It rose by 2%.",
+      "It rose by 2 percentage points, an increase of 25%."
+     ],
+     "answer": "E",
+     "explain": "10 − 8 = 2 percentage points; 2/8 = 25%."
+    },
+    {
+     "type": "Data quality",
+     "stem": "In a sales file, 5% of rows have no value in the Region field. A regional sales chart drops these rows, so its total is lower than the company's total sales. What is the best approach?",
+     "options": [
+      "Leave the chart as it is.",
+      "Show the missing rows as an \"Unassigned\" category and investigate why the region is missing.",
+      "Spread the missing sales equally across regions without saying so.",
+      "Delete the rows from the company total too.",
+      "Assign them all to the largest region."
+     ],
+     "answer": "B",
+     "explain": "Make the gap visible and find the cause. C and E invent data."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A form asks for \"Number of employees\" as free text. Answers include \"50-100\", \"75\" and \"about 60\". What is the best way to improve the data?",
+     "options": [
+      "Keep collecting free text.",
+      "Replace all answers with the median.",
+      "Delete all non-numeric answers.",
+      "Average the text answers.",
+      "Use predefined ranges or a validated numeric field in the form, and map the existing answers to ranges."
+     ],
+     "answer": "E",
+     "explain": "Prevent at the source (validation) and standardise what has already been collected."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A table of percentages that should describe a whole adds up to 101%. What is the most likely reason?",
+     "options": [
+      "The wrong denominator.",
+      "A missing category.",
+      "Rounding of the individual percentages.",
+      "A data entry error in one row.",
+      "Duplicate rows."
+     ],
+     "answer": "C",
+     "explain": "Rounding each percentage can make the total 99% or 101%."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You want to compare sales of 12 product categories in a single year. Which chart is most appropriate?",
+     "options": [
+      "Line chart",
+      "Scatter plot",
+      "Pie chart",
+      "Bar chart sorted by sales",
+      "Histogram"
+     ],
+     "answer": "D",
+     "explain": "Comparing categories → sorted bars. A pie with 12 slices is hard to read."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "Two charts are placed side by side to compare monthly sales in two regions. One chart's vertical axis runs from 0 to 100 and the other's from 0 to 1,000, but the bars look similar in height. What is the problem?",
+     "options": [
+      "The values should be percentages.",
+      "The months are in the wrong order.",
+      "The bars should be horizontal.",
+      "Each chart needs a title.",
+      "The different scales make the two regions look similar when their sales are very different."
+     ],
+     "answer": "E",
+     "explain": "Charts being compared need the same scale."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,653 @@
+{
+ "id": "s03",
+ "title": "Mock test 3",
+ "level": "realistic",
+ "note": "Close to the difficulty of the real test.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** Supermarket chain, 2025. *Private-label share = % of the category's sales from the chain's own brand.*\n\n| Category | Sales (€m) | Private-label share |\n|---|---|---|\n| Dairy | 48 | 40% |\n| Bakery | 30 | 25% |\n| Drinks | 62 | 15% |\n| Frozen | 20 | 35% |"
+    },
+    "g2": {
+     "md": "**Use the chart for questions 5–7.**",
+     "chart": {
+      "type": "line",
+      "title": "Monthly passengers at a regional airport (thousands)",
+      "yMin": 60,
+      "categories": [
+       "Jan",
+       "Feb",
+       "Mar",
+       "Apr",
+       "May",
+       "Jun"
+      ],
+      "series": [
+       {
+        "name": "Domestic",
+        "values": [
+         120,
+         115,
+         130,
+         145,
+         160,
+         190
+        ]
+       },
+       {
+        "name": "International",
+        "values": [
+         80,
+         78,
+         95,
+         120,
+         140,
+         175
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "What percentage of the chain's total private-label sales comes from Drinks?",
+     "options": [
+      "26.9%",
+      "21.6%",
+      "15.0%",
+      "23.3%",
+      "38.8%"
+     ],
+     "answer": "B",
+     "explain": "Private label: 19.2 + 7.5 + 9.3 + 7.0 = €43.0m. Drinks 9.3/43 = 21.6%. 15% is the share within Drinks; 38.8% is Drinks' share of total sales."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "What share of the chain's total sales across the four categories is private label?",
+     "options": [
+      "21.5%",
+      "28.8%",
+      "25.0%",
+      "26.9%",
+      "30.2%"
+     ],
+     "answer": "D",
+     "explain": "43.0/160 = 26.9%. 28.8% is the simple average of the four percentages."
+    },
+    {
+     "type": "Rule",
+     "stem": "A courier charges €6.00 for the first 2 kg of a parcel and €1.50 for each additional kg or part of a kg. Parcels over 20 kg pay a €10 surcharge. What does a 7.3 kg parcel cost?",
+     "options": [
+      "€16.95",
+      "€17.00",
+      "€13.95",
+      "€15.00",
+      "€12.00"
+     ],
+     "answer": "D",
+     "explain": "5.3 kg extra is charged as 6 kg: 6 + 6 × 1.50 = €15.00. €13.95 charges exactly 5.3 kg; €16.95 charges all 7.3 kg at 1.50."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 3, 5, 9, 15, 23, ?",
+     "options": [
+      "33",
+      "29",
+      "39",
+      "31",
+      "35"
+     ],
+     "answer": "A",
+     "explain": "Differences 2, 4, 6, 8 → 10: 23 + 10 = 33."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "In which month did international passengers grow by the largest percentage compared with the previous month?",
+     "options": [
+      "March",
+      "April",
+      "May",
+      "June",
+      "February"
+     ],
+     "answer": "B",
+     "explain": "Mar +21.8%, Apr +26.3%, May +16.7%, Jun +25.0%. June has the largest absolute rise (+35), not the largest percentage rise."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "What percentage of all passengers in the first half of the year (January–June) were international?",
+     "options": [
+      "55.6%",
+      "80.0%",
+      "40.0%",
+      "47.9%",
+      "44.4%"
+     ],
+     "answer": "E",
+     "explain": "International 688k, domestic 860k → 688/1,548 = 44.4%. 80% is 688/860 (another denominator); 47.9% is June only."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "Every passenger pays a €9 airport fee. By how much was the fee revenue in June higher than in January?",
+     "options": [
+      "€1,485k",
+      "€3,285k",
+      "€855k",
+      "€630k",
+      "€1,800k"
+     ],
+     "answer": "A",
+     "explain": "(365 − 200)k × 9 = €1,485k. 630 and 855 use only one of the two series."
+    },
+    {
+     "type": "Rule",
+     "stem": "A roaster blends 3 kg of beans costing €14/kg with 2 kg costing €19/kg and sells the blend at its cost plus 40%. What is the selling price per kg?",
+     "options": [
+      "€26.60",
+      "€16.00",
+      "€22.40",
+      "€23.10",
+      "€21.60"
+     ],
+     "answer": "C",
+     "explain": "Cost (42 + 38)/5 = €16/kg → × 1.4 = €22.40. €23.10 uses the simple average of the prices (16.50)."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 2, 5, 9. Row 2: 4, 3, 11. Row 3: 7, 6, ?",
+     "options": [
+      "13",
+      "21",
+      "26",
+      "20",
+      "19"
+     ],
+     "answer": "D",
+     "explain": "2a + b: 4 + 5 = 9; 8 + 3 = 11; 14 + 6 = 20."
+    },
+    {
+     "type": "Estimation",
+     "stem": "A factory produces 1,190 units per shift, runs 3 shifts a day and operates 248 days a year. Which is the best estimate of annual production?",
+     "options": [
+      "90,000",
+      "300,000",
+      "3 million",
+      "900,000",
+      "9 million"
+     ],
+     "answer": "D",
+     "explain": "≈ 1,200 × 3 × 250 = 900,000 (exactly 885,360)."
+    },
+    {
+     "type": "Calculation",
+     "stem": "Partners A, B and C share profit in the ratio 2 : 3 : 5. C receives €12,000 more than A. What is the total profit?",
+     "options": [
+      "€24,000",
+      "€60,000",
+      "€40,000",
+      "€30,000",
+      "€36,000"
+     ],
+     "answer": "C",
+     "explain": "C − A = 3 parts = 12,000 → 1 part = 4,000; total 10 parts = €40,000."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A car uses 6.5 litres of fuel per 100 km and fuel costs €1.60 per litre. What does fuel cost for a 350 km trip?",
+     "options": [
+      "€36.40",
+      "€40.30",
+      "€22.75",
+      "€3.64",
+      "€56.00"
+     ],
+     "answer": "A",
+     "explain": "3.5 × 6.5 = 22.75 litres × 1.60 = €36.40. 22.75 is the number of litres."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "All senior consultants have managed a project. No one who has managed a project is on the graduate scheme.\n\n**Conclusion:** No senior consultant is on the graduate scheme.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "Senior → has managed a project → not on the graduate scheme."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "All of the company's laptops are encrypted. Some encrypted devices are phones.\n\n**Conclusion:** Some of the company's laptops are phones.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "The encrypted devices that are phones need not be laptops."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Every client in the premium tier has a dedicated account manager. Some clients with a dedicated account manager are based abroad. All clients based abroad are invoiced in dollars.\n\nWhich statement must be true?",
+     "options": [
+      "Some premium clients are invoiced in dollars.",
+      "All clients invoiced in dollars are in the premium tier.",
+      "Some clients with a dedicated account manager are invoiced in dollars.",
+      "No premium client is based abroad.",
+      "All clients with a dedicated account manager are premium."
+     ],
+     "answer": "C",
+     "explain": "Clients with an account manager who are based abroad are invoiced in dollars. A doesn't follow: those clients may not be premium."
+    },
+    {
+     "type": "Deduction",
+     "stem": "If the team meets its quarterly target, every team member receives a bonus. Ana is a member of the team and did not receive a bonus this quarter.\n\nWhich statement must be true?",
+     "options": [
+      "The team did not meet its quarterly target.",
+      "Ana performed worse than her colleagues.",
+      "Nobody in the team received a bonus.",
+      "The team met its target but Ana was excluded.",
+      "The team will meet its target next quarter."
+     ],
+     "answer": "A",
+     "explain": "Contrapositive. C doesn't follow: others might receive a bonus for other reasons."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five colleagues (Iris, Jon, Kim, Leo, Mia) sit at desks 1 to 5 in a row.\n- Jon sits at desk 2.\n- Kim sits at one end of the row.\n- Iris does not sit next to Jon.\n- Mia does not sit at either end.\n- Leo sits immediately to the left of Mia (Leo's desk number is one lower).\n\nWho sits at desk 4?",
+     "options": [
+      "Iris",
+      "Kim",
+      "Leo",
+      "Mia",
+      "Jon"
+     ],
+     "answer": "D",
+     "explain": "Iris can't be at 1 or 3 → Iris at 4 or 5. Leo–Mia need two free adjacent desks with Mia ≠ 5: only 3–4. So Iris 5 and Kim 1."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five deliveries (P, Q, R, S, T) are made Monday to Friday, one per day.\n- R is on Wednesday.\n- Q is earlier in the week than P.\n- T is the day after S.\n- P is not on Friday.\n\nWhich delivery is on Thursday?",
+     "options": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T"
+     ],
+     "answer": "D",
+     "explain": "S–T on Monday–Tuesday would leave P on Friday. So S Thursday, T Friday, Q Monday, P Tuesday."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five buildings (V, W, X, Y, Z) have different heights.\n- V is taller than W but shorter than X.\n- Y is the shortest.\n- Z is taller than X.\n\nWhich building is the third tallest?",
+     "options": [
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z"
+     ],
+     "answer": "A",
+     "explain": "Z > X > V > W > Y."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"Sales of our premium coffee fell after we raised its price by 15%. If we lower the price back, sales will recover.\"\n\nWhich assumption does the argument rely on?",
+     "options": [
+      "Competitors will not change their prices.",
+      "The coffee's margin can absorb a price cut.",
+      "Customers prefer premium coffee.",
+      "Coffee prices will rise next year.",
+      "The fall in sales was caused by the price rise rather than by other factors."
+     ],
+     "answer": "E",
+     "explain": "If the fall came from something else, lowering the price won't reverse it."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"Employees who take part in the mentoring programme are promoted faster than those who don't. The programme speeds up promotions.\"\n\nWhich statement, if true, most weakens the argument?",
+     "options": [
+      "The programme is popular.",
+      "Only employees already rated as high-potential by their managers are allowed to join the programme.",
+      "Mentors receive training.",
+      "Promotions are decided once a year.",
+      "Some mentees leave the company."
+     ],
+     "answer": "B",
+     "explain": "Selection bias: the participants were already going to be promoted faster."
+    },
+    {
+     "type": "Strengthen",
+     "stem": "A delivery company claims its new route-planning software reduced fuel costs.\n\nWhich statement, if true, most strengthens the claim?",
+     "options": [
+      "Drivers find the software easy to use.",
+      "Fuel costs per km fell 9% at depots that adopted the software but stayed flat at comparable depots that did not, while fuel prices were unchanged.",
+      "Fuel prices fell during the year.",
+      "The software cost less than expected.",
+      "Other companies use similar software."
+     ],
+     "answer": "B",
+     "explain": "A control group and constant fuel prices. C weakens the claim: it offers another explanation."
+    },
+    {
+     "type": "Inference",
+     "stem": "Each of the 20 people in an office speaks English, French or both. 14 speak English and 11 speak French.\n\nWhich statement must be true?",
+     "options": [
+      "Exactly 3 people speak only French.",
+      "Exactly 14 people speak only English.",
+      "Nobody speaks both languages.",
+      "Exactly 5 people speak both languages.",
+      "25 people speak at least one of the languages."
+     ],
+     "answer": "D",
+     "explain": "14 + 11 − 20 = 5 speak both. Only French = 6; only English = 9."
+    },
+    {
+     "type": "Inference",
+     "stem": "The firm only hires graduates who have completed an internship. All of this year's graduate hires joined the Madrid office. Pedro is a graduate who was hired this year.\n\nWhich statement must be true?",
+     "options": [
+      "Pedro joined the Madrid office and has completed an internship.",
+      "All graduates who completed an internship were hired.",
+      "Everyone in the Madrid office is a graduate.",
+      "Pedro did his internship at the firm.",
+      "Pedro was the only graduate hired this year."
+     ],
+     "answer": "A",
+     "explain": "Direct application of both premises. B reverses the first; D adds information."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) The factory's main machine broke down.\n(2) The factory missed a delivery deadline.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "A",
+     "explain": "The breakdown (1) causes the delay (2)."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Schools in the region were closed on Monday.\n(2) Roads in the region were blocked by heavy snow on Monday.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "B",
+     "explain": "The snow (2) causes the school closures (1)."
+    },
+    {
+     "type": "Rules",
+     "stem": "Purchase approval policy:\n- Up to €1,000: approval by the team lead.\n- Above €1,000 and up to €5,000: approval by the department head.\n- Above €5,000: approval by both the department head and the finance director.\n- Any software subscription, whatever its cost, also needs approval from IT.\n\nWhich purchase complies with the policy?",
+     "options": [
+      "A €1,200 software subscription approved by the department head.",
+      "A €6,000 printer approved by the finance director.",
+      "A €900 software subscription approved by the team lead.",
+      "A €5,500 set of furniture approved by the department head.",
+      "A €5,000 laptop approved by the department head."
+     ],
+     "answer": "E",
+     "explain": "€5,000 falls within the \"up to €5,000\" band. A and C also need IT; B and D need both approvers."
+    },
+    {
+     "type": "Rules",
+     "stem": "A shop gives 10% off to customers who have been members for at least one year **or** have spent more than €500 in the last six months. The discount cannot be used on sale items.\n\nA customer who has been a member for 8 months and has spent €620 in the last six months buys a full-price item. Does the discount apply?",
+     "options": [
+      "No, because the item's price is unknown.",
+      "Yes, because of her membership.",
+      "Yes, because of her spending.",
+      "No, she has been a member for less than a year.",
+      "It cannot be determined."
+     ],
+     "answer": "C",
+     "explain": "Either condition is enough (\"or\"). The item is not on sale."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "bar",
+      "title": "Applications by programme (hundreds)",
+      "categories": [
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "series": [
+       {
+        "name": "Finance",
+        "values": [
+         12,
+         15,
+         14
+        ]
+       },
+       {
+        "name": "Marketing",
+        "values": [
+         8,
+         9,
+         13
+        ]
+       },
+       {
+        "name": "Data",
+        "values": [
+         5,
+         9,
+         16
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the chart? **Select all that apply.**",
+     "options": [
+      "Applications to Data more than tripled between 2023 and 2025.",
+      "Applications to Finance rose every year.",
+      "In 2025, Data received the most applications.",
+      "Total applications rose every year.",
+      "Data will receive more than 2,000 applications in 2026."
+     ],
+     "answer": "ACD",
+     "explain": "A ✔ 5 → 16 (×3.2). B ✗ falls in 2025. C ✔ 16 > 14 > 13. D ✔ 25, 33, 43. E ✗ forecast."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Restaurant branches, weekly figures:\n\n| Branch | Covers | Revenue (€k) | Staff |\n|---|---|---|---|\n| A | 1,200 | 36.0 | 15 |\n| B | 900 | 31.5 | 10 |\n| C | 1,500 | 39.0 | 18 |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "Branch B has the highest revenue per cover.",
+      "Branch C has the highest revenue per staff member.",
+      "Branch A serves more covers per staff member than Branch B.",
+      "Total weekly revenue across the three branches is €106.5k.",
+      "Branch C is the most profitable branch."
+     ],
+     "answer": "AD",
+     "explain": "A ✔ €35 vs 30 and 26. B ✗ 2.4; 3.15; 2.17 €k → B is highest. C ✗ 80 vs 90. D ✔. E ✗ there are no cost figures."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "line",
+      "title": "Share of customers paying by app (%)",
+      "categories": [
+       "2021",
+       "2022",
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "App payments",
+        "values": [
+         12,
+         18,
+         25,
+         31,
+         36
+        ]
+       }
+      ]
+     },
+     "stem": "Which statement about the change between 2021 and 2025 is correct?",
+     "options": [
+      "The share rose by 24%.",
+      "The share rose by 24 percentage points, to three times its 2021 level.",
+      "The share rose by 200 percentage points.",
+      "The share rose by 300%.",
+      "The share rose by 66.7%."
+     ],
+     "answer": "B",
+     "explain": "36 − 12 = 24 points; 36/12 = 3 (a 200% increase). A confuses percentage points with %."
+    },
+    {
+     "type": "Table",
+     "stem": "Monthly budget and actual spend (€k):\n\n| Department | Budget | Actual |\n|---|---|---|\n| Marketing | 120 | 138 |\n| IT | 200 | 210 |\n| HR | 80 | 76 |\n| Operations | 300 | 325 |\n\nWhich department overspent by the largest percentage of its budget?",
+     "options": [
+      "Operations",
+      "IT",
+      "HR",
+      "Marketing",
+      "IT and Operations equally"
+     ],
+     "answer": "D",
+     "explain": "Marketing +15%, IT +5%, HR −5%, Operations +8.3%. Operations has the largest overspend in euros (25), not in %."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A shop sold 300 units at €10, 150 units at €12 and 50 units at €20. What was the average price per unit sold?",
+     "options": [
+      "€14.00",
+      "€11.60",
+      "€12.00",
+      "€13.20",
+      "€10.80"
+     ],
+     "answer": "B",
+     "explain": "(3,000 + 1,800 + 1,000)/500 = €11.60. 14 is the simple average of the three prices."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "For the variable \"favourite colour\" in a survey, which measure of central tendency is appropriate?",
+     "options": [
+      "Median",
+      "Mode",
+      "Standard deviation",
+      "Range",
+      "Mean"
+     ],
+     "answer": "B",
+     "explain": "An unordered categorical variable → only the mode makes sense."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A report says that the average house price in a city rose 10% this year, while the median price fell 2%. What is the most likely explanation?",
+     "options": [
+      "A small number of very expensive sales pulled the average up.",
+      "The median always moves opposite to the mean.",
+      "Most houses became more expensive.",
+      "Cheaper houses rose most in price.",
+      "The report contains an error."
+     ],
+     "answer": "A",
+     "explain": "A few very high values move the mean but barely move the median."
+    },
+    {
+     "type": "Data quality",
+     "stem": "In an online survey, 40 respondents submitted the form twice, with the same email address and identical answers, two minutes apart. What should you do?",
+     "options": [
+      "Keep both submissions.",
+      "Ignore the problem.",
+      "Halve the weight of every response.",
+      "Remove the duplicate submissions, keeping one per email address.",
+      "Delete all 80 responses."
+     ],
+     "answer": "D",
+     "explain": "Exact duplicates: keep one response per person."
+    },
+    {
+     "type": "Data quality",
+     "stem": "Sales from the UK (in GBP) and Spain (in EUR) are stored in the same \"Amount\" column without a currency field. What is the best fix?",
+     "options": [
+      "Convert all amounts to one currency using the exchange rate for each transaction date, and record the currency.",
+      "Report the two countries' totals together without a unit.",
+      "Delete the UK rows.",
+      "Multiply all values by 1.2.",
+      "Add the amounts as they are."
+     ],
+     "answer": "A",
+     "explain": "Mixed currencies: convert using the right exchange rate and store the currency."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A dashboard shows sales for the current month down 60% on last month. Data for the current month has only been loaded up to the 12th. What should you do?",
+     "options": [
+      "Wait a year.",
+      "Report the 60% fall.",
+      "Compare like-for-like periods (e.g. the 1st to 12th of each month) or flag the month as incomplete.",
+      "Multiply the current month by 2.",
+      "Delete last month's data."
+     ],
+     "answer": "C",
+     "explain": "Incomplete period: compare equivalent periods or flag it."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You want to show the trend in monthly revenue over the last three years. Which chart is most appropriate?",
+     "options": [
+      "Table of totals",
+      "Pie chart",
+      "Histogram",
+      "Line chart",
+      "Scatter plot"
+     ],
+     "answer": "D",
+     "explain": "Change over time → line chart."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "A bar chart compares annual sales for 2022, 2023, 2024 and 2025, and shows 2025 well below the other years. The 2025 figure covers January to June only. What is the problem?",
+     "options": [
+      "A partial year is compared with full years, so 2025 looks worse than it is.",
+      "The bars should be horizontal.",
+      "Sales should be shown as a pie chart.",
+      "The chart needs more colours.",
+      "There is no problem."
+     ],
+     "answer": "A",
+     "explain": "It compares half a year with full years. Annualise, or compare the same months."
+    }
+   ]
+  }
+ }
+}

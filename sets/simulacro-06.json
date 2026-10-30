@@ -1,0 +1,633 @@
+{
+ "id": "s06",
+ "title": "Mock test 6",
+ "level": "challenging",
+ "note": "Longer calculations and subtler traps.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** Hotel chain, 2025. *Occupancy = % of rooms sold per night; ADR = average daily rate per sold room.*\n\n| City | Rooms | Occupancy | ADR (€) |\n|---|---|---|---|\n| Madrid | 400 | 78% | 120 |\n| Lisbon | 250 | 84% | 105 |\n| Rome | 320 | 71% | 140 |\n| Berlin | 280 | 66% | 98 |"
+    },
+    "g2": {
+     "md": "**Use the table for questions 5–7.** Software company, subscribers by plan (thousands) at the end of each quarter of 2025. Prices are per subscriber per month and did not change during the year.\n\n| Plan | Price (€/month) | Q1 | Q2 | Q3 | Q4 |\n|---|---|---|---|---|---|\n| Basic | 9 | 120 | 126 | 130 | 128 |\n| Pro | 25 | 45 | 50 | 56 | 63 |\n| Enterprise | 80 | 8 | 9 | 9 | 11 |"
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "Revenue per available room (RevPAR) = Occupancy × ADR. Which city has the highest RevPAR?",
+     "options": [
+      "Madrid",
+      "Lisbon",
+      "Berlin",
+      "Rome",
+      "Madrid and Rome equally"
+     ],
+     "answer": "D",
+     "explain": "Rome 0.71 × 140 = 99.4 > Madrid 93.6 > Lisbon 88.2."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "If Berlin's occupancy rose to 75% with ADR and rooms unchanged, by what percentage would Berlin's room revenue increase?",
+     "options": [
+      "9.0%",
+      "12.0%",
+      "15.2%",
+      "11.9%",
+      "13.6%"
+     ],
+     "answer": "E",
+     "explain": "75/66 − 1 = 13.6%."
+    },
+    {
+     "type": "Rule",
+     "stem": "A gym membership costs €45 per month. Paying 12 months upfront gives 15% off the annual total. Corporate members then get a further €60 off that discounted annual price. What is the effective monthly cost of the corporate annual plan?",
+     "options": [
+      "€38.25",
+      "€34.00",
+      "€33.25",
+      "€32.40",
+      "€35.75"
+     ],
+     "answer": "C",
+     "explain": "(540 × 0.85 − 60)/12 = €33.25."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 2, 6, 5, 15, 14, 42, ?",
+     "options": [
+      "126",
+      "41",
+      "43",
+      "40",
+      "84"
+     ],
+     "answer": "B",
+     "explain": "Alternates ×3 and −1 → 41."
+    },
+    {
+     "type": "Table",
+     "ctx": "g2",
+     "stem": "In Q4, what percentage of monthly subscription revenue came from the Pro plan?",
+     "options": [
+      "31.2%",
+      "38.5%",
+      "24.4%",
+      "43.7%",
+      "47.2%"
+     ],
+     "answer": "D",
+     "explain": "Pro 1,575 / total 3,607 = 43.7%. 31.2% is the share of subscribers (wrong base)."
+    },
+    {
+     "type": "Table",
+     "ctx": "g2",
+     "stem": "Which plan had the highest percentage growth in subscribers from Q1 to Q4?",
+     "options": [
+      "Basic",
+      "Enterprise",
+      "Pro",
+      "Pro and Enterprise equally",
+      "Cannot be determined"
+     ],
+     "answer": "C",
+     "explain": "Pro +40% vs Enterprise +37.5%."
+    },
+    {
+     "type": "Table",
+     "ctx": "g2",
+     "stem": "By what percentage did total monthly subscription revenue grow from Q1 to Q4?",
+     "options": [
+      "21.1%",
+      "16.8%",
+      "31.4%",
+      "23.6%",
+      "26.8%"
+     ],
+     "answer": "E",
+     "explain": "3,607/2,845 − 1 = 26.8%."
+    },
+    {
+     "type": "Rule",
+     "stem": "A course grade is made up of three components weighted 20%, 30% and 50%. A student scored 70 on the first and 82 on the second. What is the minimum score needed on the third component for an overall grade of 80?",
+     "options": [
+      "88.0",
+      "80.0",
+      "84.6",
+      "82.8",
+      "78.2"
+     ],
+     "answer": "D",
+     "explain": "(80 − 14 − 24.6)/0.5 = 82.8."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 6, 2, 32. Row 2: 9, 3, 72. Row 3: 8, 4, ?",
+     "options": [
+      "32",
+      "60",
+      "48",
+      "40",
+      "64"
+     ],
+     "answer": "C",
+     "explain": "a² − b²: 64 − 16 = 48."
+    },
+    {
+     "type": "Estimation",
+     "stem": "A city has 2.38 million residents. 31% of them use public transport on a typical day, making an average of 2.1 trips each. Which is the best estimate of the number of public transport trips on a typical day?",
+     "options": [
+      "0.75 million",
+      "1.0 million",
+      "2.0 million",
+      "1.5 million",
+      "3.0 million"
+     ],
+     "answer": "D",
+     "explain": "2.4 × 0.3 × 2 ≈ 1.5m."
+    },
+    {
+     "type": "Rule",
+     "stem": "A Spanish company imports 1,200 units priced at USD 14.50 each. The exchange rate is €1 = USD 1.16. An import duty of 4% applies to the goods' value in euros, and a fixed shipping fee of €350 (not subject to duty) is added. What is the total cost in euros?",
+     "options": [
+      "€15,964",
+      "€15,950",
+      "€21,341",
+      "€15,350",
+      "€16,530"
+     ],
+     "answer": "B",
+     "explain": "17,400/1.16 = 15,000; × 1.04 = 15,600; + 350 = €15,950."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A project requires 336 person-hours. Four people work on it for 6 hours a day. After 5 days, two more people join, also working 6 hours a day at the same rate. How many more days are needed to finish?",
+     "options": [
+      "9",
+      "8",
+      "6",
+      "4",
+      "5"
+     ],
+     "answer": "C",
+     "explain": "(336 − 120)/36 = 6."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "No interns have access to the payroll system. Some analysts are interns.\n\n**Conclusion:** Some analysts do not have access to the payroll system.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "The analysts who are interns have no access. It follows."
+    },
+    {
+     "type": "Deduction",
+     "stem": "All projects approved in Q3 were reviewed by the risk committee. No project reviewed by the risk committee exceeded its budget. Which conclusion follows?",
+     "options": [
+      "All projects that stayed within budget were approved in Q3.",
+      "Some projects reviewed by the risk committee were not approved in Q3.",
+      "No project approved in Q3 exceeded its budget.",
+      "Projects not approved in Q3 exceeded their budget.",
+      "None of the above follows."
+     ],
+     "answer": "C",
+     "explain": "Q3 → reviewed → doesn't exceed."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "Some suppliers are certified. Some certified companies are based in Portugal.\n\n**Conclusion:** Some suppliers are based in Portugal.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "\"Some\" + \"some\" never gives a conclusion."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Every manager in the Lisbon office speaks Portuguese. Ana speaks Portuguese. Marta works in the Lisbon office and does not speak Portuguese. Which statement must be true?",
+     "options": [
+      "Ana is a manager in the Lisbon office.",
+      "Ana works in the Lisbon office.",
+      "Some managers in the Lisbon office do not speak Portuguese.",
+      "Marta is not a manager in the Lisbon office.",
+      "Only managers in the Lisbon office speak Portuguese."
+     ],
+     "answer": "D",
+     "explain": "If she were a manager, she would speak Portuguese."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Six deliveries (P, Q, R, S, T, U) are scheduled one per day, Monday to Saturday.\n- R is on Wednesday.\n- P is on an earlier day than Q.\n- T is on the day immediately after S.\n- U is on Monday or Saturday.\n- Q is not on Saturday.\n- Neither P nor S is on Monday.\n\nOn which day is Q?",
+     "options": [
+      "Tuesday",
+      "Friday",
+      "Thursday",
+      "Monday",
+      "Saturday"
+     ],
+     "answer": "C",
+     "explain": "U on Saturday leaves nothing for Monday → U Monday. S–T can't be Thu–Fri (Q would end up on Saturday) → S–T Fri–Sat, P Tuesday, Q Thursday."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five sales teams (North, South, East, West, Central) are ranked 1st to 5th by revenue, with no ties.\n- North is ranked above Central.\n- South is ranked immediately below Central.\n- East is ranked exactly two places above West.\n\nWhich team is ranked 3rd?",
+     "options": [
+      "North",
+      "Central",
+      "East",
+      "West",
+      "South"
+     ],
+     "answer": "D",
+     "explain": "Only possible order: East, North, West, Central, South."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five people (Kim, Leo, Mia, Nora, Oscar) each give one presentation, at 9:00, 10:00, 11:00, 12:00 and 13:00.\n- Oscar presents at 12:00.\n- Kim and Leo do not present in consecutive slots.\n- Mia presents immediately before or immediately after Nora.\n- Kim presents before Mia.\n- Nora does not present at 9:00.\n\nWhich statement must be true?",
+     "options": [
+      "Mia presents at 10:00.",
+      "Leo presents last.",
+      "Nora presents at 11:00.",
+      "Kim presents at 12:00.",
+      "Oscar presents immediately after Leo."
+     ],
+     "answer": "B",
+     "explain": "Mia–Nora at 10–11, Kim 9, Leo 13."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"Employees who completed our online training modules last year scored higher on the final assessment than employees trained in person. We should therefore replace in-person training with online modules.\" Which assumption does the argument rely on?",
+     "options": [
+      "Online modules cost less than in-person training.",
+      "In-person trainers are poorly qualified.",
+      "All employees have internet access at home.",
+      "Final assessment scores will keep rising every year.",
+      "The employees who took the online modules were not already stronger performers than those trained in person."
+     ],
+     "answer": "E",
+     "explain": "It rules out selection bias."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"The city introduced a congestion charge in March. By June, average traffic in the city centre was 15% lower than in March. The charge therefore reduced traffic.\" Which statement, if true, most weakens the argument?",
+     "options": [
+      "The charge raised €2 million in its first three months.",
+      "Public transport use rose over the same period.",
+      "Some drivers complained about the charge.",
+      "Because of seasonal patterns, city-centre traffic falls by around 15% between March and June every year.",
+      "Several other cities also have congestion charges."
+     ],
+     "answer": "D",
+     "explain": "Seasonality explains the whole fall."
+    },
+    {
+     "type": "Strengthen",
+     "stem": "A retailer claims that its new store layout caused the 8% rise in sales per customer at its pilot stores. Which statement, if true, most strengthens the claim?",
+     "options": [
+      "The pilot stores are in wealthier neighbourhoods than the rest of the chain.",
+      "The new layout cost less to install than expected.",
+      "Comparable stores with similar customers that kept the old layout saw no change in sales per customer over the same period.",
+      "Customers said they liked the new colour scheme.",
+      "Sales per customer rose 8% across the whole chain over the same period."
+     ],
+     "answer": "C",
+     "explain": "A comparable control group."
+    },
+    {
+     "type": "Inference",
+     "stem": "In 2025, every product the company launched in Germany had first been tested in Austria. None of the products tested in Austria in 2025 was priced above €50. The company launched a product called Vela in Germany in 2025. Which statement must be true?",
+     "options": [
+      "Vela was the cheapest product launched in Germany in 2025.",
+      "All products tested in Austria were launched in Germany.",
+      "Vela was launched in Austria.",
+      "No product priced above €50 was launched anywhere in 2025.",
+      "Vela was tested in Austria."
+     ],
+     "answer": "E",
+     "explain": "Launched in Germany → tested in Austria."
+    },
+    {
+     "type": "Inference",
+     "stem": "A survey of 2,000 employees found that 60% work remotely at least two days a week. Of these remote workers, 70% report high job satisfaction; of the other employees, 45% do. Which statement must be true?",
+     "options": [
+      "Working remotely causes higher job satisfaction.",
+      "Exactly 70% of all surveyed employees report high job satisfaction.",
+      "More than half of all surveyed employees report high job satisfaction.",
+      "Employees who do not work remotely would like to.",
+      "Satisfaction would rise if all employees worked remotely."
+     ],
+     "answer": "C",
+     "explain": "0.6 × 0.7 + 0.4 × 0.45 = 60% > 50%. E is causal/hypothetical."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) The central bank raised interest rates sharply.\n(2) Mortgage applications at the country's banks fell to a ten-year low.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "A",
+     "explain": "Rate rise → mortgages fall."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Sales of umbrellas in the city tripled this week.\n(2) Attendance at the city's outdoor food festival this week was the lowest on record.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "D",
+     "explain": "Both are effects of the rain (common cause)."
+    },
+    {
+     "type": "Rules",
+     "stem": "Company travel policy: Employees may book business class only if (a) the flight lasts more than 6 hours, or (b) the employee is a Director or above **and** the flight departs before 07:00. In every case, the booking must be made at least 7 days in advance unless the CFO approves it. (Partners rank above Directors.) Which booking complies with the policy?",
+     "options": [
+      "A Partner books business class for a 3-hour flight departing at 06:45, two days in advance, with CFO approval.",
+      "An Analyst books business class for a 5-hour flight departing at 06:30, ten days in advance.",
+      "A Director books business class for a 4-hour flight departing at 08:15, fourteen days in advance.",
+      "A Manager books business class for a 7-hour flight, three days in advance, without CFO approval.",
+      "A Director books business class for a 6-hour flight departing at 09:00, eight days in advance."
+     ],
+     "answer": "A",
+     "explain": "Partner + before 07:00, and the CFO covers the 7 days. In E, 6 h is not \"more than 6\"."
+    },
+    {
+     "type": "Rules",
+     "stem": "Loyalty rule: A customer qualifies for the loyalty discount if they have been a customer for at least 3 years **and** either spent more than €2,000 in the past 12 months **or** referred at least 2 new customers who each made a purchase. Customers with an overdue invoice are never eligible.\nAs of October 2026, Customer X has been a customer since March 2022, spent €1,800 in the past 12 months, and referred 3 people, of whom 1 made a purchase. X has no overdue invoices. Does X qualify?",
+     "options": [
+      "Yes, because X has been a customer for more than 3 years and has no overdue invoices.",
+      "Yes, because X referred three people.",
+      "No, because X has been a customer for less than 3 years.",
+      "Cannot be determined.",
+      "No, because X meets neither the spending condition nor the referral condition."
+     ],
+     "answer": "E",
+     "explain": "Tenure yes, but neither spending > 2,000 nor 2 referrals who bought."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "line",
+      "title": "Monthly revenue (€k)",
+      "categories": [
+       "Jan",
+       "Feb",
+       "Mar",
+       "Apr",
+       "May",
+       "Jun"
+      ],
+      "series": [
+       {
+        "name": "Store A",
+        "values": [
+         210,
+         225,
+         218,
+         240,
+         252,
+         260
+        ]
+       },
+       {
+        "name": "Store B",
+        "values": [
+         180,
+         196,
+         214,
+         232,
+         245,
+         255
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "Store A's revenue rose every month.",
+      "Store B's revenue rose every month.",
+      "The gap between Store A and Store B narrowed every month.",
+      "Store B's revenue grew by a higher percentage than Store A's between January and June.",
+      "Store B will overtake Store A in July."
+     ],
+     "answer": "BD",
+     "explain": "A falls in March; the gap widens in April (4 → 8); E is a forecast."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Customer satisfaction survey.\n\n| Age group | Respondents | Satisfied |\n|---|---|---|\n| 18–29 | 250 | 64% |\n| 30–44 | 400 | 72% |\n| 45–59 | 300 | 80% |\n| 60+ | 50 | 90% |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "More than 70% of all respondents were satisfied.",
+      "The 60+ group had the largest number of satisfied respondents.",
+      "The satisfaction rate is higher in each successive (older) age group.",
+      "Older customers are more satisfied because they use the product more often.",
+      "The overall satisfaction rate equals the average of the four group rates (76.5%)."
+     ],
+     "answer": "AC",
+     "explain": "Total 733/1,000 = 73.3%. The 60+ group has only 45 satisfied. D is causal."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "stacked",
+      "title": "Operating costs by category",
+      "categories": [
+       "2024",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "Staff",
+        "values": [
+         50,
+         44
+        ]
+       },
+       {
+        "name": "Rent",
+        "values": [
+         20,
+         18
+        ]
+       },
+       {
+        "name": "IT",
+        "values": [
+         15,
+         22
+        ]
+       },
+       {
+        "name": "Other",
+        "values": [
+         15,
+         16
+        ]
+       }
+      ],
+      "note": "Total operating costs: €4.0m in 2024, €5.0m in 2025."
+     },
+     "stem": "Which cost categories decreased in euros from 2024 to 2025?",
+     "options": [
+      "Staff",
+      "Rent",
+      "Staff and Rent",
+      "IT",
+      "None of them"
+     ],
+     "answer": "E",
+     "explain": "Rent 0.80 → €0.90m; Staff 2.0 → €2.2m. Every category rises in euros."
+    },
+    {
+     "type": "Table",
+     "stem": "Quarterly sales of one product:\n\n| Quarter | Units sold | Revenue (€) |\n|---|---|---|\n| Q1 | 1,200 | 48,000 |\n| Q2 | 1,500 | 57,000 |\n| Q3 | 1,800 | 63,000 |\n| Q4 | 2,000 | 66,000 |\n\nWhich statement is supported by the data?",
+     "options": [
+      "Revenue grew faster than units sold in every quarter.",
+      "Revenue doubled over the year.",
+      "The average price per unit fell every quarter.",
+      "The average price per unit fell by more than 20% between Q1 and Q4.",
+      "Growth in units sold accelerated every quarter."
+     ],
+     "answer": "C",
+     "explain": "Average price 40 → 38 → 35 → 33 (−17.5%)."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Delivery times (days) for nine orders: 2, 3, 3, 4, 4, 4, 5, 6, 23. Which statement is correct?",
+     "options": [
+      "The mean is 4 and the median is 4.",
+      "The mean is lower than the median.",
+      "The mode is 3.",
+      "Removing the 23-day order would lower the median.",
+      "The mean is 6 and the median is 4."
+     ],
+     "answer": "E",
+     "explain": "54/9 = 6; median 4."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Three call centres:\n\n| Centre | Calls handled | Average handling time (min) |\n|---|---|---|\n| A | 1,200 | 5 |\n| B | 800 | 8 |\n| C | 2,000 | 6 |\n\nWhat is the average handling time across all calls?",
+     "options": [
+      "6.33 min",
+      "6.00 min",
+      "5.90 min",
+      "6.10 min",
+      "6.50 min"
+     ],
+     "answer": "D",
+     "explain": "24,400/4,000 = 6.10."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A website's conversion rate went from 12% in May to 15% in June. Which description is correct?",
+     "options": [
+      "It increased by 3%.",
+      "It increased by 25 percentage points.",
+      "It increased by 3 percentage points, a relative increase of 25%.",
+      "It increased by 20%.",
+      "It increased by 3 percentage points, a relative increase of 20%."
+     ],
+     "answer": "C",
+     "explain": "+3 points; 3/12 = +25%."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A customer database of 5,000 records contains duplicates in which the same person's name is written differently (e.g. \"María López\" and \"maria lopez \"). What is the best way to identify the duplicates?",
+     "options": [
+      "Standardise text fields (case, accents, extra spaces), then match records on a unique identifier such as customer ID or email.",
+      "Match records only on exact full name.",
+      "Delete all records that share a surname.",
+      "Keep only the most recent record for each first name.",
+      "Sort the list alphabetically and inspect all 5,000 records by eye."
+     ],
+     "answer": "A",
+     "explain": "Normalise and match on a unique identifier."
+    },
+    {
+     "type": "Data quality",
+     "stem": "In a survey, the income field is blank for 30% of respondents, and the blanks are concentrated among younger respondents. An analyst needs to report average income. What is the best approach?",
+     "options": [
+      "Replace the blanks with 0 and compute the average.",
+      "Compute the average from the responses available, and report the 30% missing rate and the fact that blanks are concentrated among younger respondents, since this may bias the result.",
+      "Delete the income column from the dataset.",
+      "Fill the blanks with the highest income reported.",
+      "Compute the average from the responses available and present it as the average for all respondents, without comment."
+     ],
+     "answer": "B",
+     "explain": "Calculate with what's available and state the bias."
+    },
+    {
+     "type": "Data quality",
+     "stem": "Country teams submitted quarterly revenue to a shared sheet:\n\n| Country | Revenue |\n|---|---|\n| Spain | 1,250 |\n| France | 1,480 |\n| Italy | 1,320,000 |\n| Portugal | 640 |\n\nThe template asked for figures in €k. What is the best action?",
+     "options": [
+      "Exclude Italy as an outlier.",
+      "Divide every value by 1,000.",
+      "Report the median instead of the total.",
+      "Confirm Italy's unit with the source, convert it to €k (1,320), and add a unit column or validation rule to the template.",
+      "Leave the data as submitted."
+     ],
+     "answer": "D",
+     "explain": "Confirm, convert and prevent."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You need to show how the monthly revenue of three product lines evolved over 24 months. Which chart is most appropriate?",
+     "options": [
+      "Pie chart",
+      "100% stacked bar chart",
+      "Histogram",
+      "Scatter plot",
+      "Line chart with one line per product line"
+     ],
+     "answer": "E",
+     "explain": "Trend over time → line chart."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "A bar chart compares customer satisfaction: Company A 52%, Company B 48%. The y-axis starts at 46%, so A's bar looks three times as tall as B's. What is the main problem?",
+     "options": [
+      "Percentages should be shown in a pie chart.",
+      "The truncated y-axis exaggerates a 4-percentage-point difference.",
+      "The two values should add up to 100%.",
+      "A line chart should be used for two categories.",
+      "The bars should be sorted alphabetically."
+     ],
+     "answer": "B",
+     "explain": "Truncated axis."
+    }
+   ]
+  }
+ }
+}

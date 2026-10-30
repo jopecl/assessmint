@@ -1,0 +1,682 @@
+{
+ "id": "s10",
+ "title": "Mock test 10",
+ "level": "challenging",
+ "note": "Longer calculations and subtler traps.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** University admissions, 2025. *Acceptance = % of offers that applicants accepted (and then enrolled).*\n\n| Faculty | Applicants | Offers made | Acceptance |\n|---|---|---|---|\n| Engineering | 4,800 | 1,200 | 60% |\n| Law | 3,200 | 720 | 75% |\n| Medicine | 6,000 | 450 | 90% |\n| Business | 5,400 | 1,620 | 45% |"
+    },
+    "g2": {
+     "md": "**Use the chart for questions 5–7.**",
+     "chart": {
+      "type": "bar",
+      "title": "Tourist arrivals by region (millions)",
+      "categories": [
+       "2022",
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "series": [
+       {
+        "name": "Coast",
+        "values": [
+         12.4,
+         13.1,
+         14,
+         14.9
+        ]
+       },
+       {
+        "name": "Islands",
+        "values": [
+         9.8,
+         10.2,
+         11.5,
+         12.1
+        ]
+       },
+       {
+        "name": "Capital",
+        "values": [
+         7.5,
+         8.4,
+         9,
+         9.9
+        ]
+       },
+       {
+        "name": "Interior",
+        "values": [
+         2.1,
+         2.3,
+         2.2,
+         2.6
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "Which faculty enrolled the highest percentage of its applicants?",
+     "options": [
+      "Engineering",
+      "Medicine",
+      "Law",
+      "Business",
+      "Engineering and Law equally"
+     ],
+     "answer": "C",
+     "explain": "Enrolled = offers × acceptance: Engineering 720 (15.0%), Law 540 (16.9%), Medicine 405 (6.8%), Business 729 (13.5%). Medicine has the highest acceptance rate, but on very few offers."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "Across the four faculties, what percentage of all offers made were accepted?",
+     "options": [
+      "67.5%",
+      "60.0%",
+      "12.3%",
+      "62.4%",
+      "58.5%"
+     ],
+     "answer": "B",
+     "explain": "2,394 accepted / 3,990 offers = 60.0%. 67.5% is the simple average of the rates; 12.3% divides by applicants."
+    },
+    {
+     "type": "Rule",
+     "stem": "Travel policy: employees receive €60 for each full day abroad and €30 for each travel day (the departure and return days are travel days). Hotels are reimbursed up to €150 per night; any excess is not reimbursed. An employee leaves on Monday, returns on Friday and stays 4 nights at €170 per night. How much is reimbursed in total?",
+     "options": [
+      "€840",
+      "€920",
+      "€900",
+      "€780",
+      "€960"
+     ],
+     "answer": "A",
+     "explain": "Per diems 2 × 30 + 3 × 60 = 240; hotel 4 × 150 = 600; total €840. €920 reimburses the full hotel cost."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 3, 6, 4, 8, 6, 12, 10, ?",
+     "options": [
+      "14",
+      "20",
+      "18",
+      "24",
+      "16"
+     ],
+     "answer": "B",
+     "explain": "Alternates ×2 and −2: 10 × 2 = 20."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "Which region had the largest percentage growth in arrivals between 2022 and 2025?",
+     "options": [
+      "Coast",
+      "Islands",
+      "Capital",
+      "Interior",
+      "Islands and Interior equally"
+     ],
+     "answer": "C",
+     "explain": "Coast +20.2%, Islands +23.5%, Capital +32.0%, Interior +23.8%. Coast grows most in millions (+2.5), not in %."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "What share of total 2025 arrivals went to the Islands?",
+     "options": [
+      "30.8%",
+      "30.6%",
+      "32.1%",
+      "28.9%",
+      "25.0%"
+     ],
+     "answer": "B",
+     "explain": "Total 2025 = 39.5m → 12.1/39.5 = 30.6%. 30.8% is 2022 (wrong year)."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "Average spending per arrival is €640 in the Capital and €410 in the Interior, and did not change over the period. By how much did combined tourist spending in these two regions increase between 2022 and 2025?",
+     "options": [
+      "€1,741m",
+      "€1,536m",
+      "€2,900m",
+      "€1,050m",
+      "€1,925m"
+     ],
+     "answer": "A",
+     "explain": "Capital +2.4m × 640 = €1,536m; Interior +0.5m × 410 = €205m. Total €1,741m."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A machine's output falls by 4% a year, compounded. It produced 50,000 units this year. How many units will it produce three years from now?",
+     "options": [
+      "44,000",
+      "46,080",
+      "44,237",
+      "42,000",
+      "45,120"
+     ],
+     "answer": "C",
+     "explain": "50,000 × 0.96³ = 44,237. 44,000 subtracts 12% linearly; 46,080 is two years."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 3, 4, 5. Row 2: 5, 6, 19. Row 3: 7, 3, ?",
+     "options": [
+      "13",
+      "11",
+      "21",
+      "10",
+      "15"
+     ],
+     "answer": "B",
+     "explain": "a × b − (a + b): 12 − 7 = 5; 30 − 11 = 19; 21 − 10 = 11. Careful: 3-4-5 suggests Pythagoras, but it doesn't work on row 2."
+    },
+    {
+     "type": "Estimation",
+     "stem": "A hospital uses 1,870 pairs of gloves a day, every day of the year. A box of 48 pairs costs €6.90. Which is the best estimate of the annual spend on gloves?",
+     "options": [
+      "€10,000",
+      "€50,000",
+      "€200,000",
+      "€100,000",
+      "€1m"
+     ],
+     "answer": "D",
+     "explain": "≈ 1,900 × 365/50 × 7 ≈ €97,000 (exactly €98,117)."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A €84,000 bonus pool is split among three teams in proportion to their headcounts of 5, 7 and 9. How much does the largest team receive?",
+     "options": [
+      "€36,000",
+      "€28,000",
+      "€30,000",
+      "€32,400",
+      "€40,500"
+     ],
+     "answer": "A",
+     "explain": "84,000/21 × 9 = €36,000."
+    },
+    {
+     "type": "Calculation",
+     "stem": "An investor buys shares for €8,000. Their value rises 30% in the first year and falls 30% in the second. When the shares are sold, a 1% fee is charged on the sale value. What are the net proceeds?",
+     "options": [
+      "€7,920.00",
+      "€7,280.00",
+      "€8,000.00",
+      "€7,128.00",
+      "€7,207.20"
+     ],
+     "answer": "E",
+     "explain": "8,000 × 1.3 × 0.7 = 7,280; × 0.99 = €7,207.20. +30% and −30% don't cancel out."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "All certified installers have completed the safety training. Rafa has not completed the safety training.\n\n**Conclusion:** Rafa is not a certified installer.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "Contrapositive: no training → not certified."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "Some members of the sales team are based in Bilbao. Everyone based in Bilbao speaks Basque.\n\n**Conclusion:** Everyone in the sales team speaks Basque.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "We only know about those in Bilbao; \"some\" doesn't allow \"everyone\"."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Some of the reports submitted late were rejected. All rejected reports were sent back to their authors. No report that was sent back to its author was published this month.\n\nWhich statement must be true?",
+     "options": [
+      "All reports submitted late were rejected.",
+      "No report submitted late was published this month.",
+      "Some reports submitted late were not published this month.",
+      "All reports sent back to their authors were submitted late.",
+      "None of the above."
+     ],
+     "answer": "C",
+     "explain": "Late submissions that were rejected were returned and not published. B generalises to all late submissions."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Each consultant on the project is either a specialist or a generalist, but not both. All specialists on the project have an MBA. Laura is a consultant on the project and does not have an MBA.\n\nWhich statement must be true?",
+     "options": [
+      "Laura is a specialist.",
+      "No generalist on the project has an MBA.",
+      "All generalists lack an MBA.",
+      "Laura will need an MBA to stay on the project.",
+      "Laura is a generalist."
+     ],
+     "answer": "E",
+     "explain": "No MBA → not a specialist → generalist. B and C assume something about generalists that isn't stated."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Six tasks (P, Q, R, S, T, U) are done one at a time, in positions 1 to 6.\n- T is done 3rd.\n- S is done immediately after R.\n- Q is done after P.\n- U is done before Q.\n- P is not done first.\n- Q is not done last.\n\nWhich task is done 4th?",
+     "options": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "U"
+     ],
+     "answer": "B",
+     "explain": "Q comes after P and U, so it is the last of the three. R–S in 1–2 or 4–5 leaves P, Q, U where Q ends up 6th (not allowed). So R–S = 5–6, and P, Q, U take 1, 2, 4: U 1, P 2, Q 4."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five cars (red, blue, green, white and black) are parked in spaces 1 to 5, one per space.\n- The green car is in space 2 or space 4.\n- The white car is somewhere to the left of the black car.\n- The red car is not next to the blue car.\n- The black car is not in space 5.\n- Neither the blue car nor the white car is in space 1.\n\nWhich car is in space 5?",
+     "options": [
+      "Red",
+      "Green",
+      "White",
+      "Blue",
+      "Black"
+     ],
+     "answer": "D",
+     "explain": "Space 1 can only be red or green, and green goes in 2 or 4 → red in 1. The solutions are R G W K B and R W K G B: blue is in 5 in both."
+    },
+    {
+     "type": "Selection",
+     "stem": "A committee of exactly three is chosen from Ana, Bruno, Carmen, Diego, Elena and Fran.\n- Ana and Bruno cannot both be chosen.\n- Carmen can be chosen only if Diego is chosen.\n- Exactly one of Elena and Fran is chosen.\n- Diego and Fran cannot both be chosen.\n\nWhich statement must be true?",
+     "options": [
+      "Ana is chosen.",
+      "Fran is chosen.",
+      "Diego is chosen.",
+      "Carmen is not chosen.",
+      "Bruno is chosen."
+     ],
+     "answer": "C",
+     "explain": "Valid committees: Ana-Diego-Elena, Bruno-Diego-Elena, Carmen-Diego-Elena. With Fran you can't reach three valid members."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"Since we launched the new website, the average time visitors spend on it has doubled. This shows that customers find the new website more engaging.\"\n\nWhich assumption does the argument rely on?",
+     "options": [
+      "Visitors spend longer on the site because they are engaged, not because they struggle to find what they need.",
+      "The new website cost more than the old one.",
+      "Most visitors use mobile phones.",
+      "Competitors' websites are less engaging.",
+      "Time on site will keep rising."
+     ],
+     "answer": "A",
+     "explain": "More time could mean more difficulty; the argument assumes it doesn't."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"After the city installed 200 CCTV cameras in the centre, the crime rate in the centre fell by 18%. The cameras clearly reduced crime.\"\n\nWhich statement, if true, most weakens the argument?",
+     "options": [
+      "The cameras cost €3 million.",
+      "Most residents support the cameras.",
+      "Some crimes were recorded by the cameras.",
+      "Crime fell by about 18% in districts of the city without cameras over the same period.",
+      "Other cities also use CCTV."
+     ],
+     "answer": "D",
+     "explain": "It falls just as much without cameras → the fall isn't due to them."
+    },
+    {
+     "type": "Flaw",
+     "stem": "\"Our satisfaction survey, completed by customers who chose to respond through our app, shows 92% satisfaction. So nearly all of our customers are satisfied.\"\n\nWhich statement best describes the flaw?",
+     "options": [
+      "92% is too precise a figure.",
+      "The survey was too short.",
+      "Satisfaction cannot be measured.",
+      "The app may be difficult to use.",
+      "Customers who chose to respond through the app may not represent all customers."
+     ],
+     "answer": "E",
+     "explain": "A self-selected sample: people who answer through the app need not represent everyone."
+    },
+    {
+     "type": "Inference",
+     "stem": "In a group of 30 employees, 18 work on Project X and 16 work on Project Y. Every employee works on at least one of the two projects.\n\nWhich statement must be true?",
+     "options": [
+      "More employees work only on Y than only on X.",
+      "Two employees work on neither project.",
+      "Exactly 16 employees work only on X.",
+      "Exactly 4 employees work on both projects.",
+      "Half of the employees work on both projects."
+     ],
+     "answer": "D",
+     "explain": "18 + 16 − 30 = 4 in both. Only X 14, only Y 12."
+    },
+    {
+     "type": "Inference",
+     "stem": "Company policy is that every order above €5,000 needs a director's approval. Last month, every order approved by a director was delivered late. Order 7741 was placed last month, was worth €6,200 and followed the policy.\n\nWhich statement must be true?",
+     "options": [
+      "All late orders last month were above €5,000.",
+      "Order 7741 was delivered late.",
+      "Directors' approval causes delays.",
+      "Orders below €5,000 were delivered on time.",
+      "Order 7741 was approved late."
+     ],
+     "answer": "B",
+     "explain": "> €5,000 and compliant → approved by a director → delivered late. C is causal; A and D can't be deduced."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Shares of most airlines fell sharply on Monday.\n(2) Shares of most hotel chains fell sharply on Monday.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "D",
+     "explain": "Neither causes the other; both respond to common news that affects travel."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Applications to nursing degrees rose by 25%.\n(2) The government announced free tuition for nursing students.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "B",
+     "explain": "Free tuition (2) increases applications (1)."
+    },
+    {
+     "type": "Rules",
+     "stem": "Overtime policy: hours worked beyond 40 in a week (Monday–Saturday) are paid at 1.5× the hourly rate. All hours worked on Sunday are paid at 2× and do not count toward the 40. An employee earning €20 per hour works 44 hours from Monday to Saturday and 5 hours on Sunday. What is the week's pay?",
+     "options": [
+      "€980",
+      "€1,080",
+      "€1,120",
+      "€1,170",
+      "€1,040"
+     ],
+     "answer": "C",
+     "explain": "40 × 20 + 4 × 30 + 5 × 40 = 800 + 120 + 200 = €1,120."
+    },
+    {
+     "type": "Rules",
+     "stem": "Scholarship rule: applicants qualify if they have an average grade of at least 8.0, **or** an average of at least 7.0 **and** household income below €30,000. Applicants who have previously received **this** scholarship are not eligible.\n\nAn applicant has an average of 7.4, household income of €28,500, and received a different scholarship last year. Do they qualify?",
+     "options": [
+      "No, because their average is below 8.0.",
+      "Yes, because their average is at least 7.0 and household income is below €30,000.",
+      "No, because they have received a scholarship before.",
+      "It cannot be determined.",
+      "Yes, because an average above 7.0 is enough on its own."
+     ],
+     "answer": "B",
+     "explain": "Meets the second route; the exclusion only applies to past recipients of this same scholarship."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "line",
+      "title": "Online share of each retailer's sales (%)",
+      "categories": [
+       "2021",
+       "2022",
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "Retailer 1",
+        "values": [
+         12,
+         15,
+         19,
+         22,
+         24
+        ]
+       },
+       {
+        "name": "Retailer 2",
+        "values": [
+         30,
+         29,
+         31,
+         30,
+         32
+        ]
+       },
+       {
+        "name": "Retailer 3",
+        "values": [
+         5,
+         9,
+         14,
+         21,
+         27
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the chart? **Select all that apply.**",
+     "options": [
+      "Retailer 3's online share rose every year.",
+      "In 2025, Retailer 3 had a higher online share than Retailer 1.",
+      "In 2025, Retailer 3's online sales were higher than Retailer 1's.",
+      "Retailer 2's online share rose every year.",
+      "Retailer 1's online share doubled between 2021 and 2025."
+     ],
+     "answer": "ABE",
+     "explain": "C ✗: these are shares of sales of unknown size, not sales. D ✗: falls in 2022 and 2024. E ✔: 12 → 24."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Customer support tickets, Q1.\n\n| Channel | Tickets | Resolved within 24h | Avg satisfaction (1–5) |\n|---|---|---|---|\n| Email | 3,200 | 70% | 3.8 |\n| Chat | 4,500 | 88% | 4.2 |\n| Phone | 1,800 | 92% | 4.4 |\n| Social | 500 | 60% | 3.5 |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "More than 80% of all tickets were resolved within 24 hours.",
+      "Phone resolved more tickets within 24 hours than any other channel.",
+      "Chat accounted for 45% of all tickets.",
+      "Faster resolution causes higher satisfaction.",
+      "Average satisfaction across all tickets was above 4.0."
+     ],
+     "answer": "ACE",
+     "explain": "Resolved: 2,240 + 3,960 + 1,656 + 300 = 8,156 of 10,000 = 81.6% ✔. B ✗ (Chat 3,960). C ✔. D is causal ✗. E: weighted average 4.07 ✔ (the simple one, 3.98, misleads)."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "stacked",
+      "title": "Budget by category",
+      "categories": [
+       "2024",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "R&D",
+        "values": [
+         20,
+         24
+        ]
+       },
+       {
+        "name": "Marketing",
+        "values": [
+         30,
+         25
+        ]
+       },
+       {
+        "name": "Operations",
+        "values": [
+         50,
+         51
+        ]
+       }
+      ],
+      "note": "Total budget: €50m in 2024, €40m in 2025."
+     },
+     "stem": "Which categories' spending increased in euros from 2024 to 2025?",
+     "options": [
+      "R&D",
+      "Operations",
+      "R&D and Operations",
+      "Marketing",
+      "None of them"
+     ],
+     "answer": "E",
+     "explain": "R&D 10 → €9.6m; Marketing 15 → 10; Operations 25 → 20.4. Their shares rise but they fall in euros because the total drops 20%."
+    },
+    {
+     "type": "Table",
+     "stem": "Product returns by reason:\n\n| Reason | Online | In store |\n|---|---|---|\n| Wrong size | 1,240 | 310 |\n| Damaged | 180 | 95 |\n| Changed mind | 860 | 420 |\n| Other | 120 | 75 |\n\nWhat percentage of in-store returns were due to the wrong size?",
+     "options": [
+      "20.0%",
+      "34.4%",
+      "51.7%",
+      "9.4%",
+      "30.1%"
+     ],
+     "answer": "B",
+     "explain": "In-store returns = 900 → 310/900 = 34.4%. 20.0% is the share of \"wrong size\" returns made in store; 51.7% is online."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A company's revenue grew 10% in 2024 and 20% in 2025. What was its compound average annual growth rate over the two years?",
+     "options": [
+      "15.0%",
+      "14.9%",
+      "16.0%",
+      "32.0%",
+      "30.0%"
+     ],
+     "answer": "B",
+     "explain": "√(1.10 × 1.20) − 1 = √1.32 − 1 = 14.9%. The simple average (15%) overstates it."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "For the data 2, 4, 4, 5, 7, 8, 9, 11, 12, 20, which statement is correct?",
+     "options": [
+      "Mean 8.2, median 7, range 18",
+      "Mean 8.0, median 7.5, range 18",
+      "Mean 8.2, median 7.5, range 16",
+      "Mean 8.2, median 7.5, range 18",
+      "Mean 7.5, median 8.2, range 18"
+     ],
+     "answer": "D",
+     "explain": "Sum 82 → mean 8.2; median (7 + 8)/2 = 7.5; range 20 − 2 = 18."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Across 100 summer days, daily ice-cream sales and daily sunburn cases have a strong positive correlation (r = 0.85). Which statement is correct?",
+     "options": [
+      "Ice cream causes sunburn.",
+      "85% of sunburn cases are caused by ice cream.",
+      "Sunburn makes people buy ice cream.",
+      "85% of the variation in sunburn is explained by ice-cream sales.",
+      "Both are probably driven by a third factor, such as sunny weather; the correlation does not show that one causes the other."
+     ],
+     "answer": "E",
+     "explain": "Correlation doesn't imply causation. D confuses r with r² (0.72)."
+    },
+    {
+     "type": "Data quality",
+     "stem": "You need to join two customer tables. One stores IDs as \"C-00123\" and the other as \"123\". What is the best approach?",
+     "options": [
+      "Join on customer name instead.",
+      "Join the tables as they are.",
+      "Convert both ID fields to the same format (e.g. remove the prefix and leading zeros), join, then check for records that did not match.",
+      "Delete the IDs that do not match.",
+      "Keep only the table with more rows."
+     ],
+     "answer": "C",
+     "explain": "Normalise the key, join and review the unmatched rows."
+    },
+    {
+     "type": "Data quality",
+     "stem": "In an HR dataset, some employees' date of birth is later than their hiring date. What is the best action?",
+     "options": [
+      "Flag these records as errors, check them against the source, and add a validation rule (date of birth before hiring date).",
+      "Swap the two dates.",
+      "Delete the employees.",
+      "Ignore it, because ages are not used.",
+      "Set the date of birth to 1 January 1990."
+     ],
+     "answer": "A",
+     "explain": "An entry error: flag, verify and prevent. B guesses."
+    },
+    {
+     "type": "Data quality",
+     "stem": "To estimate the satisfaction of all 20,000 customers, an analyst surveys the 500 customers who visited the flagship store on one Saturday. What is the main problem?",
+     "options": [
+      "500 responses is too few to calculate an average.",
+      "Satisfaction surveys should be online.",
+      "The survey should have been run on a weekday.",
+      "The sample is not representative of all customers (selection bias).",
+      "The results cannot be expressed as percentages."
+     ],
+     "answer": "D",
+     "explain": "A single venue on a single day: selection bias. Size isn't the main problem."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You want to show how the mix of contract types (permanent, temporary, freelance) in the workforce changed over five years, focusing on proportions. Which chart is most appropriate?",
+     "options": [
+      "Scatter plot",
+      "Histogram",
+      "100% stacked bar chart, one bar per year",
+      "Five separate pie charts with many colours",
+      "Line chart of total headcount"
+     ],
+     "answer": "C",
+     "explain": "Composition over time → 100% stacked bars."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "A chart shows monthly sales for 2024 and 2025 as two lines, each with its own y-axis: 2024 on a 0–500 scale on the left, 2025 on a 0–250 scale on the right. The 2025 line appears above the 2024 line. What is the main problem?",
+     "options": [
+      "Two different y-axis scales make the lines look comparable when they are not.",
+      "Monthly data should not be shown as a line.",
+      "The chart should start in January.",
+      "The colours of the lines are too similar.",
+      "The chart should include a third year."
+     ],
+     "answer": "A",
+     "explain": "Dual axis: each line's position depends on its scale, not its value."
+    }
+   ]
+  }
+ }
+}

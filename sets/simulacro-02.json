@@ -1,0 +1,656 @@
+{
+ "id": "s02",
+ "title": "Mock test 2",
+ "level": "realistic",
+ "note": "Close to the difficulty of the real test.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** Car rental branches, July. *Utilisation = % of car-days on which a car was rented.*\n\n| Branch | Cars | Utilisation | Daily rate (€) |\n|---|---|---|---|\n| Airport | 150 | 90% | 55 |\n| Centre | 80 | 75% | 48 |\n| Station | 60 | 80% | 50 |\n| Harbour | 40 | 70% | 62 |"
+    },
+    "g2": {
+     "md": "**Use the chart for questions 5–7.**",
+     "chart": {
+      "type": "bar",
+      "title": "Electric scooter sales (thousands of units)",
+      "categories": [
+       "2022",
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "series": [
+       {
+        "name": "Brand X",
+        "values": [
+         40,
+         52,
+         61,
+         70
+        ]
+       },
+       {
+        "name": "Brand Y",
+        "values": [
+         65,
+         68,
+         66,
+         72
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "Which branch earns the lowest revenue per car per day (across all its cars, rented or not)?",
+     "options": [
+      "Airport",
+      "Centre",
+      "Station",
+      "Harbour",
+      "Station and Harbour equally"
+     ],
+     "answer": "B",
+     "explain": "Utilisation × rate: Airport €49.50, Centre €36.00, Station €40.00, Harbour €43.40."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "What was the Station branch's total rental revenue in July (31 days)?",
+     "options": [
+      "€72,000",
+      "€2,400",
+      "€59,520",
+      "€93,000",
+      "€74,400"
+     ],
+     "answer": "E",
+     "explain": "60 × 0.80 × 50 × 31 = €74,400. €93,000 ignores utilisation; €72,000 uses 30 days."
+    },
+    {
+     "type": "Rule",
+     "stem": "A mobile plan costs €15 a month and includes 10 GB. Extra data costs €2 per GB or part of a GB. 21% VAT is added to the total. What is the bill for a month with 13.4 GB used?",
+     "options": [
+      "€27.83",
+      "€26.38",
+      "€25.41",
+      "€23.00",
+      "€26.15"
+     ],
+     "answer": "A",
+     "explain": "3.4 GB extra is charged as 4 GB = €8. (15 + 8) × 1.21 = €27.83. €26.38 charges exactly 3.4 GB; €26.15 adds VAT to the base fee only."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 2, 6, 12, 20, 30, ?",
+     "options": [
+      "36",
+      "42",
+      "40",
+      "56",
+      "44"
+     ],
+     "answer": "B",
+     "explain": "Differences 4, 6, 8, 10 → 12: 30 + 12 = 42 (n × (n + 1))."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "What was Brand X's share of the two brands' combined sales in 2025?",
+     "options": [
+      "38.1%",
+      "50.0%",
+      "49.3%",
+      "97.2%",
+      "47.2%"
+     ],
+     "answer": "C",
+     "explain": "70/(70 + 72) = 70/142 = 49.3%. 38.1% is 2022 (wrong year); 97.2% is 70/72."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "By what percentage did Brand X's sales grow between 2022 and 2025?",
+     "options": [
+      "42.9%",
+      "30.0%",
+      "175.0%",
+      "75.0%",
+      "57.1%"
+     ],
+     "answer": "D",
+     "explain": "(70 − 40)/40 = 75%. 42.9% divides by the final value."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "In 2026, Brand Y's sales grow by 10% and Brand X's sales grow by the same number of units as between 2024 and 2025. Which brand sells more in 2026, and by how much?",
+     "options": [
+      "Brand X, by 200 units",
+      "Brand Y, by 200 units",
+      "Brand Y, by 2,000 units",
+      "Brand X, by 7,000 units",
+      "They sell the same"
+     ],
+     "answer": "B",
+     "explain": "Y: 72 × 1.1 = 79.2k. X: 70 + 9 = 79.0k. Y sells 0.2k = 200 units more."
+    },
+    {
+     "type": "Rule",
+     "stem": "A salesperson earns 3% commission on the first €40,000 of monthly sales and 5% on sales above that, plus a €500 bonus if monthly sales exceed €100,000. What does she earn on sales of €104,000?",
+     "options": [
+      "€5,700",
+      "€3,620",
+      "€4,400",
+      "€5,200",
+      "€4,900"
+     ],
+     "answer": "E",
+     "explain": "1,200 + 0.05 × 64,000 (3,200) + 500 = €4,900. €4,400 forgets the bonus; €5,700 applies 5% to everything."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 8, 2, 20. Row 2: 6, 3, 18. Row 3: 10, 5, ?",
+     "options": [
+      "35",
+      "50",
+      "15",
+      "30",
+      "25"
+     ],
+     "answer": "D",
+     "explain": "(a + b) × 2: 20; 18; 30."
+    },
+    {
+     "type": "Estimation",
+     "stem": "A website had 1.98 million visits in a year. 2.1% of visits ended in an order, and the average order was €49.50. Which is the best estimate of the year's online sales?",
+     "options": [
+      "€0.2m",
+      "€1.0m",
+      "€4.2m",
+      "€21m",
+      "€2.1m"
+     ],
+     "answer": "E",
+     "explain": "≈ 2,000,000 × 0.02 × 50 = €2.0m (exactly €2.06m)."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A price rises by 25% and then falls by 20%. What is the overall change?",
+     "options": [
+      "0%",
+      "+2%",
+      "−2.5%",
+      "+5%",
+      "−5%"
+     ],
+     "answer": "A",
+     "explain": "1.25 × 0.80 = 1.00 → no change."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A project needs 480 hours of work. Four consultants each work 8 hours a day but spend 25% of their time on other tasks. How many working days will the project take?",
+     "options": [
+      "15",
+      "20",
+      "16",
+      "25",
+      "18.75"
+     ],
+     "answer": "B",
+     "explain": "Productive hours per day = 4 × 8 × 0.75 = 24 → 480/24 = 20 days. 15 ignores the 25%."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "All drivers in the fleet hold a forklift licence. No one under 21 holds a forklift licence.\n\n**Conclusion:** No driver in the fleet is under 21.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "Driver → licence → not under 21. It follows."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "Some managers are engineers. Some engineers work remotely.\n\n**Conclusion:** Some managers work remotely.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "Two chained \"some\" statements give no conclusion: the remote engineers may not be managers."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Only products that pass quality control are shipped. All products made on Line 3 last week were shipped.\n\nWhich statement must be true?",
+     "options": [
+      "All products that passed quality control were made on Line 3.",
+      "No products from other lines were shipped last week.",
+      "Line 3 never fails quality control.",
+      "All products made on Line 3 last week passed quality control.",
+      "Some products that passed quality control were not shipped."
+     ],
+     "answer": "D",
+     "explain": "\"Only\": being shipped requires passing quality control. A reverses the relationship; C generalises to every week."
+    },
+    {
+     "type": "Deduction",
+     "stem": "No one in the legal team uses the old software. Everyone in the Lisbon office uses the old software. Marta works in the Lisbon office.\n\nWhich statement must be true?",
+     "options": [
+      "Marta uses the new software.",
+      "Marta is not in the legal team.",
+      "All users of the old software work in Lisbon.",
+      "Some legal team members work in Lisbon.",
+      "Marta will move to the legal team."
+     ],
+     "answer": "B",
+     "explain": "Marta uses the old software, so she can't be in legal. A doesn't follow: she may use both."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five boxes (Red, Blue, Green, Yellow, White) are stacked in positions 1 (bottom) to 5 (top).\n- White is at the top or the bottom.\n- Green is directly above Red.\n- Blue is above Yellow.\n- Neither Red nor Yellow is at the bottom.\n- Green is not at the top.\n- Blue is not next to Green.\n\nWhich box is in position 3?",
+     "options": [
+      "Red",
+      "Blue",
+      "Green",
+      "Yellow",
+      "White"
+     ],
+     "answer": "C",
+     "explain": "Red and Yellow can't be at the bottom (rule), nor can Green or Blue (each has a box below it), so White = 1. If Red–Green were 3–4, Blue would end up in 5 next to Green. So Red 2, Green 3, Yellow 4, Blue 5."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five candidates (Ana, Ben, Carla, Dev, Eva) are interviewed at 9:00, 10:00, 11:00, 12:00 and 13:00.\n- Eva is interviewed at 11:00.\n- Dev is interviewed immediately after Ana.\n- Ana is not interviewed at 9:00.\n- Ben is interviewed before Carla.\n\nWho is interviewed at 10:00?",
+     "options": [
+      "Ana",
+      "Ben",
+      "Carla",
+      "Dev",
+      "Eva"
+     ],
+     "answer": "C",
+     "explain": "Ana–Dev don't fit at 9–10 or 10–11 (Eva is at 11), so they are 12–13. Ben 9:00 and Carla 10:00."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Four colleagues (Ann, Bo, Cy, Di) each prefer a different drink: coffee, tea, juice or water.\n- Ann drinks neither coffee nor tea.\n- Bo drinks juice.\n- Cy does not drink coffee.\n\nWho drinks coffee?",
+     "options": [
+      "Ann",
+      "Bo",
+      "Cy",
+      "Di"
+     ],
+     "answer": "D",
+     "explain": "Bo juice → Ann water → Cy tea → Di coffee."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"In a survey on our website, 85% of respondents said they were satisfied with our delivery times. So most of our customers are satisfied with delivery.\"\n\nWhich assumption does the argument rely on?",
+     "options": [
+      "Competitors have slower deliveries.",
+      "Delivery times have improved this year.",
+      "Customers value delivery time above price.",
+      "The people who answered the website survey are representative of all customers.",
+      "The survey had more than 1,000 responses."
+     ],
+     "answer": "D",
+     "explain": "If the people answering on the website don't represent all customers, the 85% can't be extended to them."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"Branches that use the new scheduling software have 20% lower overtime costs than branches that don't. The software therefore cuts overtime.\"\n\nWhich statement, if true, most weakens the argument?",
+     "options": [
+      "Overtime is paid at 1.5 times the normal rate.",
+      "The software is easy to learn.",
+      "Staff in all branches work similar contracts.",
+      "The software was installed only in branches that had already shortened their opening hours.",
+      "Some branches plan to install it next year."
+     ],
+     "answer": "D",
+     "explain": "The difference may come from the shorter hours, not the software."
+    },
+    {
+     "type": "Strengthen",
+     "stem": "A school says its new reading programme raised pupils' reading scores.\n\nWhich statement, if true, most strengthens the claim?",
+     "options": [
+      "Reading scores rose across the country this year.",
+      "Pupils in the programme improved by 12 points, while a comparable group taught in the usual way at the same school improved by 3 points over the same period.",
+      "Teachers received two days of training.",
+      "The programme uses new books.",
+      "Parents like the new programme."
+     ],
+     "answer": "B",
+     "explain": "A comparable group over the same period isolates the programme's effect."
+    },
+    {
+     "type": "Inference",
+     "stem": "In a tournament, every team plays every other team exactly once. A total of 15 matches were played.\n\nHow many teams took part?",
+     "options": [
+      "5",
+      "6",
+      "7",
+      "15",
+      "30"
+     ],
+     "answer": "B",
+     "explain": "n(n − 1)/2 = 15 → n = 6."
+    },
+    {
+     "type": "Inference",
+     "stem": "All of the firm's 2025 projects were in either retail or energy. Every energy project was led by a partner from the Madrid office. None of the retail projects lasted more than six months. Project Orion, a 2025 project, lasted nine months.\n\nWhich statement must be true?",
+     "options": [
+      "Orion was led by a partner from the Madrid office.",
+      "Orion was a retail project.",
+      "All energy projects lasted more than six months.",
+      "Orion was the firm's longest project.",
+      "Every Madrid partner led an energy project."
+     ],
+     "answer": "A",
+     "explain": "Nine months → not retail → energy → led by a Madrid partner."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) The company's share price fell 15% in one day.\n(2) The company announced that its CEO had resigned unexpectedly.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "B",
+     "explain": "The resignation (2) causes the fall (1)."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) A local bakery's bread sales fell this week.\n(2) Car insurance premiums rose nationally this week.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "E",
+     "explain": "Unrelated: effects of independent causes."
+    },
+    {
+     "type": "Rules",
+     "stem": "A firm invites applicants to interview if **either**:\n- they have a degree in economics, business or engineering **and** at least 2 years of work experience; **or**\n- they have a master's degree in any field **and** at least 1 year of work experience.\n\nWhich applicant is invited?",
+     "options": [
+      "Engineering degree, 18 months' experience, no master's.",
+      "Business degree and a master's, 6 months' experience.",
+      "Law degree, 5 years' experience, no master's.",
+      "History degree and a master's in history, 18 months' experience.",
+      "Economics degree, 1 year's experience, no master's."
+     ],
+     "answer": "D",
+     "explain": "D meets the second route (master's + at least 1 year). A and E don't reach 2 years; B doesn't reach 1 year; C has neither the degree nor a master's."
+    },
+    {
+     "type": "Rules",
+     "stem": "Staff get a parking permit if they live more than 10 km from the office or hold a disability badge. Staff who joined less than 6 months ago are not eligible unless they hold a disability badge.\n\nAn employee joined 4 months ago, lives 25 km away and has no disability badge. Is she eligible?",
+     "options": [
+      "Yes, because she lives more than 10 km away.",
+      "No, because she joined less than 6 months ago.",
+      "Yes, because new staff need extra support.",
+      "No, because she lives too far away.",
+      "It cannot be determined."
+     ],
+     "answer": "B",
+     "explain": "The tenure exclusion can only be overridden by a disability badge."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "line",
+      "title": "Average emergency-room waiting time (minutes)",
+      "yMin": 60,
+      "categories": [
+       "Jan",
+       "Feb",
+       "Mar",
+       "Apr",
+       "May",
+       "Jun"
+      ],
+      "series": [
+       {
+        "name": "North Hospital",
+        "values": [
+         95,
+         90,
+         88,
+         92,
+         85,
+         80
+        ]
+       },
+       {
+        "name": "South Hospital",
+        "values": [
+         70,
+         75,
+         82,
+         86,
+         90,
+         94
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the chart? **Select all that apply.**",
+     "options": [
+      "North Hospital's waiting time fell every month.",
+      "South Hospital's waiting time rose every month.",
+      "South Hospital's waiting time first exceeded North's in May.",
+      "In June, the gap between the two hospitals was 14 minutes.",
+      "South Hospital's waiting time will exceed 100 minutes in August."
+     ],
+     "answer": "BCD",
+     "explain": "A ✗ it rises in April. B ✔. C ✔ April 86 < 92, May 90 > 85. D ✔ 94 − 80. E ✗ forecast."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Online shop, first quarter:\n\n| Category | Orders | Returns | Average order (€) |\n|---|---|---|---|\n| Shoes | 1,200 | 240 | 60 |\n| Clothing | 2,000 | 300 | 40 |\n| Accessories | 800 | 40 | 25 |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "Shoes have the highest return rate.",
+      "Clothing had the most returns.",
+      "The return rate across all orders was 13.3%.",
+      "Clothing generated the highest total order value.",
+      "Accessories customers are the most satisfied."
+     ],
+     "answer": "ABD",
+     "explain": "Return rates 20%, 15%, 5%. A ✔. B ✔ 300. C ✗ 580/4,000 = 14.5% (13.3% is the simple average). D ✔ €80,000 vs 72,000 and 20,000. E ✗ cannot be known."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "stacked",
+      "title": "Electricity use by source",
+      "categories": [
+       "2024",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "Grid",
+        "values": [
+         70,
+         55
+        ]
+       },
+       {
+        "name": "Solar",
+        "values": [
+         20,
+         30
+        ]
+       },
+       {
+        "name": "Wind",
+        "values": [
+         10,
+         15
+        ]
+       }
+      ],
+      "note": "Total electricity use: 500 MWh in 2024, 600 MWh in 2025."
+     },
+     "stem": "By how much did electricity from solar increase between 2024 and 2025?",
+     "options": [
+      "100 MWh",
+      "180 MWh",
+      "80 MWh",
+      "50 MWh",
+      "10 MWh"
+     ],
+     "answer": "C",
+     "explain": "0.20 × 500 = 100 → 0.30 × 600 = 180 MWh: +80. 10 is the change in percentage points."
+    },
+    {
+     "type": "Table",
+     "stem": "Customer survey: \"Would you recommend us?\"\n\n| Region | Yes | No | Unsure | Total |\n|---|---|---|---|---|\n| North | 120 | 30 | 50 | 200 |\n| East | 90 | 45 | 15 | 150 |\n| South | 140 | 25 | 35 | 200 |\n\nWhat percentage of all respondents who answered \"No\" are from the East?",
+     "options": [
+      "8.2%",
+      "33.3%",
+      "45.0%",
+      "22.5%",
+      "30.0%"
+     ],
+     "answer": "C",
+     "explain": "Total \"No\" = 100 → 45/100 = 45%. 30% is 45/150 (the \"No\" share within the East)."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A product is rated by three groups: 50 customers give an average of 4.2, 30 customers an average of 3.8 and 20 customers an average of 2.9. What is the overall average rating?",
+     "options": [
+      "3.90",
+      "3.70",
+      "3.63",
+      "3.82",
+      "4.00"
+     ],
+     "answer": "D",
+     "explain": "(210 + 114 + 58)/100 = 3.82. 3.63 is the simple average of the three averages."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Salaries (€k) of six staff: 28, 31, 35, 40, 44, 90. What are the median and the mean?",
+     "options": [
+      "Median 35, mean 44.7",
+      "Median 37.5, mean 37.5",
+      "Median 37.5, mean 53.6",
+      "Median 40, mean 44.7",
+      "Median 37.5, mean 44.7"
+     ],
+     "answer": "E",
+     "explain": "Median (35 + 40)/2 = 37.5. Mean 268/6 = 44.7."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Across 50 stores, the correlation between hours of staff training and sales is 0.8. Which conclusion is justified?",
+     "options": [
+      "Training causes higher sales.",
+      "80% of sales are explained by training.",
+      "There is a strong negative relationship.",
+      "There is a strong positive association, but it does not show that training causes higher sales.",
+      "There is no relationship between training and sales."
+     ],
+     "answer": "D",
+     "explain": "A strong positive correlation, but no proof of causation (larger stores may both train more and sell more)."
+    },
+    {
+     "type": "Data quality",
+     "stem": "Two customer systems are being merged. One stores names as \"Last, First\" and the other as \"First Last\". What should you do before matching customers across them?",
+     "options": [
+      "Delete customers whose names don't match.",
+      "Split names into separate first-name and last-name fields in both systems, then match.",
+      "Sort both lists alphabetically.",
+      "Keep only the larger system.",
+      "Match on the full name field as it is."
+     ],
+     "answer": "B",
+     "explain": "Standardise the structure before matching; otherwise no names will match."
+    },
+    {
+     "type": "Data quality",
+     "stem": "In a sales spreadsheet, some amounts are stored as text (e.g. \"1,250\") and others as numbers. The SUM of the column is lower than expected. What is the best fix?",
+     "options": [
+      "Convert the text values to numbers (removing the thousands separator) and check that every value is numeric.",
+      "Retype the total by hand.",
+      "Delete the rows stored as text.",
+      "Use AVERAGE instead of SUM.",
+      "Format the column as currency."
+     ],
+     "answer": "A",
+     "explain": "SUM ignores text. Changing the format (E) doesn't convert the contents."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A dataset has one row per transaction. To report the number of customers, an analyst counts the rows. What is wrong?",
+     "options": [
+      "Nothing, each row is a customer.",
+      "The count should exclude the largest transactions.",
+      "Rows should be summed, not counted.",
+      "Customers with several transactions are counted more than once; the analyst should count distinct customer IDs.",
+      "The analyst should use the median."
+     ],
+     "answer": "D",
+     "explain": "Wrong level of detail: rows are transactions, not customers."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You want to show the relationship between advertising spend and sales across 50 stores. Which chart is most appropriate?",
+     "options": [
+      "Scatter plot",
+      "Histogram of sales",
+      "Stacked bar chart",
+      "Line chart by store name",
+      "Pie chart"
+     ],
+     "answer": "A",
+     "explain": "Relationship between two numerical variables → scatter plot."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "A manager presents a chart of cumulative sign-ups since launch, which rises every month, and says: \"Sign-ups are growing every month.\" What is the problem?",
+     "options": [
+      "The chart should be a pie chart.",
+      "Cumulative charts cannot start at zero.",
+      "The chart has too many months.",
+      "A cumulative total rises whenever there are any sign-ups at all, even if monthly sign-ups are falling; monthly figures are needed.",
+      "There is no problem."
+     ],
+     "answer": "D",
+     "explain": "A cumulative total can only go up. To talk about growth, look at monthly sign-ups."
+    }
+   ]
+  }
+ }
+}

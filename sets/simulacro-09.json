@@ -1,0 +1,666 @@
+{
+ "id": "s09",
+ "title": "Mock test 9",
+ "level": "challenging",
+ "note": "Longer calculations and subtler traps.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** Food delivery app, March 2026. *The app keeps a commission on each order's value.*\n\n| City | Orders (000s) | Average order (€) | Commission rate |\n|---|---|---|---|\n| Lisbon | 180 | 24 | 18% |\n| Porto | 95 | 22 | 20% |\n| Madrid | 420 | 27 | 15% |\n| Valencia | 130 | 21 | 17% |"
+    },
+    "g2": {
+     "md": "**Use the chart for questions 5–7.**",
+     "chart": {
+      "type": "line",
+      "title": "Average apartment price (€ per m²)",
+      "yMin": 2000,
+      "categories": [
+       "2020",
+       "2021",
+       "2022",
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "series": [
+       {
+        "name": "District A",
+        "values": [
+         2800,
+         2950,
+         3100,
+         3050,
+         3300,
+         3520
+        ]
+       },
+       {
+        "name": "District B",
+        "values": [
+         2200,
+         2350,
+         2600,
+         2800,
+         3000,
+         3240
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "Which city generated the highest commission revenue per order?",
+     "options": [
+      "Lisbon",
+      "Madrid",
+      "Valencia",
+      "Porto",
+      "Lisbon and Porto equally"
+     ],
+     "answer": "D",
+     "explain": "Commission per order = average order × rate: Lisbon €4.32, Porto €4.40, Madrid €4.05, Valencia €3.57."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "If Madrid's commission rate rose to 18% and its number of orders fell by 10%, with the average order unchanged, by what percentage would Madrid's commission revenue change?",
+     "options": [
+      "+20%",
+      "+10%",
+      "+8%",
+      "−2%",
+      "+3%"
+     ],
+     "answer": "C",
+     "explain": "(18/15) × 0.9 = 1.08 → +8%. +10% subtracts the percentages (20 − 10)."
+    },
+    {
+     "type": "Rule",
+     "stem": "An electricity bill has a standing charge of €0.32 per day, plus €0.18/kWh for the first 250 kWh in the month and €0.24/kWh above that. Customers paying by direct debit get 5% off the energy charges only. What is the bill for a 30-day month with 410 kWh, paid by direct debit?",
+     "options": [
+      "€88.35",
+      "€88.83",
+      "€93.00",
+      "€79.23",
+      "€98.40"
+     ],
+     "answer": "B",
+     "explain": "Energy 250 × 0.18 + 160 × 0.24 = 83.40 → × 0.95 = 79.23; + 9.60 standing charge = €88.83. €88.35 applies the discount to the standing charge too."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 2, 3, 5, 9, 17, 33, ?",
+     "options": [
+      "49",
+      "64",
+      "66",
+      "65",
+      "57"
+     ],
+     "answer": "D",
+     "explain": "Differences 1, 2, 4, 8, 16 → 32: 33 + 32 = 65 (also ×2 − 1)."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "Between 2020 and 2025, by what percentage did the price gap between District A and District B (in € per m²) shrink?",
+     "options": [
+      "53.3%",
+      "46.7%",
+      "32.0%",
+      "11.4%",
+      "8.6%"
+     ],
+     "answer": "A",
+     "explain": "Gap 600 → 280 €/m²: 320/600 = 53.3%. 46.7% is how much of the gap remains, not how much it shrank."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "In which year did District B record its largest percentage price increase?",
+     "options": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+     ],
+     "answer": "B",
+     "explain": "2021 +6.8%, 2022 +10.6%, 2023 +7.7%, 2024 +7.1%, 2025 +8.0%."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "A buyer purchases a 75 m² apartment in District A in 2023 and sells it in 2025, both at the average price for that year. Buying and selling costs total 8% of the purchase price. What is the buyer's profit?",
+     "options": [
+      "€35,250",
+      "€21,120",
+      "€14,130",
+      "€12,500",
+      "€16,950"
+     ],
+     "answer": "E",
+     "explain": "Purchase 75 × 3,050 = 228,750; sale 75 × 3,520 = 264,000; gross gain 35,250 − 8% × 228,750 (18,300) = €16,950. €14,130 applies the 8% to the sale price."
+    },
+    {
+     "type": "Rule",
+     "stem": "A team of 12 has an average age of 34. Two members, aged 52 and 46, leave and are replaced by two new members whose average age is 25. What is the team's new average age?",
+     "options": [
+      "30.0",
+      "31.0",
+      "29.5",
+      "32.0",
+      "28.5"
+     ],
+     "answer": "A",
+     "explain": "(12 × 34 − 98 + 50)/12 = 360/12 = 30."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 2, 3, 15. Row 2: 4, 1, 5. Row 3: 3, 5, ?",
+     "options": [
+      "24",
+      "34",
+      "40",
+      "45",
+      "15"
+     ],
+     "answer": "C",
+     "explain": "(a + b) × b: 5 × 3 = 15; 5 × 1 = 5; 8 × 5 = 40."
+    },
+    {
+     "type": "Estimation",
+     "stem": "Which is the best estimate of 3,980 × 0.0512 ÷ 0.198?",
+     "options": [
+      "100",
+      "500",
+      "1,000",
+      "2,000",
+      "10,000"
+     ],
+     "answer": "C",
+     "explain": "≈ 4,000 × 0.05/0.2 = 1,000 (exactly 1,029)."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A shop sets its list price by marking up cost by 60%. In a sale it offers 25% off the list price. What is its profit on a sale item, as a percentage of cost?",
+     "options": [
+      "35%",
+      "15%",
+      "25%",
+      "45%",
+      "20%"
+     ],
+     "answer": "E",
+     "explain": "1.60 × 0.75 = 1.20 → +20% on cost. 35% subtracts the percentages."
+    },
+    {
+     "type": "Calculation",
+     "stem": "Printer A prints 40 pages per minute and printer B prints 25 pages per minute. A 3,550-page job starts on printer B alone; printer A joins 12 minutes later. How many minutes after the start is the job finished?",
+     "options": [
+      "50",
+      "62",
+      "59.2",
+      "54.6",
+      "71"
+     ],
+     "answer": "B",
+     "explain": "B prints 300 pages in 12 min. 3,250 remain at 65 per minute = 50 min. Total 62 min. 50 forgets the first 12 minutes."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "All interns are enrolled at a university. Some people enrolled at a university work part-time.\n\n**Conclusion:** Some interns work part-time.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "The university students who work part-time may not be interns."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "Every analyst on the team uses Python. Nobody who uses Python works without a second monitor.\n\n**Conclusion:** No analyst on the team works without a second monitor.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "Analyst → Python → second monitor. It follows."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Some board members are former CEOs. All former CEOs on the board sit on the remuneration committee. No member of the remuneration committee may sit on the audit committee.\n\nWhich statement must be true?",
+     "options": [
+      "No board member sits on the audit committee.",
+      "All members of the remuneration committee are former CEOs.",
+      "Some members of the audit committee are former CEOs.",
+      "Some board members do not sit on the audit committee.",
+      "None of the above."
+     ],
+     "answer": "D",
+     "explain": "Board members who are former CEOs sit on remuneration and therefore not on audit. A generalises to the whole board; B reverses the premise."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Only employees with security clearance can enter the server room. Everyone in the IT infrastructure team has security clearance. Pablo entered the server room yesterday.\n\nWhich statement must be true?",
+     "options": [
+      "Pablo is in the IT infrastructure team.",
+      "Everyone with security clearance is in the IT infrastructure team.",
+      "Pablo has security clearance.",
+      "Pablo entered with someone from IT infrastructure.",
+      "Only IT infrastructure staff entered the server room yesterday."
+     ],
+     "answer": "C",
+     "explain": "\"Only\" = entering requires clearance. A reverses the second premise: not everyone with clearance is in IT."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Six products (A, B, C, D, E, F) are displayed on six shelves numbered 1 (top) to 6 (bottom), one per shelf.\n- D is on shelf 4.\n- C is on the shelf directly above D.\n- A is on a lower shelf than E.\n- B is on shelf 1 or shelf 6.\n- F is not on a shelf next to B.\n- E is not on shelf 1.\n\nWhich statement must be true?",
+     "options": [
+      "B is on shelf 1.",
+      "A is on shelf 5.",
+      "F is on shelf 6.",
+      "C is on shelf 4.",
+      "E is on shelf 2."
+     ],
+     "answer": "E",
+     "explain": "C = 3. Shelves 1, 2, 5, 6 remain. E can't be on 1 and must be above A → E = 2. Possible solutions: B E C D A F, B E C D F A, F E C D A B. Only E = 2 holds in all of them."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five people (P, Q, R, S, T) sit in a row of seats numbered 1 to 5 from left to right.\n- T sits immediately to the right of P.\n- R sits at one end of the row.\n- Q sits somewhere to the right of R.\n- Q and S do not sit next to each other.\n- S is not in seat 5.\n\nWho sits in seat 3?",
+     "options": [
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T"
+     ],
+     "answer": "A",
+     "explain": "Q to the right of R → R = 1. If P–T is in 2–3 or 4–5, Q and S end up together. So P–T = 3–4, S = 2 (it can't be 5) and Q = 5: R S P T Q."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five salespeople (V, W, X, Y, Z) are ranked 1st to 5th by sales, with no ties.\n- W is ranked above X.\n- Y is ranked immediately below Z.\n- V is not ranked 1st.\n- X is not ranked 5th.\n\nWhich statement **cannot** be true?",
+     "options": [
+      "V is ranked 2nd.",
+      "Z is ranked 1st.",
+      "X is ranked 2nd.",
+      "W is ranked 4th.",
+      "Y is ranked 3rd."
+     ],
+     "answer": "D",
+     "explain": "If W were 4th, X would have to be 5th (not allowed). The others appear in some valid order: W V X Z Y, Z Y W X V, W X V Z Y, W Z Y X V."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"The new CRM system will save each salesperson 5 hours a week of admin, so the sales team will be able to make 20% more client calls.\"\n\nWhich assumption does the argument rely on?",
+     "options": [
+      "The CRM is cheaper than the old system.",
+      "Clients want to receive more calls.",
+      "The team currently works 40 hours a week.",
+      "Other teams already use the CRM.",
+      "The time saved will be spent making client calls."
+     ],
+     "answer": "E",
+     "explain": "Without this assumption, the time saved doesn't turn into calls."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"Students who use the university's tutoring centre get higher grades than students who do not. The tutoring centre therefore improves students' grades.\"\n\nWhich statement, if true, most weakens the argument?",
+     "options": [
+      "The tutoring centre is open six days a week.",
+      "Students who use the centre already had higher grades before they started using it.",
+      "Tutors are mostly postgraduate students.",
+      "Some students who use the centre still fail exams.",
+      "The university plans to expand the centre."
+     ],
+     "answer": "B",
+     "explain": "Selection bias: the difference existed before students used the centre."
+    },
+    {
+     "type": "Strengthen",
+     "stem": "A coffee chain claims that its new loyalty app makes customers visit more often.\n\nWhich statement, if true, most strengthens the claim?",
+     "options": [
+      "Half of the customers were randomly chosen to receive the app; their visits rose 12% while visits by the other half rose 1%.",
+      "Customers who downloaded the app visit more often than those who did not.",
+      "The app has a rating of 4.7 stars.",
+      "Visits rose 10% across the chain after the launch.",
+      "The app cost less than expected to build."
+     ],
+     "answer": "A",
+     "explain": "Random assignment with a control group. B is a correlation with self-selection; D has no control."
+    },
+    {
+     "type": "Inference",
+     "stem": "In a customer survey, every respondent who rated the service \"excellent\" had used it at least five times. Fewer than half of the respondents had used the service at least five times.\n\nWhich statement must be true?",
+     "options": [
+      "Most respondents who used the service five or more times rated it excellent.",
+      "Nobody who used the service fewer than five times rated it good.",
+      "Fewer than half of the respondents rated the service excellent.",
+      "More than half of the respondents rated the service poor.",
+      "Exactly half of the respondents rated it excellent."
+     ],
+     "answer": "C",
+     "explain": "The \"excellent\" ratings are a subset of those with 5+ uses, which are fewer than half."
+    },
+    {
+     "type": "Inference",
+     "stem": "A company has 120 employees. 70 speak English, 50 speak French and 15 speak neither language.\n\nWhich statement must be true?",
+     "options": [
+      "Exactly 35 employees speak only English.",
+      "Exactly 15 employees speak both languages.",
+      "Exactly 50 employees speak only French.",
+      "More employees speak only French than only English.",
+      "Everyone who speaks French also speaks English."
+     ],
+     "answer": "B",
+     "explain": "At least one language: 105. Both = 70 + 50 − 105 = 15. Only English 55, only French 35."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) The government announced a large increase in subsidies for electric cars.\n(2) Electric-car dealers reported a sharp rise in orders.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "A",
+     "explain": "The subsidy (1) drives up orders (2)."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Many residents of the coastal town were evacuated.\n(2) All flights to the town's airport were suspended.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "D",
+     "explain": "Neither causes the other; both respond to a common cause (e.g. a storm)."
+    },
+    {
+     "type": "Rules",
+     "stem": "Returns policy: unused items may be returned within 30 days of delivery for a full refund. Used items may be returned within 14 days for store credit only, **unless** the item is faulty, in which case a full refund applies for up to 12 months. Sale items can be returned **only** if faulty.\n\nA customer bought a sale item, used it, and returns it 20 days after delivery because it is faulty. What does the customer get?",
+     "options": [
+      "Store credit only.",
+      "Nothing, because it is a sale item.",
+      "A full refund.",
+      "Nothing, because more than 14 days have passed.",
+      "Store credit, because the item was used."
+     ],
+     "answer": "C",
+     "explain": "It's a sale item but faulty → it can be returned; the faulty-item exception gives a full refund for 12 months."
+    },
+    {
+     "type": "Rules",
+     "stem": "Bonus policy: an employee receives the annual bonus if they (a) have a performance rating of 3 or higher **and** (b) are employed on 31 December. Employees who joined after 1 October receive a pro-rated bonus. Employees with a disciplinary warning receive no bonus.\n\nMarta has a rating of 4, joined on 15 November, is employed on 31 December and has no warnings. What does she receive?",
+     "options": [
+      "The full bonus.",
+      "No bonus, because she joined after 1 October.",
+      "No bonus, because her rating is too low.",
+      "A pro-rated bonus.",
+      "It cannot be determined."
+     ],
+     "answer": "D",
+     "explain": "Meets (a) and (b), and because she joined after 1 October the amount is pro-rated."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "bar",
+      "title": "Revenue by segment, 2025 (€m)",
+      "categories": [
+       "Q1",
+       "Q2",
+       "Q3",
+       "Q4"
+      ],
+      "series": [
+       {
+        "name": "Consumer",
+        "values": [
+         12,
+         14,
+         13,
+         17
+        ]
+       },
+       {
+        "name": "Business",
+        "values": [
+         8,
+         9,
+         11,
+         12
+        ]
+       },
+       {
+        "name": "Public",
+        "values": [
+         5,
+         4,
+         4,
+         6
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the chart? **Select all that apply.**",
+     "options": [
+      "Business revenue grew every quarter.",
+      "Consumer accounted for more than half of total revenue in every quarter.",
+      "Total revenue was highest in Q4.",
+      "Public-sector revenue fell every quarter.",
+      "Business revenue will exceed Consumer revenue in 2026."
+     ],
+     "answer": "AC",
+     "explain": "A ✔ (8, 9, 11, 12). B ✗: Q1 12/25 = 48%. C ✔ (35). D ✗: Q3 flat, Q4 up. E is a forecast ✗."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Website sign-up test.\n\n| Variant | Visitors | Sign-ups | Avg time on page (s) |\n|---|---|---|---|\n| A (control) | 12,400 | 496 | 48 |\n| B | 11,800 | 590 | 41 |\n| C | 6,200 | 279 | 55 |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "Variant B had the highest sign-up rate.",
+      "Variant C had more sign-ups than the control.",
+      "Variant B's sign-up rate was 1 percentage point higher than the control's.",
+      "Longer time on page leads to more sign-ups.",
+      "Variant B's sign-up rate was 25% higher than the control's."
+     ],
+     "answer": "ACE",
+     "explain": "Rates: A 4.0%, B 5.0%, C 4.5%. C ✔ (+1 point) and E ✔ (+25% relative) at the same time. B ✗ (279 < 496). D is causal, and B also has the shortest time ✗."
+    },
+    {
+     "type": "Table",
+     "stem": "Customer complaints:\n\n| Month | Orders | Complaints per 1,000 orders |\n|---|---|---|\n| Jan | 42,000 | 3.6 |\n| Feb | 38,000 | 3.9 |\n| Mar | 51,000 | 2.9 |\n| Apr | 45,000 | 3.5 |\n\nIn which month was the number of complaints highest?",
+     "options": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "Jan and Apr equally"
+     ],
+     "answer": "D",
+     "explain": "Complaints = orders × rate/1,000: 151, 148, 148, 158. February has the highest rate but not the highest number."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "stacked",
+      "title": "Employees by age group",
+      "categories": [
+       "2020",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "Under 30",
+        "values": [
+         25,
+         30
+        ]
+       },
+       {
+        "name": "30–49",
+        "values": [
+         50,
+         45
+        ]
+       },
+       {
+        "name": "50+",
+        "values": [
+         25,
+         25
+        ]
+       }
+      ],
+      "note": "Total employees: 800 in 2020, 1,000 in 2025."
+     },
+     "stem": "How many more employees aged 50+ were there in 2025 than in 2020?",
+     "options": [
+      "0",
+      "25",
+      "50",
+      "200",
+      "250"
+     ],
+     "answer": "C",
+     "explain": "200 → 250: +50. The share doesn't change, but headcount grows."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "The mean of six numbers is 14. When one of the numbers is removed, the mean of the remaining five is 12. Which number was removed?",
+     "options": [
+      "2",
+      "24",
+      "12",
+      "26",
+      "14"
+     ],
+     "answer": "B",
+     "explain": "6 × 14 − 5 × 12 = 84 − 60 = 24."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "For the data 5, 5, 6, 7, 8, 9, 30, which statement is correct?",
+     "options": [
+      "Mean 10, median 8, mode 5",
+      "Mean 7, median 7, mode 5",
+      "Mean 10, median 7, mode 30",
+      "Mean 11.4, median 7, mode 5",
+      "Mean 10, median 7, mode 5"
+     ],
+     "answer": "E",
+     "explain": "Sum 70/7 = 10; median (4th value) 7; mode 5."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A candidate's score is at the 85th percentile. What does this mean?",
+     "options": [
+      "The candidate scored higher than about 85% of test-takers.",
+      "The candidate answered 85% of the questions correctly.",
+      "The candidate scored 85 out of 100.",
+      "The candidate was ranked 85th.",
+      "The candidate scored 15% above the average."
+     ],
+     "answer": "A",
+     "explain": "A percentile is a relative position, not a percentage of correct answers."
+    },
+    {
+     "type": "Data quality",
+     "stem": "When a CSV file of customer phone numbers is opened in a spreadsheet, numbers such as 0612345678 appear as 612345678. What is the best fix?",
+     "options": [
+      "Add a zero to every number by hand.",
+      "Import the phone number column as text.",
+      "Delete the numbers that lost their zero.",
+      "Format the column as currency.",
+      "Sort the column in ascending order."
+     ],
+     "answer": "B",
+     "explain": "A phone number is an identifier, not a number: import it as text."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A daily sales file contains a row dated 31 April. What is the best action?",
+     "options": [
+      "Change it to 30 April.",
+      "Change it to 1 May.",
+      "Leave it, because it is only one row.",
+      "Flag it as an invalid date, check the source record, then correct or exclude it, and add date validation.",
+      "Delete the whole file."
+     ],
+     "answer": "D",
+     "explain": "An impossible date: don't guess; check the source and add validation."
+    },
+    {
+     "type": "Data quality",
+     "stem": "In a dataset of retail transactions that are usually between €20 and €200, one transaction is €1,000,000. What is the best first step?",
+     "options": [
+      "Check with the source whether the transaction is genuine or an error.",
+      "Delete it automatically.",
+      "Replace it with the mean.",
+      "Keep it without checking.",
+      "Cap it at €200."
+     ],
+     "answer": "A",
+     "explain": "Verify first: it may be a real (B2B) order or an entry error."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You want to compare the market shares of eight brands in a single year. Which chart is most appropriate?",
+     "options": [
+      "Pie chart with eight slices",
+      "Line chart",
+      "Bar chart sorted by share",
+      "Scatter plot",
+      "Histogram"
+     ],
+     "answer": "C",
+     "explain": "Comparing many categories → sorted bars. A pie with 8 slices is hard to read."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "A chart compares revenue in two years using circles whose diameter is proportional to revenue: €10m in 2024 and €20m in 2025. What is the main problem?",
+     "options": [
+      "Circles should be replaced by squares.",
+      "The years should be shown in reverse order.",
+      "Revenue should be shown in a pie chart.",
+      "The colours are not consistent.",
+      "Doubling the diameter quadruples the area, so the increase looks much bigger than it is."
+     ],
+     "answer": "E",
+     "explain": "The eye reads area: diameter ×2 → area ×4."
+    }
+   ]
+  }
+ }
+}
