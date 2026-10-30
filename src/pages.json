@@ -25,7 +25,8 @@
   },
   "history": {
     "title": "Your history · Assessmint",
-    "description": "Your past mock test results, stored only in this browser."
+    "description": "Your past mock test results, stored only in this browser.",
+    "noindex": true
   },
   "about": {
     "title": "About · Assessmint",
