@@ -1,0 +1,681 @@
+{
+ "id": "s08",
+ "title": "Mock test 8",
+ "level": "challenging",
+ "note": "Longer calculations and subtler traps.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** Coworking operator, monthly figures. *Occupancy = % of desks rented.*\n\n| Site | Desks | Occupancy | Price per rented desk (€/month) |\n|---|---|---|---|\n| Madrid | 320 | 85% | 290 |\n| Barcelona | 260 | 92% | 310 |\n| Valencia | 140 | 70% | 220 |\n| Seville | 110 | 78% | 200 |"
+    },
+    "g2": {
+     "md": "**Use the chart for questions 5–7.**",
+     "chart": {
+      "type": "bar",
+      "title": "Online course enrolments by subject (thousands)",
+      "categories": [
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "series": [
+       {
+        "name": "Data",
+        "values": [
+         22,
+         26,
+         31
+        ]
+       },
+       {
+        "name": "Business",
+        "values": [
+         40,
+         44,
+         45
+        ]
+       },
+       {
+        "name": "Languages",
+        "values": [
+         18,
+         24,
+         33
+        ]
+       },
+       {
+        "name": "Design",
+        "values": [
+         15,
+         14,
+         16
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "What percentage of the operator's total monthly revenue comes from Barcelona?",
+     "options": [
+      "31.3%",
+      "34.4%",
+      "36.5%",
+      "38.7%",
+      "41.2%"
+     ],
+     "answer": "D",
+     "explain": "Revenue = desks × occupancy × price. Barcelona 260 × 0.92 × 310 = €74,152; total 78,880 + 74,152 + 21,560 + 17,160 = €191,752 → 38.7%. 31.3% is the share of desks and 34.4% the share of occupied desks."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "Valencia cuts its price by 10% and, as a result, occupancy rises to 85%. By what percentage does Valencia's monthly revenue change?",
+     "options": [
+      "+21.4%",
+      "+11.4%",
+      "+9.3%",
+      "+4.7%",
+      "−0.9%"
+     ],
+     "answer": "C",
+     "explain": "(0.85/0.70) × 0.9 = 1.093 → +9.3%. 21.4% is only the occupancy increase; 11.4% subtracts 10 points instead of multiplying."
+    },
+    {
+     "type": "Rule",
+     "stem": "A consultant invoices €3,200 for a project. VAT of 21% is added to the fee, and the client withholds 15% income tax calculated on the fee before VAT. How much does the client actually pay the consultant?",
+     "options": [
+      "€3,872.00",
+      "€3,291.20",
+      "€2,720.00",
+      "€3,488.00",
+      "€3,392.00"
+     ],
+     "answer": "E",
+     "explain": "3,200 + 672 (VAT) − 480 (withholding on the base) = €3,392. €3,291.20 applies the withholding to the amount including VAT."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 4, 9, 8, 18, 16, 36, 32, ?",
+     "options": [
+      "64",
+      "72",
+      "70",
+      "48",
+      "54"
+     ],
+     "answer": "B",
+     "explain": "Two interleaved series that double: 4, 8, 16, 32 and 9, 18, 36, 72."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "In 2025, what percentage of total enrolments were in Data?",
+     "options": [
+      "23.2%",
+      "24.8%",
+      "31.0%",
+      "26.4%",
+      "22.5%"
+     ],
+     "answer": "B",
+     "explain": "Total 2025 = 31 + 45 + 33 + 16 = 125 → 31/125 = 24.8%. 23.2% is 2023 (wrong year)."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "Suppose that in 2026 Languages enrolments grow by the same number as from 2024 to 2025, and Business enrolments grow by the same percentage as from 2024 to 2025. What will combined Languages and Business enrolments be in 2026 (thousands)?",
+     "options": [
+      "86.0",
+      "91.4",
+      "84.5",
+      "88.0",
+      "93.0"
+     ],
+     "answer": "D",
+     "explain": "Languages 33 + 9 = 42. Business 45 × (45/44) = 46.0. Total 88.0. 91.4 applies the % to Languages too."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "By how many percentage points did Design's share of total enrolments change between 2023 and 2025?",
+     "options": [
+      "−3.0 pp",
+      "+6.7 pp",
+      "−1.0 pp",
+      "−18.9 pp",
+      "−2.2 pp"
+     ],
+     "answer": "A",
+     "explain": "15/95 = 15.8% → 16/125 = 12.8%: −3.0 points. −18.9% is the relative change in share (points ≠ %)."
+    },
+    {
+     "type": "Rule",
+     "stem": "A call centre must answer 4,800 calls a day. Each agent handles 12 calls per hour and has 7.5 productive hours per day. On a typical day 15% of employed agents are absent. What is the minimum number of agents the centre must employ?",
+     "options": [
+      "63",
+      "62",
+      "54",
+      "64",
+      "71"
+     ],
+     "answer": "A",
+     "explain": "You need 4,800/(12 × 7.5) = 53.3 agents present. 0.85 × E ≥ 53.3 → E ≥ 62.7 → 63. 64 comes from rounding to 54 before dividing; 62 multiplies by 1.15 instead of dividing by 0.85."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 5, 3, 22. Row 2: 6, 2, 34. Row 3: 7, 4, ?",
+     "options": [
+      "41",
+      "53",
+      "45",
+      "33",
+      "28"
+     ],
+     "answer": "C",
+     "explain": "a² − b: 25 − 3 = 22; 36 − 2 = 34; 49 − 4 = 45."
+    },
+    {
+     "type": "Estimation",
+     "stem": "A stadium has 38,600 seats. Over a season of 19 home matches, average attendance was 81% of capacity and average food and drink spend was €11.40 per attendee. Which is the best estimate of the season's food and drink revenue?",
+     "options": [
+      "€3.4m",
+      "€0.7m",
+      "€13.5m",
+      "€68m",
+      "€6.8m"
+     ],
+     "answer": "E",
+     "explain": "≈ 39,000 × 0.8 × 20 × 11 ≈ €6.9m (exactly €6.77m)."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A company raises its price by 20%, and as a result sells 15% fewer units. By what percentage does revenue change?",
+     "options": [
+      "+5%",
+      "0%",
+      "−2%",
+      "+2%",
+      "+3%"
+     ],
+     "answer": "D",
+     "explain": "1.20 × 0.85 = 1.02 → +2%. +5% adds and subtracts percentages."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A van travels 120 km to a client at 80 km/h and returns the same 120 km at 60 km/h. What is its average speed for the round trip?",
+     "options": [
+      "70.0 km/h",
+      "68.6 km/h",
+      "69.3 km/h",
+      "66.7 km/h",
+      "72.0 km/h"
+     ],
+     "answer": "B",
+     "explain": "240 km/(1.5 h + 2 h) = 68.6 km/h. 70 is the simple average of the speeds."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "All members of the audit committee are non-executive directors. No non-executive director receives a bonus.\n\n**Conclusion:** No member of the audit committee receives a bonus.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "Committee → non-executive → no bonus. It follows."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "No remote workers attended the offsite. Some managers did not attend the offsite.\n\n**Conclusion:** Some managers are remote workers.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "The managers who didn't attend may have stayed away for other reasons. It doesn't follow."
+    },
+    {
+     "type": "Deduction",
+     "stem": "All products in the spring catalogue are made of recycled materials. Some products made of recycled materials are sold online only. No product sold online only is available in stores.\n\nWhich statement must be true?",
+     "options": [
+      "Some spring catalogue products are not available in stores.",
+      "No product in the spring catalogue is sold online only.",
+      "Some products made of recycled materials are not available in stores.",
+      "All products made of recycled materials are in the spring catalogue.",
+      "None of the above."
+     ],
+     "answer": "C",
+     "explain": "Recycled products sold online only are not in stores. A fails: those products may not be in the spring catalogue. D reverses the premise."
+    },
+    {
+     "type": "Deduction",
+     "stem": "Every project that exceeded its budget by more than 10% was reviewed by the steering committee. Project Atlas was not reviewed by the steering committee.\n\nWhich statement must be true?",
+     "options": [
+      "Atlas was completed on budget.",
+      "Every project reviewed by the committee exceeded its budget by more than 10%.",
+      "Atlas exceeded its budget by less than 10%.",
+      "Atlas will be reviewed next quarter.",
+      "Atlas did not exceed its budget by more than 10%."
+     ],
+     "answer": "E",
+     "explain": "Contrapositive. C adds that Atlas went over budget, which we don't know (it may have come in under); B reverses the premise."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Six consultants (F, G, H, J, K, L) each give a talk, one after another, in slots 1 to 6.\n- J speaks immediately after F.\n- H speaks in slot 2 or slot 5.\n- K speaks before H.\n- L speaks neither first nor last.\n- G speaks after J.\n- K does not speak first.\n\nWho speaks in slot 6?",
+     "options": [
+      "F",
+      "H",
+      "K",
+      "G",
+      "L"
+     ],
+     "answer": "D",
+     "explain": "Shortcut: slot 6 can't go to anyone who must have someone after them. F (before J), J (before G), K (before H), L can't be last and H is in 2 or 5. Only G is left. Solution: F J K/L L/K H G."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five offices along a corridor are numbered 1 to 5 from west to east. They are assigned to Finance, HR, IT, Legal and Marketing.\n- Marketing is in office 3.\n- Legal is next to Marketing, on its east side.\n- Finance is in office 1 or office 5.\n- IT is east of HR.\n- HR is not next to Finance.\n\nWhich department is in office 2?",
+     "options": [
+      "Finance",
+      "HR",
+      "IT",
+      "Legal",
+      "Marketing"
+     ],
+     "answer": "C",
+     "explain": "Legal = 4. If Finance = 1, HR and IT take 2 and 5 with IT to the east, so HR = 2, next to Finance (not allowed). So Finance = 5, HR = 1, IT = 2."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five training sessions (Excel, Python, SQL, Tableau, VBA) are held Monday to Friday, one per day.\n- SQL is the day before Python.\n- Tableau is not on Monday or Friday.\n- Excel is earlier in the week than VBA.\n- Python is not on Friday.\n\nIf Python is on Thursday, on which day is Tableau?",
+     "options": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+     ],
+     "answer": "B",
+     "explain": "Python Thursday → SQL Wednesday. Monday, Tuesday and Friday are left for Excel, Tableau and VBA. Tableau can't be Monday or Friday → Tuesday; Excel Monday, VBA Friday."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"Our main competitor cut its prices by 10% last year and its market share rose. If we cut our prices by 10%, our market share will rise too.\"\n\nWhich assumption does the argument rely on?",
+     "options": [
+      "The competitor has lower costs than we do.",
+      "The market will grow next year.",
+      "Our margins can absorb a 10% price cut.",
+      "The competitor's share rose because of the price cut, and our customers would respond to a price cut in the same way.",
+      "The competitor will not cut its prices again."
+     ],
+     "answer": "D",
+     "explain": "The argument credits the price cut for the share gain and transfers it to our customers. C is about profitability, which the argument doesn't mention."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"Since we introduced free lunches for staff, annual staff turnover has fallen from 18% to 11%. Free lunches clearly improve retention.\"\n\nWhich statement, if true, most weakens the argument?",
+     "options": [
+      "Staff rate the lunches highly in surveys.",
+      "The lunches cost €400,000 a year.",
+      "Over the same period the company raised salaries by 12%, and unemployment in the region rose sharply.",
+      "Other companies in the sector also offer free lunches.",
+      "Turnover was highest among new joiners."
+     ],
+     "answer": "C",
+     "explain": "It offers alternative causes for the fall in turnover over the same period."
+    },
+    {
+     "type": "Flaw",
+     "stem": "\"Most of the country's most successful start-ups were founded by people who dropped out of university. So leaving university early increases your chances of founding a successful start-up.\"\n\nWhich statement best describes the flaw in the argument?",
+     "options": [
+      "It assumes that all founders went to university.",
+      "It relies on data that may be out of date.",
+      "It generalises from one country to all countries.",
+      "It attacks university graduates rather than their arguments.",
+      "It looks only at successful founders and ignores the many dropouts whose start-ups failed, treating a correlation as a cause."
+     ],
+     "answer": "E",
+     "explain": "Survivorship bias, and correlation taken as cause."
+    },
+    {
+     "type": "Inference",
+     "stem": "At a consulting firm, every client project is staffed with at least one manager, and a manager can work on at most two projects at a time. In March the firm had 7 client projects running and exactly 4 managers.\n\nWhich statement must be true?",
+     "options": [
+      "Every manager worked on two projects.",
+      "At least three managers worked on two projects.",
+      "Exactly one project had two managers.",
+      "At least one project had more than one manager.",
+      "At least one manager worked on only one project."
+     ],
+     "answer": "B",
+     "explain": "You need at least 7 assignments from 4 managers with at most 2 each. With only two managers on two projects you reach 6. A, D and E can be false (2-2-2-1 or 2-2-2-2)."
+    },
+    {
+     "type": "Inference",
+     "stem": "All of the firm's offices that opened before 2015 have been refurbished. None of the refurbished offices uses gas heating. The Bilbao office uses gas heating.\n\nWhich statement must be true?",
+     "options": [
+      "The Bilbao office opened in 2015 or later.",
+      "The Bilbao office will be refurbished soon.",
+      "All offices that opened after 2015 use gas heating.",
+      "The Bilbao office has been refurbished.",
+      "No office that opened after 2015 has been refurbished."
+     ],
+     "answer": "A",
+     "explain": "Gas → not refurbished → didn't open before 2015. C and E can't be deduced."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) A major shipping canal was blocked for six days.\n(2) Prices of imported furniture in Europe rose the following month.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "A",
+     "explain": "The blockage (1) makes imports more expensive (2)."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) The airline cancelled 40 flights on Friday.\n(2) Air traffic controllers held a one-day strike on Friday.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "B",
+     "explain": "The strike (2) causes the cancellations (1)."
+    },
+    {
+     "type": "Rules",
+     "stem": "Work-from-abroad policy: an employee may work from abroad for up to 30 days per calendar year if (a) they have passed probation **and** (b) their manager approves in writing. Stays of **more than** 30 days also require HR approval and are never allowed for employees in client-facing roles.\n\nWhich request complies with the policy?",
+     "options": [
+      "An employee still on probation, with written manager approval, for 10 days.",
+      "An employee who has passed probation, with verbal manager approval, for 15 days.",
+      "A client-facing employee who has passed probation, with written manager and HR approval, for 45 days.",
+      "A client-facing employee who has passed probation, with written manager approval, for 30 days.",
+      "A back-office employee who has passed probation, with written manager approval but no HR approval, for 40 days."
+     ],
+     "answer": "D",
+     "explain": "30 days is not \"more than 30\", so HR approval isn't needed and the client-facing restriction doesn't apply. C: more than 30 days and client-facing, never."
+    },
+    {
+     "type": "Rules",
+     "stem": "A start-up grant is available to companies that were incorporated less than 5 years ago **and** have fewer than 25 employees, **and** that either have their headquarters in the region **or** have at least half of their staff working in the region.\n\nAs of October 2026, Company Q was incorporated in June 2022, has 24 employees, is headquartered in Lisbon (outside the region) and has 13 of its staff working in the region. Is Q eligible?",
+     "options": [
+      "No, because its headquarters are outside the region.",
+      "Yes, because it meets the age, size and staff-location conditions.",
+      "No, because 24 employees is too many.",
+      "Cannot be determined.",
+      "No, because it is more than 4 years old."
+     ],
+     "answer": "B",
+     "explain": "4 years 4 months < 5; 24 < 25; 13 of 24 ≥ half. Eligible through the staff-location route."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "line",
+      "title": "Average delivery time (days)",
+      "yMin": 2,
+      "categories": [
+       "Jan",
+       "Feb",
+       "Mar",
+       "Apr",
+       "May",
+       "Jun"
+      ],
+      "series": [
+       {
+        "name": "Courier A",
+        "values": [
+         3.4,
+         3.2,
+         3.1,
+         3.1,
+         2.7,
+         2.5
+        ]
+       },
+       {
+        "name": "Courier B",
+        "values": [
+         2.2,
+         2.3,
+         2.5,
+         2.4,
+         2.9,
+         3.2
+        ]
+       },
+       {
+        "name": "Courier C",
+        "values": [
+         4.6,
+         4.1,
+         3.7,
+         3.4,
+         3.2,
+         2.9
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the chart? **Select all that apply.**",
+     "options": [
+      "Courier A's delivery time fell every month.",
+      "Between January and June, Courier C's delivery time fell by more days than any other courier's.",
+      "In June, Courier B was the slowest of the three couriers.",
+      "In June, Courier C was faster than Courier A.",
+      "Courier B handled fewer deliveries than Courier A."
+     ],
+     "answer": "BC",
+     "explain": "A: March and April equal ✗. B: C falls 1.7 days, A 0.9 ✔. C: 3.2 > 2.9 > 2.5 ✔. D: 2.9 is slower than 2.5 ✗. E: no volume data ✗."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Store performance, 2025. *Conversion = % of visitors who make a purchase.*\n\n| Store | Visitors (000s) | Conversion | Average basket (€) |\n|---|---|---|---|\n| North | 240 | 18% | 42 |\n| Centre | 410 | 12% | 38 |\n| South | 180 | 25% | 35 |\n| East | 300 | 15% | 50 |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "East had the highest sales.",
+      "South made the most purchases.",
+      "Centre made more purchases than any other store.",
+      "The store with the highest conversion had the lowest sales.",
+      "The overall conversion across all visitors was 17.5%."
+     ],
+     "answer": "ACD",
+     "explain": "Purchases: 43.2; 49.2; 45; 45 thousand. Sales: 1.81; 1.87; 1.58; €2.25m. A ✔, B ✗, C ✔, D ✔ (South). E: 182.4/1,130 = 16.1%; 17.5% is the simple average ✗."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "stacked",
+      "title": "Revenue by channel",
+      "categories": [
+       "2024",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "Online",
+        "values": [
+         35,
+         40
+        ]
+       },
+       {
+        "name": "Stores",
+        "values": [
+         50,
+         42
+        ]
+       },
+       {
+        "name": "Wholesale",
+        "values": [
+         15,
+         18
+        ]
+       }
+      ],
+      "note": "Total revenue: €12m in 2024, €15m in 2025."
+     },
+     "stem": "Which statement about store revenue is correct?",
+     "options": [
+      "It fell by 8%.",
+      "It fell by 16%.",
+      "It rose by 5%.",
+      "It rose by 25%.",
+      "It cannot be determined from the data."
+     ],
+     "answer": "C",
+     "explain": "0.50 × 12 = €6.0m → 0.42 × 15 = €6.3m: +5%. A confuses 8 points with %; B is the relative fall in share; D is total growth."
+    },
+    {
+     "type": "Table",
+     "stem": "Units sold by region and product:\n\n| Region | Product X | Product Y | Total |\n|---|---|---|---|\n| North | 120 | 60 | 180 |\n| South | 60 | 160 | 220 |\n| West | 20 | 80 | 100 |\n\nWhat percentage of Product X's units were sold in the North?",
+     "options": [
+      "24.0%",
+      "66.7%",
+      "60.0%",
+      "40.0%",
+      "36.0%"
+     ],
+     "answer": "C",
+     "explain": "Total X = 200 → 120/200 = 60%. 66.7% is X's share within the North (another denominator); 24% divides by the grand total."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A dataset has eight values: 4, 7, 7, 9, 12, 15, 18 and x. The median of the eight values is 10.5. Which statement about x is correct?",
+     "options": [
+      "x = 10.5",
+      "x ≥ 12",
+      "x ≤ 9",
+      "x = 12 only",
+      "9 ≤ x ≤ 12"
+     ],
+     "answer": "B",
+     "explain": "The median is the average of the 4th and 5th values. If x ≥ 12, they are 9 and 12 → 10.5. If x < 12, the 5th value is below 12 and the median falls below 10.5."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A company's average salary rose from €40,000 to €42,000 over a year, yet no employee's salary changed. Which is the most likely explanation?",
+     "options": [
+      "The average was calculated incorrectly.",
+      "Inflation raised the average.",
+      "Bonuses are included in the average.",
+      "Several lower-paid employees left the company.",
+      "The median salary fell."
+     ],
+     "answer": "D",
+     "explain": "Composition effect: if low earners leave, the average rises without any salary changing."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Monthly sales of Product X have a mean of 200 units and a standard deviation of 20. Product Y has a mean of 50 units and a standard deviation of 15. Which product's sales are relatively more variable?",
+     "options": [
+      "X, because its standard deviation is larger.",
+      "Y, because its standard deviation is larger relative to its mean.",
+      "They are equally variable.",
+      "X, because its mean is larger.",
+      "They cannot be compared."
+     ],
+     "answer": "B",
+     "explain": "Coefficient of variation: X 20/200 = 10%, Y 15/50 = 30%."
+    },
+    {
+     "type": "Data quality",
+     "stem": "In a sales table, the Region field contains \"North\", \"north\", \"N.\" and \"Nort\". A pivot table shows four separate rows for the North region. What is the best fix?",
+     "options": [
+      "Delete the rows that are not spelled \"North\".",
+      "Sort the table alphabetically.",
+      "Sum the four rows by hand each month.",
+      "Rename the pivot table rows.",
+      "Map all variants to one standard value with a lookup table, and use a drop-down list for future entries."
+     ],
+     "answer": "E",
+     "explain": "Standardise with a mapping table and prevent with validation (a drop-down list)."
+    },
+    {
+     "type": "Data quality",
+     "stem": "Server logs from Madrid (CET) and New York (EST) are combined to measure the time between a customer's request and the response. What should you do first?",
+     "options": [
+      "Convert all timestamps to a common time zone, such as UTC.",
+      "Drop the New York logs.",
+      "Subtract six hours from every timestamp.",
+      "Sort the logs by time.",
+      "Round all timestamps to the nearest hour."
+     ],
+     "answer": "A",
+     "explain": "Without a common time zone, time differences come out wrong. C only works for one of the sources."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A customer survey changed in March from a 1–5 satisfaction scale to a 1–10 scale. The monthly average jumps from 3.9 in February to 7.6 in March. What should you do?",
+     "options": [
+      "Report a large improvement in satisfaction.",
+      "Exclude the months after March.",
+      "Average the two scales together.",
+      "Convert both periods to a common scale before comparing, and flag the change in method.",
+      "Ignore the change because it is a single month."
+     ],
+     "answer": "D",
+     "explain": "Change of scale: rescale and flag it. 3.9 on 1–5 ≈ 7.8 on 1–10, so there is no improvement."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You want to show the distribution of order values for 10,000 online orders. Which chart is most appropriate?",
+     "options": [
+      "Pie chart",
+      "Line chart",
+      "Histogram",
+      "Scatter plot",
+      "100% stacked bar chart"
+     ],
+     "answer": "C",
+     "explain": "Distribution of a numerical variable → histogram."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "A survey allowed respondents to choose several answers. The results add up to 135% and are shown in a pie chart. What is the main problem?",
+     "options": [
+      "The colours are hard to tell apart.",
+      "A pie chart shows parts of one whole, but multiple-answer results do not sum to 100%; a bar chart should be used.",
+      "The percentages should be rounded.",
+      "The slices should be sorted by size.",
+      "The chart needs a title."
+     ],
+     "answer": "B",
+     "explain": "A pie implies parts of a 100% whole."
+    }
+   ]
+  }
+ }
+}

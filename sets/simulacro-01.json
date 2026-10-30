@@ -1,0 +1,661 @@
+{
+ "id": "s01",
+ "title": "Mock test 1",
+ "level": "realistic",
+ "note": "Close to the difficulty of the real test. A good place to start.",
+ "sections": {
+  "NR": {
+   "contexts": {
+    "g1": {
+     "md": "**Use the table for questions 1–2.** Bakery chain, 2025 (€ thousands).\n\n| Store | Revenue | Staff costs | Ingredient costs |\n|---|---|---|---|\n| Centro | 820 | 246 | 287 |\n| Norte | 640 | 205 | 211 |\n| Playa | 510 | 140 | 194 |\n| Puerto | 450 | 162 | 144 |"
+    },
+    "g2": {
+     "md": "**Use the chart for questions 5–7.**",
+     "chart": {
+      "type": "line",
+      "title": "Monthly visitors (thousands)",
+      "yMin": 30,
+      "categories": [
+       "Jan",
+       "Feb",
+       "Mar",
+       "Apr",
+       "May",
+       "Jun"
+      ],
+      "series": [
+       {
+        "name": "Museum A",
+        "values": [
+         42,
+         45,
+         51,
+         58,
+         63,
+         70
+        ]
+       },
+       {
+        "name": "Museum B",
+        "values": [
+         55,
+         54,
+         57,
+         60,
+         61,
+         66
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "questions": [
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "Which store has the highest staff costs as a percentage of its revenue?",
+     "options": [
+      "Centro",
+      "Norte",
+      "Playa",
+      "Puerto",
+      "Norte and Puerto equally"
+     ],
+     "answer": "D",
+     "explain": "Centro 30.0%, Norte 32.0%, Playa 27.5%, Puerto 36.0%."
+    },
+    {
+     "type": "Table",
+     "ctx": "g1",
+     "stem": "What percentage of the chain's total revenue comes from the Norte store?",
+     "options": [
+      "28.1%",
+      "33.9%",
+      "22.6%",
+      "25.0%",
+      "26.4%"
+     ],
+     "answer": "E",
+     "explain": "Total = 820 + 640 + 510 + 450 = 2,420 → 640/2,420 = 26.4%. 25% assumes the four stores are equal."
+    },
+    {
+     "type": "Rule",
+     "stem": "A taxi charges €2.50 per trip plus €1.10 per km for the first 10 km and €0.90 per km after that. At night a 20% surcharge is added to the whole fare. What is the fare for a 16 km trip at night?",
+     "options": [
+      "€22.68",
+      "€18.90",
+      "€24.12",
+      "€22.18",
+      "€21.06"
+     ],
+     "answer": "A",
+     "explain": "2.50 + 10 × 1.10 + 6 × 0.90 = 18.90 → × 1.2 = €22.68. €22.18 applies the surcharge to the distance only; €24.12 charges every km at 1.10."
+    },
+    {
+     "type": "Series",
+     "stem": "What number comes next? 5, 8, 14, 26, 50, ?",
+     "options": [
+      "74",
+      "100",
+      "98",
+      "96",
+      "86"
+     ],
+     "answer": "C",
+     "explain": "The differences double: 3, 6, 12, 24 → 48. 50 + 48 = 98 (also ×2 − 2)."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "By what percentage did Museum A's monthly visitors increase between January and June?",
+     "options": [
+      "60.0%",
+      "66.7%",
+      "40.0%",
+      "28.0%",
+      "166.7%"
+     ],
+     "answer": "B",
+     "explain": "(70 − 42)/42 = 66.7%. 40% divides by the June figure (wrong base)."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "In which month did the two museums' combined visitors first exceed 120,000?",
+     "options": [
+      "March",
+      "April",
+      "May",
+      "June",
+      "February"
+     ],
+     "answer": "C",
+     "explain": "Totals: 97, 99, 108, 118, 124, 136 thousand. The first above 120 is May."
+    },
+    {
+     "type": "Chart",
+     "ctx": "g2",
+     "stem": "A ticket costs €12 at Museum A and €15 at Museum B. Over the six months, which museum earned more ticket revenue, and by how much?",
+     "options": [
+      "Museum B, by €1,347k",
+      "Museum B, by €288k",
+      "Museum A, by €1,347k",
+      "Museum B, by €360k",
+      "Museum B, by €1,059k"
+     ],
+     "answer": "A",
+     "explain": "A: 329k visits × 12 = €3,948k. B: 353k × 15 = €5,295k. Difference €1,347k. 288 and 360 multiply only the gap in visits (24k) by one price."
+    },
+    {
+     "type": "Rule",
+     "stem": "A company has 30 sales reps. The 18 reps in the North region sold an average of €72k each, and the other 12 sold an average of €85k each. What were average sales per rep across the company?",
+     "options": [
+      "€78.5k",
+      "€77.2k",
+      "€79.8k",
+      "€76.4k",
+      "€75.0k"
+     ],
+     "answer": "B",
+     "explain": "(18 × 72 + 12 × 85)/30 = (1,296 + 1,020)/30 = €77.2k. 78.5 is the simple average of the two averages."
+    },
+    {
+     "type": "Grid",
+     "stem": "Each row follows the same rule. Row 1: 3, 4, 13. Row 2: 5, 2, 11. Row 3: 6, 3, ?",
+     "options": [
+      "21",
+      "39",
+      "18",
+      "15",
+      "19"
+     ],
+     "answer": "E",
+     "explain": "a × b + 1: 12 + 1 = 13; 10 + 1 = 11; 18 + 1 = 19."
+    },
+    {
+     "type": "Estimation",
+     "stem": "A warehouse ships 2,980 parcels a day, 6 days a week, for 51 weeks a year. Which is the best estimate of the parcels shipped in a year?",
+     "options": [
+      "90,000",
+      "180,000",
+      "900,000",
+      "1.8 million",
+      "9 million"
+     ],
+     "answer": "C",
+     "explain": "≈ 3,000 × 6 × 50 = 900,000 (exactly 911,880)."
+    },
+    {
+     "type": "Calculation",
+     "stem": "A jacket is reduced by 30%. At the till, a further 10% is taken off the reduced price. What is the total discount on the original price?",
+     "options": [
+      "36%",
+      "40%",
+      "33%",
+      "37%",
+      "43%"
+     ],
+     "answer": "D",
+     "explain": "0.70 × 0.90 = 0.63 → a 37% discount. 40% adds the percentages."
+    },
+    {
+     "type": "Calculation",
+     "stem": "3 identical machines fill 900 bottles in 20 minutes. How many minutes do 5 of these machines need to fill 1,800 bottles?",
+     "options": [
+      "33.3",
+      "40",
+      "20",
+      "24",
+      "12"
+     ],
+     "answer": "D",
+     "explain": "Each machine: 900/3/20 = 15 bottles/min. 5 machines = 75/min → 1,800/75 = 24 min."
+    }
+   ]
+  },
+  "CT": {
+   "contexts": {
+    "two": {
+     "md": "**Questions 13–14.** For each pair of statements, choose the option that best describes their relationship."
+    }
+   },
+   "questions": [
+    {
+     "type": "Syllogism",
+     "stem": "All accountants in the firm passed the ethics exam. Laura passed the ethics exam.\n\n**Conclusion:** Laura is an accountant in the firm.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "B",
+     "explain": "Reversed premise: passing the exam does not make someone an accountant."
+    },
+    {
+     "type": "Syllogism",
+     "stem": "No member of the sales team works at weekends. Every member of the events team works at weekends.\n\n**Conclusion:** No member of the events team is in the sales team.",
+     "options": [
+      "The conclusion follows",
+      "The conclusion does not follow"
+     ],
+     "answer": "A",
+     "explain": "Events team → works weekends → not in sales. It follows."
+    },
+    {
+     "type": "Deduction",
+     "stem": "All of the company's delivery vans are electric. All of its electric vehicles are parked overnight at the depot. Some vehicles parked at the depot belong to staff.\n\nWhich statement must be true?",
+     "options": [
+      "Some delivery vans belong to staff.",
+      "All vehicles parked at the depot are electric.",
+      "All delivery vans are parked overnight at the depot.",
+      "Some electric vehicles belong to staff.",
+      "No delivery van belongs to staff."
+     ],
+     "answer": "C",
+     "explain": "Van → electric → parked at the depot. B reverses the premise; A, D and E cannot be deduced."
+    },
+    {
+     "type": "Deduction",
+     "stem": "If a supplier delivers late twice or more in a quarter, it is placed on a watch list. Supplier Kova was not placed on the watch list this quarter.\n\nWhich statement must be true?",
+     "options": [
+      "Kova was never late this quarter.",
+      "Every supplier on the watch list was late at least twice.",
+      "Kova delivered late exactly once this quarter.",
+      "Kova delivered late at most once this quarter.",
+      "Kova will not be late next quarter."
+     ],
+     "answer": "D",
+     "explain": "Contrapositive: not on the list means not late twice or more. A and C are possible but not certain; B reverses the rule."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Five runners (A, B, C, D, E) finish a race with no ties.\n- B finishes before D.\n- E finishes immediately after A.\n- C finishes third.\n- D does not finish last.\n\nWho finishes last?",
+     "options": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+     ],
+     "answer": "E",
+     "explain": "A–E sit together in 1–2 or 4–5. If 1–2, B and D take 4–5 with D last (not allowed). So B D C A E."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Four meetings (Budget, Hiring, Product, Strategy) are held Monday to Thursday, one per day.\n- Hiring is the day after Product.\n- Budget is earlier in the week than Product.\n- Strategy is not on Monday.\n- Strategy is not the day before Product.\n\nOn which day is Hiring?",
+     "options": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday"
+     ],
+     "answer": "C",
+     "explain": "Product can't be Monday (Budget comes earlier). If Product–Hiring were Wednesday–Thursday, Strategy would be Tuesday, the day before Product (not allowed). So Budget Monday, Product Tuesday, Hiring Wednesday, Strategy Thursday."
+    },
+    {
+     "type": "Sequencing",
+     "stem": "Six families (Adams, Brown, Clark, Davis, Evans, Ford) live on floors 1 (bottom) to 6 (top), one per floor.\n- Clark lives on floor 4.\n- Adams lives on the floor directly above Ford.\n- Adams lives below Clark.\n- Evans lives below Ford.\n- Brown does not live on floor 6.\n- Davis does not live next to Clark.\n\nWho lives on floor 5?",
+     "options": [
+      "Adams",
+      "Brown",
+      "Davis",
+      "Evans",
+      "Ford"
+     ],
+     "answer": "B",
+     "explain": "Ford–Adams sit below Clark with Evans below them: Evans 1, Ford 2, Adams 3. Floors 5 and 6 are left for Brown and Davis; Brown can't be on 6 → Brown 5, Davis 6."
+    },
+    {
+     "type": "Assumption",
+     "stem": "\"Self-checkout machines serve a customer in 2 minutes, compared with 4 minutes at a staffed till. Replacing all staffed tills with self-checkouts will therefore halve queuing times.\"\n\nWhich assumption does the argument rely on?",
+     "options": [
+      "Customers prefer self-checkouts.",
+      "The number of checkout points and of customers will stay the same, so serving speed is what drives queue length.",
+      "Theft will not increase.",
+      "Self-checkouts cost less than paying staff.",
+      "All staffed tills will be removed within a year."
+     ],
+     "answer": "B",
+     "explain": "If the number of checkouts or the flow of customers changes, serving speed alone doesn't predict the queue."
+    },
+    {
+     "type": "Weaken",
+     "stem": "\"After the company moved to an open-plan office, the number of internal emails fell by 30%. Open-plan offices clearly improve communication.\"\n\nWhich statement, if true, most weakens the argument?",
+     "options": [
+      "Employees say they like the new office.",
+      "Open-plan offices are cheaper to run.",
+      "Some teams still have private offices.",
+      "Email volumes vary from month to month.",
+      "At the same time, the company introduced an instant-messaging tool that replaced much of its internal email."
+     ],
+     "answer": "E",
+     "explain": "It gives another cause for the drop in emails, and shows that fewer emails need not mean less communication."
+    },
+    {
+     "type": "Strengthen",
+     "stem": "A city says its new night-bus service has reduced drink-driving.\n\nWhich statement, if true, most strengthens the claim?",
+     "options": [
+      "Night buses are popular with young people.",
+      "Drink-driving arrests fell across the whole country.",
+      "Drink-driving arrests fell sharply in areas served by night buses but stayed level in similar areas without them, with the same number of police checks.",
+      "The service costs €2m a year.",
+      "Some passengers still drive home."
+     ],
+     "answer": "C",
+     "explain": "A comparison with a control group under the same policing conditions. B points to a national cause."
+    },
+    {
+     "type": "Inference",
+     "stem": "Every employee at the Seville office speaks Spanish. Some employees at the Seville office also speak French. No one at the company who speaks French works in the finance team.\n\nWhich statement must be true?",
+     "options": [
+      "Some Spanish speakers at the company are not in the finance team.",
+      "No one at the Seville office works in the finance team.",
+      "Everyone in the finance team speaks Spanish.",
+      "Some members of the finance team work in Seville.",
+      "All French speakers at the company work in Seville."
+     ],
+     "answer": "A",
+     "explain": "The French-speaking Seville employees speak Spanish and are not in finance. B generalises to the whole office."
+    },
+    {
+     "type": "Inference",
+     "stem": "Each of the 9 members of a committee voted yes or no on two proposals. 6 members voted yes on Proposal X and 5 voted yes on Proposal Y.\n\nWhich statement must be true?",
+     "options": [
+      "Exactly 2 members voted yes on both proposals.",
+      "At least 2 members voted yes on both proposals.",
+      "At most 2 members voted yes on both proposals.",
+      "Nobody voted no on both proposals.",
+      "At least one member voted no on both proposals."
+     ],
+     "answer": "B",
+     "explain": "6 + 5 − 9 = 2 is the minimum overlap. It could be up to 5, so A and C aren't certain; D and E depend on the overlap."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Many restaurants in the town reduced their opening hours.\n(2) The price of electricity in the region doubled.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "B",
+     "explain": "The electricity price rise (2) leads to shorter opening hours (1)."
+    },
+    {
+     "type": "Two statements",
+     "ctx": "two",
+     "stem": "(1) Sales of umbrellas rose sharply in the city last week.\n(2) Taxi journeys in the city rose sharply last week.",
+     "options": [
+      "Statement 1 is the cause and statement 2 is its effect.",
+      "Statement 2 is the cause and statement 1 is its effect.",
+      "Both statements are independent causes.",
+      "Both statements are effects of a common cause.",
+      "Both statements are effects of independent causes."
+     ],
+     "answer": "D",
+     "explain": "Both are effects of a common cause, such as a rainy week."
+    },
+    {
+     "type": "Rules",
+     "stem": "Returns policy: unused items can be returned within 30 days of delivery for a full refund. Unused items returned between 31 and 60 days after delivery receive store credit only. Used items cannot be returned, **except** faulty items, which can be returned for a full refund within one year of delivery.\n\nWhich return receives a full refund?",
+     "options": [
+      "An unused coat returned 35 days after delivery.",
+      "A used blender that works properly, returned after 10 days.",
+      "A faulty kettle that has been used, returned 8 months after delivery.",
+      "Unused shoes returned 61 days after delivery.",
+      "A faulty heater returned 14 months after delivery."
+     ],
+     "answer": "C",
+     "explain": "Faulty and within a year: refunded even if used. A gets store credit; B, D and E are refused."
+    },
+    {
+     "type": "Rules",
+     "stem": "Library rules: members may have up to 6 items on loan at a time; students may have up to 10. No member may have more than 2 new releases on loan at once. Members with an item overdue by more than 14 days cannot borrow until it is returned.\n\nA student has 7 items on loan, including 1 new release, and nothing overdue. She wants to borrow 2 more new releases. What can she do?",
+     "options": [
+      "Borrow both.",
+      "Borrow only one, because of the 10-item limit.",
+      "Borrow neither, because she has reached her limit.",
+      "Borrow only one, because of the new-release limit.",
+      "It cannot be determined."
+     ],
+     "answer": "D",
+     "explain": "9 items stays within the limit of 10, but she would have 3 new releases and the maximum is 2."
+    }
+   ]
+  },
+  "WwD": {
+   "contexts": {},
+   "questions": [
+    {
+     "type": "Chart (multi)",
+     "multi": true,
+     "chart": {
+      "type": "bar",
+      "title": "Energy use by office (MWh)",
+      "categories": [
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "series": [
+       {
+        "name": "North",
+        "values": [
+         120,
+         115,
+         108
+        ]
+       },
+       {
+        "name": "South",
+        "values": [
+         95,
+         102,
+         110
+        ]
+       },
+       {
+        "name": "East",
+        "values": [
+         140,
+         128,
+         121
+        ]
+       }
+      ]
+     },
+     "stem": "Which statements can be concluded from the chart? **Select all that apply.**",
+     "options": [
+      "North's energy use fell every year.",
+      "In 2025, South used more energy than North.",
+      "Total energy use across the three offices fell every year.",
+      "East's energy use fell by more than 15% between 2023 and 2025.",
+      "South will use more energy than East in 2026."
+     ],
+     "answer": "ABC",
+     "explain": "A ✔ 120 → 115 → 108. B ✔ 110 > 108. C ✔ 355, 345, 339. D ✗ 19/140 = 13.6%. E ✗ that is a forecast."
+    },
+    {
+     "type": "Table (multi)",
+     "multi": true,
+     "stem": "Hotel reviews by platform:\n\n| Platform | Reviews | Average rating (1–5) |\n|---|---|---|\n| P | 400 | 4.5 |\n| Q | 250 | 4.0 |\n| R | 350 | 3.6 |\n\nWhich statements can be concluded from the data? **Select all that apply.**",
+     "options": [
+      "The average rating across all reviews is above 4.0.",
+      "The average across all reviews equals the simple average of the three platforms.",
+      "Platform P accounts for 40% of all reviews.",
+      "More than a third of all reviews gave fewer than 4 stars.",
+      "Platform R's guests are the least satisfied customers of the hotel."
+     ],
+     "answer": "AC",
+     "explain": "A ✔ (1,800 + 1,000 + 1,260)/1,000 = 4.06. B ✗ the simple average is 4.03. C ✔ 400/1,000. D ✗ we only have averages, not the distribution. E ✗ cannot be concluded."
+    },
+    {
+     "type": "Chart",
+     "chart": {
+      "type": "stacked",
+      "title": "Sales by payment method",
+      "categories": [
+       "2024",
+       "2025"
+      ],
+      "unit": "%",
+      "series": [
+       {
+        "name": "Card",
+        "values": [
+         55,
+         62
+        ]
+       },
+       {
+        "name": "Cash",
+        "values": [
+         30,
+         20
+        ]
+       },
+       {
+        "name": "Mobile",
+        "values": [
+         15,
+         18
+        ]
+       }
+      ],
+      "note": "Total sales: €8m in 2024, €10m in 2025."
+     },
+     "stem": "Which statement about cash sales is correct?",
+     "options": [
+      "They fell by 10%.",
+      "They fell by €0.4m.",
+      "They fell by €1.0m.",
+      "They rose by €0.4m.",
+      "It cannot be determined from the data."
+     ],
+     "answer": "B",
+     "explain": "0.30 × 8 = €2.4m → 0.20 × 10 = €2.0m: −€0.4m. A confuses 10 percentage points with 10%; C applies the 10 points to the 2025 total."
+    },
+    {
+     "type": "Table",
+     "stem": "Employees by department and office:\n\n| Department | Madrid | Lisbon | Total |\n|---|---|---|---|\n| Sales | 45 | 30 | 75 |\n| Operations | 75 | 50 | 125 |\n| Finance | 30 | 20 | 50 |\n| Total | 150 | 100 | 250 |\n\nWhat percentage of Operations employees work in Lisbon?",
+     "options": [
+      "40.0%",
+      "50.0%",
+      "20.0%",
+      "33.3%",
+      "60.0%"
+     ],
+     "answer": "A",
+     "explain": "50/125 = 40%. 50% is the Operations share within Lisbon (another denominator); 20% divides by the grand total."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Delivery times (days) for nine orders: 2, 3, 3, 4, 5, 5, 5, 6, 30. Which statement is correct?",
+     "options": [
+      "Mean 6, median 5, mode 5",
+      "Mean 7, median 4, mode 5",
+      "Mean 7, median 5, mode 3",
+      "Mean 5, median 5, mode 5",
+      "Mean 7, median 5, mode 5"
+     ],
+     "answer": "E",
+     "explain": "Sum 63/9 = 7; the 5th value is 5; 5 appears three times."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "A team's average monthly sales for January to May were €42k. After June, the average for January to June is €45k. What were June's sales?",
+     "options": [
+      "€51k",
+      "€48k",
+      "€60k",
+      "€57k",
+      "€45k"
+     ],
+     "answer": "C",
+     "explain": "6 × 45 − 5 × 42 = 270 − 210 = €60k."
+    },
+    {
+     "type": "Descriptive stats",
+     "stem": "Two machines fill 500 ml bottles. Machine A: mean 500 ml, standard deviation 2 ml. Machine B: mean 500 ml, standard deviation 8 ml. Which statement is correct?",
+     "options": [
+      "Both machines are equally consistent.",
+      "Machine B overfills on average.",
+      "Machine A is faster.",
+      "Machine A fills more consistently.",
+      "Machine B fills more consistently."
+     ],
+     "answer": "D",
+     "explain": "Same mean, lower standard deviation → more consistent."
+    },
+    {
+     "type": "Data quality",
+     "stem": "In a customer dataset, 3% of rows have no value in the Age field. You need the average age by region. What is the best approach?",
+     "options": [
+      "Fill the gaps with the oldest age in the data.",
+      "Replace the missing ages with 0.",
+      "Treat missing ages as 100.",
+      "Exclude the missing values from the averages and report how many rows were excluded.",
+      "Discard the whole dataset."
+     ],
+     "answer": "D",
+     "explain": "Filling with 0 or arbitrary values biases the mean; at 3%, excluding and documenting is enough."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A product file records weights in a single column. Some values are in kilograms (e.g. 1.2) and others in grams (e.g. 1200). What should you do before analysing the weights?",
+     "options": [
+      "Delete all values above 100.",
+      "Sort the column from largest to smallest.",
+      "Convert every value to one unit, using the source or a unit field, and check any remaining outliers.",
+      "Average them as they are.",
+      "Round all values to whole numbers."
+     ],
+     "answer": "C",
+     "explain": "Mixed units: convert to a single unit before analysing."
+    },
+    {
+     "type": "Data quality",
+     "stem": "A temperature sensor records −999 whenever it fails to take a reading. The average temperature for the month comes out far too low. What is the best fix?",
+     "options": [
+      "Delete the whole month.",
+      "Treat −999 as a missing value and exclude it from calculations.",
+      "Use the median instead and keep the −999 values.",
+      "Replace −999 with 0.",
+      "Report the average as it is."
+     ],
+     "answer": "B",
+     "explain": "−999 is a \"no reading\" code, not a temperature. Replacing it with 0 still biases the result."
+    },
+    {
+     "type": "Choose a chart",
+     "stem": "You want to show how the share of revenue from each of three product lines changed each year from 2021 to 2025. Which chart is most appropriate?",
+     "options": [
+      "Scatter plot",
+      "A single pie chart",
+      "Histogram",
+      "100% stacked bar chart, one bar per year",
+      "Line chart of total revenue"
+     ],
+     "answer": "D",
+     "explain": "Composition of a total over several years → 100% stacked bars. A pie shows only one year."
+    },
+    {
+     "type": "Misleading chart",
+     "stem": "A bar chart compares two candidates' approval ratings: 52% and 48%. The vertical axis starts at 46%, so one bar looks three times as tall as the other. What is the main problem?",
+     "options": [
+      "The truncated axis exaggerates a small difference.",
+      "The values should be shown as a pie chart.",
+      "The colours are too similar.",
+      "There are too few bars.",
+      "Approval ratings cannot be charted."
+     ],
+     "answer": "A",
+     "explain": "A bar chart whose axis doesn't start at zero: 4 points look like a huge gap."
+    }
+   ]
+  }
+ }
+}
