@@ -35,11 +35,15 @@ open public/index.html
 
 To add a mock test, create `sets/simulacro-11.json` in the same format and run the build again. Sets are ordered by file name.
 
-## Deploying to Cloudflare Pages
+## Deploying to Cloudflare
 
-1. Workers & Pages → Create → Pages → Connect to Git, and pick this repository.
-2. Build command: `node build.mjs` · Build output directory: `public`.
-3. Custom domains → add your domain.
+The site is served as Workers static assets (`wrangler.jsonc` points at `public/`).
+
+1. Workers & Pages → Create → Import a repository, and pick this repository.
+2. Build command: `npm run build` · Deploy command: `npx wrangler deploy`.
+3. In the Worker: Settings → Domains & Routes → Add → Custom domain.
+
+Cloudflare Pages also works: build command `node build.mjs`, output directory `public`.
 
 ## Settings
 
@@ -48,7 +52,8 @@ Edit the `SITE` object at the top of `src/app.js`:
 - `name`: site name.
 - `kofi`: Ko-fi link (empty = button hidden).
 - `contact`: contact email (empty = hidden).
-- `repo`: link to this repository.
+- `repo`: public link to the source code in the footer (empty = hidden).
+- `author`, `linkedin`: shown on the About page and in the footer.
 
 ## Licence
 
