@@ -2,7 +2,6 @@
  "id": "s02",
  "title": "Mock test 2",
  "level": "realistic",
- "note": "Close to the difficulty of the real test.",
  "sections": {
   "NR": {
    "contexts": {

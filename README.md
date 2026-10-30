@@ -53,3 +53,5 @@ Edit the `SITE` object at the top of `src/app.js`:
 ## Licence
 
 Code under the MIT licence (see `LICENSE`). The questions in `sets/` are published under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/): you may reuse them with attribution, for non-commercial purposes, under the same licence.
+
+Fonts in `src/fonts/` (Geist, Newsreader, JetBrains Mono) are under the [SIL Open Font License 1.1](https://openfontlicense.org) and are inlined into the page at build time, so the site makes no third-party requests.
