@@ -30,6 +30,8 @@ writeFileSync("public/index.html", `<!doctype html>
 <meta property="og:title" content="${name}">
 <meta property="og:description" content="${desc}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://assessmint.app/">
+<link rel="canonical" href="https://assessmint.app/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 ${fonts}
 <style>
