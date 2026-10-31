@@ -301,12 +301,32 @@ function reveal() {
     el.classList.add("reveal");
     revealObs.observe(el);
   });
+  float();
+}
+// home: the hero stays put while the mock cards float up over it, each column at its own pace
+function float() {
+  const hero = app.querySelector(".stage > .hero");
+  if (!hero || calm.matches) return;
+  const vh = innerHeight, nav = app.querySelector(".nav")?.getBoundingClientRect().bottom || 0;
+  hero.style.setProperty("--hero-top", `${Math.min(nav + 8, vh - hero.offsetHeight)}px`);
+  const r = hero.getBoundingClientRect(), bar = app.querySelector(".stage > .toolbar")?.getBoundingClientRect().top ?? vh;
+  const p = Math.max(0, Math.min(1, (r.bottom - bar) / Math.max(1, r.height)));
+  const q = Math.min(1, p * 2.2); // fully faded by the time the cards cover about half of it
+  hero.style.setProperty("--hf", (1 - .88 * q).toFixed(3));
+  hero.style.setProperty("--hs", (1 - .04 * q).toFixed(4));
+  hero.classList.toggle("covered", q > .5);
+  const cols = getComputedStyle(app.querySelector(".sets") || document.body).gridTemplateColumns.split(" ").length || 1;
+  app.querySelectorAll(".stage .set").forEach((c, i) => {
+    const t = c.getBoundingClientRect().top / vh;
+    c.style.setProperty("--fy", `${(Math.max(0, t - .3) * [70, 120, 95][i % cols % 3]).toFixed(1)}px`);
+  });
 }
 let sy = 0;
 addEventListener("scroll", () => {
   if (calm.matches || sy) return;
-  sy = requestAnimationFrame(() => { document.documentElement.style.setProperty("--sy", scrollY); sy = 0; });
+  sy = requestAnimationFrame(() => { document.documentElement.style.setProperty("--sy", scrollY); float(); sy = 0; });
 }, { passive: true });
+addEventListener("resize", () => float());
 function goHome() { exitTest(""); }
 
 /* ---------- home ---------- */
@@ -355,6 +375,7 @@ function showHome() {
   const nSets = BUILTIN_SETS.filter(s => hasSec(s, "NR") && hasSec(s, "CT") && hasSec(s, "WwD")).length;
   const filters = [["all", "All"], ["todo", "To do"], ["realistic", "Realistic"], ["challenging", "Challenging"], ...(store.get(KEY_CUSTOM, []).length ? [["own", "Yours"]] : [])];
   app.innerHTML = shell(`
+    <div class="stage">
     <section class="hero">
       <div>
         <h1>Beat the clock. <span class="serif grad-text">Ace the aptitude test.</span></h1>
@@ -372,6 +393,7 @@ function showHome() {
     </section>
     <div class="toolbar" id="sims"><h2>Mock tests</h2><div class="seg" role="group" aria-label="Filter">${filters.map(([v, l]) => `<button data-filter="${v}" aria-pressed="${v === filter}">${l}</button>`).join("")}</div></div>
     ${sets.length ? `<section class="sets">${sets.map(s => setCard(s, hist)).join("")}</section>` : `<div class="glass empty"><p>No mock tests match this filter.</p></div>`}
+    </div>
     <section class="how"><h2>How it works</h2><div class="glass steps">
       <div class="step"><span class="n">01</span><h3>Pick a level</h3><p class="muted small"><strong>Realistic</strong> mirrors the difficulty candidates report for the real thing. <strong>Challenging</strong> has longer calculations and subtler traps, so test day feels easy.</p></div>
       <div class="step"><span class="n">02</span><h3>Sit it in one go</h3><p class="muted small">Three timed sections back to back. Keep a calculator, pen and paper handy. A blank answer counts as wrong, and wrong answers cost nothing extra.</p></div>
