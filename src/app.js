@@ -288,7 +288,7 @@ function crumbs(list) {
 const calm = matchMedia("(prefers-reduced-motion: reduce)");
 let revealObs;
 function reveal() {
-  const els = app.querySelectorAll(".hero > div, .hero-card, .toolbar, .set, .how, .mission, .page > header, .page > .glass, .page > .sets, .topic-grid > .glass, .pager");
+  const els = app.querySelectorAll(".hero > div, .toolbar, .set, .how, .mission, .page > header, .page > .glass, .page > .sets, .topic-grid > .glass, .pager");
   if (calm.matches || !("IntersectionObserver" in window)) return;
   revealObs?.disconnect();
   revealObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); revealObs.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: .08 });
@@ -362,11 +362,12 @@ function showHome() {
         <div class="row cta"><button class="btn btn-primary btn-lg" data-run="${esc(next.id)}" data-order="NR,CT,WwD" data-label="Full mock">${I.play}Start ${esc(next.title)}</button><a class="btn btn-lg" href="${href("my-tests")}">${I.upload}Load your own test</a></div>
         <p class="fineprint"><span>${I.check}Free</span><span>${I.check}No account</span><span>${I.check}Runs in your browser</span></p>
       </div>
-      <div class="hero-card glass">
-        <div class="hero-stats"><div class="stat"><b>${nSets}</b><span>full mock tests</span></div><div class="stat"><b>${totalQuestions()}</b><span>original questions</span></div><div class="stat"><b>32</b><span>minutes per mock</span></div></div>
-        <div class="sections-list">
-          ${["NR", "CT", "WwD"].map(k => `<a class="secrow" href="${href(topicPath(k))}"><span class="k">${k}</span><span><strong>${SECTIONS[k].name}</strong><br><small>${({ NR: "Percentages, tables, series, estimation", CT: "Syllogisms, sequencing, assumptions", WwD: "Charts, statistics, data quality" })[k]}</small></span><span class="muted small num">${({ NR: 12, CT: 16, WwD: 12 })[k]} · ${SECTIONS[k].min}′</span></a>`).join("")}
-        </div>
+      <div class="hero-side">
+        <p class="hs-eyebrow">One mock, three timed sections</p>
+        <ol class="hs-list">
+          ${["NR", "CT", "WwD"].map((k, i) => `<li><a href="${href(topicPath(k))}"><span class="hs-n hs-${k}">0${i + 1}</span><span class="hs-body"><span class="hs-name">${SECTIONS[k].name}</span><span class="hs-desc">${({ NR: "Percentages, tables, series and quick estimation.", CT: "Syllogisms, sequencing, assumptions and arguments.", WwD: "Charts, statistics and spotting bad data." })[k]}</span></span><span class="hs-meta">${({ NR: 12, CT: 16, WwD: 12 })[k]} q · ${SECTIONS[k].min} min</span></a></li>`).join("")}
+        </ol>
+        <p class="hs-foot"><span><b>${nSets}</b> mock tests</span><span><b>${totalQuestions()}</b> original questions</span><span><b>32</b> minutes each</span></p>
       </div>
     </section>
     <div class="toolbar" id="sims"><h2>Mock tests</h2><div class="seg" role="group" aria-label="Filter">${filters.map(([v, l]) => `<button data-filter="${v}" aria-pressed="${v === filter}">${l}</button>`).join("")}</div></div>
