@@ -63,6 +63,7 @@ const I = {
   auto: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/></svg>`,
   cup: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></svg>`,
   play: `<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg>`,
+  chev: `<svg class="ico chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`,
   close: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>`,
   check: `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`,
   linkedin: `<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4z"/></svg>`,
@@ -220,14 +221,21 @@ addEventListener("hashchange", () => {
 addEventListener("beforeunload", e => { if (run && run.cur) { e.preventDefault(); e.returnValue = ""; } });
 
 /* ---------- shell ---------- */
-const NAV = { "": "Mock tests", "numerical-reasoning-test": "Numerical", "critical-thinking-test": "Logic", "data-interpretation-test": "Data", "history": "History", "about": "About" };
+const NAV_TOPICS = [["NR", "Percentages, tables, series"], ["CT", "Syllogisms, ordering, arguments"], ["WwD", "Charts, statistics, data quality"], ["VR", "True, False or Cannot Say"]];
+const TOPIC_NAMES = { NR: "Numerical reasoning", CT: "Critical thinking", WwD: "Data interpretation", VR: "Verbal reasoning" };
 function shell(inner, active) {
   const t = store.get(KEY_THEME, "auto");
   const link = (p, l) => `<a href="${href(p)}">${l}</a>`;
   return `<header class="topbar"><div class="wrap" style="position:relative">
       <nav class="nav glass" aria-label="Main">
         <a class="brand" href="${href("")}">${LOGO}<span>${esc(SITE.name)}</span></a>
-        <div class="navlinks" id="navlinks">${Object.entries(NAV).map(([r, l]) => `<a href="${href(r)}"${r === active ? ` aria-current="page"` : ""}>${l}</a>`).join("")}</div>
+        <div class="navlinks" id="navlinks">
+          <a href="${href("")}"${active === "" ? ` aria-current="page"` : ""}>Mock tests</a>
+          <div class="navgroup" id="navgroup"><button class="navdrop" id="navdrop" aria-expanded="false" aria-controls="dropmenu"${TOPICS[active] ? ` aria-current="page"` : ""}>Practice by topic${I.chev}</button>
+            <div class="dropmenu" id="dropmenu">${NAV_TOPICS.map(([k, d]) => `<a href="${href(topicPath(k))}"${topicPath(k) === active ? ` aria-current="page"` : ""}><i class="dot dot-${k}"></i><span><strong>${TOPIC_NAMES[k]}</strong><small>${d}</small></span></a>`).join("")}</div></div>
+          <a href="${href("history")}"${active === "history" ? ` aria-current="page"` : ""}>History</a>
+          <a href="${href("about")}"${active === "about" ? ` aria-current="page"` : ""}>About</a>
+        </div>
         ${SITE.kofi ? `<a class="btn btn-sm kofi" href="${esc(SITE.kofi)}" target="_blank" rel="noopener">${I.cup}<span class="kofi-label">Buy me a coffee</span></a>` : ""}
         <button class="btn iconbtn" id="theme" title="Theme: ${t === "auto" ? "automatic" : t === "light" ? "light" : "dark"}" aria-label="Change theme">${t === "auto" ? I.auto : t === "light" ? I.sun : I.moon}</button>
         <button class="btn iconbtn menu-toggle" id="menu" aria-label="Menu" aria-expanded="false">${I.menu}</button>
@@ -246,7 +254,14 @@ function wireShell() {
   const th = document.getElementById("theme"); if (th) th.onclick = cycleTheme;
   const m = document.getElementById("menu"), nl = document.getElementById("navlinks");
   if (m) m.onclick = () => { const o = nl.classList.toggle("open"); m.setAttribute("aria-expanded", o); };
+  const g = document.getElementById("navgroup"), d = document.getElementById("navdrop");
+  if (d) d.onclick = e => { e.stopPropagation(); d.setAttribute("aria-expanded", g.classList.toggle("open")); };
 }
+document.addEventListener("click", e => {
+  const g = document.getElementById("navgroup");
+  if (g && g.classList.contains("open") && !g.contains(e.target)) { g.classList.remove("open"); document.getElementById("navdrop").setAttribute("aria-expanded", "false"); }
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") document.getElementById("navgroup")?.classList.remove("open"); });
 function render(keepScroll) {
   if (run) return;
   clearInterval(tick); window.onkeydown = null;
@@ -301,15 +316,16 @@ function setCard(s, hist) {
   const keys = ORDER.filter(k => hasSec(s, k));
   const fullMin = o => o.reduce((a, k) => a + secMinutes(s, k), 0);
   const nQ = (full ? ["NR", "CT", "WwD"] : keys).reduce((a, k) => a + s.sections[k].questions.length, 0);
-  return `<article class="set glass${done ? " set-done" : ""}">
+  // four fixed rows (head, main action, sections, footer) so buttons line up across cards
+  return `<article class="set glass${s.level ? ` set-${esc(s.level)}` : ""}${done ? " set-done" : ""}">
     <div class="set-head"><div><h3>${setNum(s) ? `<a href="${href(setPath(s))}">${esc(s.title)}</a>` : esc(s.title)}${done ? ` <span class="pill ok">Done</span>` : ""}</h3><p class="meta">${nQ} questions · ${full ? fullMin(["NR", "CT", "WwD"]) : fullMin(keys)} min</p>${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}</div>
       ${s.level ? `<span class="lvl lvl-${esc(s.level)}">${esc(LEVELS[s.level] || s.level)}</span>` : ""}</div>
-    ${full || verbal ? `<div class="actions">
+    <div class="actions">
       ${full ? `<button class="btn btn-primary" data-run="${esc(s.id)}" data-order="NR,CT,WwD" data-label="Full mock">${I.play}<span>Start full mock</span><span>${fullMin(["NR", "CT", "WwD"])} min</span></button>` : ""}
       ${verbal ? `<button class="btn" data-run="${esc(s.id)}" data-order="NR,CT,VR" data-label="Full mock (verbal)"><span>Verbal version</span><span>${fullMin(["NR", "CT", "VR"])} min</span></button>` : ""}
-    </div>` : ""}
-    <div><p class="split-lbl">${full || verbal ? "Or one section" : "Sections"}</p><div class="split">${keys.map(k => `<button class="btn btn-sm${partial.has(k) ? " is-done" : ""}" data-run="${esc(s.id)}" data-order="${k}" data-label="${SECTIONS[k].name}" title="${SECTIONS[k].name} · ${s.sections[k].questions.length} questions · ${secMinutes(s, k)} min">${partial.has(k) ? I.check : ""}${SECTIONS[k].short}</button>`).join("")}</div></div>
-    <div class="set-foot"><button class="btn btn-ghost btn-sm" data-mark="${esc(s.id)}" data-val="${done ? "0" : "1"}">${done ? "Move back to to-do" : "Mark as done"}</button>
+    </div>
+    <div><p class="split-lbl">${full || verbal ? "Or practise one section" : "Sections"}</p><div class="split" role="group" aria-label="Single sections">${keys.map(k => `<button class="seg-btn${partial.has(k) ? " is-done" : ""}" data-run="${esc(s.id)}" data-order="${k}" data-label="${SECTIONS[k].name}" title="${SECTIONS[k].name} · ${s.sections[k].questions.length} questions · ${secMinutes(s, k)} min">${partial.has(k) ? I.check : `<i class="dot dot-${k}"></i>`}<span>${SECTIONS[k].short}</span></button>`).join("")}</div></div>
+    <div class="set-foot"><button class="btn btn-ghost btn-sm" data-mark="${esc(s.id)}" data-val="${done ? "0" : "1"}">${done ? "Move back to to-do" : `${I.check}Mark as done`}</button>
       ${s.custom ? `<span class="row" style="gap:4px"><button class="btn btn-ghost btn-sm" data-export="${esc(s.id)}">Download</button><button class="btn btn-ghost btn-sm" data-del="${esc(s.id)}">Delete</button></span>` : ""}</div>
   </article>`;
 }
