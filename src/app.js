@@ -311,8 +311,9 @@ function float() {
   hero.style.setProperty("--hero-top", `${Math.min(nav + 8, vh - hero.offsetHeight)}px`);
   const r = hero.getBoundingClientRect(), bar = app.querySelector(".stage > .toolbar")?.getBoundingClientRect().top ?? vh;
   const p = Math.max(0, Math.min(1, (r.bottom - bar) / Math.max(1, r.height)));
-  const q = Math.min(1, p * 2.2); // fully faded by the time the cards cover about half of it
-  hero.style.setProperty("--hf", (1 - .88 * q).toFixed(3));
+  const q = Math.min(1, p * 3.5); // gone by the time the cards cover under a third of it
+  hero.style.setProperty("--hf", (1 - q).toFixed(3));
+  hero.style.visibility = q >= 1 ? "hidden" : "";
   hero.style.setProperty("--hs", (1 - .04 * q).toFixed(4));
   hero.classList.toggle("covered", q > .5);
   const cols = getComputedStyle(app.querySelector(".sets") || document.body).gridTemplateColumns.split(" ").length || 1;
