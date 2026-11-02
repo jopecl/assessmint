@@ -301,33 +301,57 @@ function reveal() {
     el.classList.add("reveal");
     revealObs.observe(el);
   });
-  float();
+  measure(); float();
 }
-// home: the hero stays put while the mock cards float up over it, each column at its own pace
-function float() {
+// home: the hero stays put while the mock cards float up over it, each column at its own pace.
+// Scroll work writes plain (non-inherited) properties on a handful of elements and reads layout
+// before writing, so a scroll frame never restyles the whole page.
+const blobs = [...document.querySelectorAll(".ambient i")], BLOB_K = [-.12, -.22, .08];
+let stage = null; // cached per render: { hero, bar, cards, cols, top }
+function measure() {
   const hero = app.querySelector(".stage > .hero");
+  stage = null;
   if (!hero || calm.matches) return;
-  const vh = innerHeight, nav = app.querySelector(".nav")?.getBoundingClientRect().bottom || 0;
-  hero.style.setProperty("--hero-top", `${Math.min(nav + 8, vh - hero.offsetHeight)}px`);
-  const r = hero.getBoundingClientRect(), bar = app.querySelector(".stage > .toolbar")?.getBoundingClientRect().top ?? vh;
-  const p = Math.max(0, Math.min(1, (r.bottom - bar) / Math.max(1, r.height)));
-  const q = Math.min(1, p * 3.5); // gone by the time the cards cover under a third of it
-  hero.style.setProperty("--hf", (1 - q).toFixed(3));
-  hero.style.visibility = q >= 1 ? "hidden" : "";
-  hero.style.setProperty("--hs", (1 - .04 * q).toFixed(4));
-  hero.classList.toggle("covered", q > .5);
-  const cols = getComputedStyle(app.querySelector(".sets") || document.body).gridTemplateColumns.split(" ").length || 1;
-  app.querySelectorAll(".stage .set").forEach((c, i) => {
-    const t = c.getBoundingClientRect().top / vh;
-    c.style.setProperty("--fy", `${(Math.max(0, t - .3) * [70, 120, 95][i % cols % 3]).toFixed(1)}px`);
+  hero.style.top = "";
+  const nav = app.querySelector(".nav")?.getBoundingClientRect().bottom || 0;
+  const sets = app.querySelector(".sets");
+  stage = {
+    hero, bar: app.querySelector(".stage > .toolbar"), cards: [...app.querySelectorAll(".stage .set")],
+    cols: sets ? getComputedStyle(sets).gridTemplateColumns.split(" ").length : 1,
+    top: Math.min(nav + 8, innerHeight - hero.offsetHeight), q: -1, fy: []
+  };
+  hero.style.top = `${stage.top}px`;
+}
+function float() {
+  if (calm.matches) return;
+  const y = scrollY;
+  blobs.forEach((b, i) => { b.style.translate = `0 ${Math.max(-180, Math.min(180, y * BLOB_K[i])).toFixed(1)}px`; });
+  if (!stage) return;
+  const vh = innerHeight, { hero, bar, cards, cols } = stage;
+  // reads
+  const r = hero.getBoundingClientRect(), barTop = bar ? bar.getBoundingClientRect().top : vh;
+  const tops = cards.map((c, i) => c.getBoundingClientRect().top - (stage.fy[i] || 0));
+  // writes
+  const p = Math.max(0, Math.min(1, (r.bottom - barTop) / Math.max(1, r.height)));
+  const q = Math.round(Math.min(1, p * 3.5) * 100) / 100; // gone once the cards cover under a third of it
+  if (q !== stage.q) {
+    stage.q = q;
+    hero.style.opacity = 1 - q;
+    hero.style.transform = q ? `scale(${1 - .04 * q})` : "";
+    hero.style.visibility = q >= 1 ? "hidden" : "";
+    hero.classList.toggle("covered", q > .5);
+  }
+  cards.forEach((c, i) => {
+    const t = tops[i] / vh, fy = t > 1.2 || t < 0 ? (t < 0 ? 0 : stage.fy[i] ?? 0) : Math.round(Math.max(0, t - .3) * [70, 120, 95][i % cols % 3]);
+    if (fy !== stage.fy[i]) { stage.fy[i] = fy; c.style.translate = fy ? `0 ${fy}px` : ""; }
   });
 }
 let sy = 0;
 addEventListener("scroll", () => {
   if (calm.matches || sy) return;
-  sy = requestAnimationFrame(() => { document.documentElement.style.setProperty("--sy", scrollY); float(); sy = 0; });
+  sy = requestAnimationFrame(() => { float(); sy = 0; });
 }, { passive: true });
-addEventListener("resize", () => float());
+addEventListener("resize", () => { measure(); float(); });
 function goHome() { exitTest(""); }
 
 /* ---------- home ---------- */
@@ -616,7 +640,8 @@ function updateTimer() {
   if (!run || !run.cur) return;
   const left = run.cur.deadline - Date.now();
   const el = document.getElementById("timer");
-  if (el) { el.textContent = fmt(left); el.classList.toggle("low", left <= 60000); }
+  const txt = fmt(left);
+  if (el && el.textContent !== txt) { el.textContent = txt; el.classList.toggle("low", left <= 60000); }
   if (left <= 0) finishSection(true);
 }
 

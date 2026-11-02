@@ -58,6 +58,7 @@ ${p.noindex ? `<meta name="robots" content="noindex">` : `<link rel="canonical" 
 ${url ? `<meta property="og:url" content="${url}">` : ""}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/${cssFile}">
 <script>try{var t=localStorage.getItem("amint.theme");t=t&&JSON.parse(t);if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
